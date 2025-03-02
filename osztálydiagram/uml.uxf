@@ -1,0 +1,78 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLClass</id><coordinates><x>121</x><y>22</y><w>231</w><h>209</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+Game
+--
+-round: int
+-maxRound: int
+--
+-isGameOver(): bool
++doRound(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>297</y><w>231</w><h>209</h></coordinates><panel_attributes>MushroomSystem
+--
+-score: int
+-shrooms: List&lt;Shroom&gt;
+-tektons: List&lt;Tekton&gt;
+--
++getScore(): int
++getShrooms(): List&lt;Shroom&gt;
++getYarns: List&lt;Yarn&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>22</x><y>308</y><w>231</w><h>198</h></coordinates><panel_attributes>Insect
+--
+-score: int
+-speed: int
+-currentTekton: Tekton
+--
++reduceSpeed(int s): void
++getScore(): void
++eatSpore(Spore s): void
++eatYarn(Tekton t): void
++move(Tekton t): void
++setCurrentTekton(Tekton t): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>220</y><w>187</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;70</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>220</y><w>143</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>110</y><w>231</w><h>99</h></coordinates><panel_attributes>Map
+--
+-tektons: List&lt;Tekton&gt;
+--
++loadMap(): void
++splitTekton(tekton: Tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>627</x><y>319</y><w>231</w><h>242</h></coordinates><panel_attributes>Tekton
+--
+-neighbours: List&lt;NeighbouringTekton&gt;
+-shroom: Shroom
+-spores: List&lt;Spore&gt;
+--
++getNeighbours(): List&lt;neighbouringTekton&gt;
++getShroom(): Shroom
++getSpores(): List&lt;Spore&gt;
++addNeighbour(Tekton tekton): void
++addShroom(Shroom shroom): void
++addSpore(Spore spore): void
++Split(): void
++addConnection(Tekton t): void
++removeConnection(Tekton t): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>198</y><w>121</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;110</additional_attributes></element><element><id>Relation</id><coordinates><x>341</x><y>99</y><w>231</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;190;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>418</x><y>627</y><w>231</w><h>209</h></coordinates><panel_attributes>Shroom
+--
+-tekton: Tekton
+-age: int
+-lastEject: int
+--
++isOld(): boolean
++ejectSpore(): void
++isSporeReady(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>418</x><y>495</y><w>132</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>693</y><w>231</w><h>55</h></coordinates><panel_attributes>SingleYarnTekton</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>770</y><w>231</w><h>55</h></coordinates><panel_attributes>NonShroomTekton</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>869</y><w>231</w><h>55</h></coordinates><panel_attributes>absorvTekton</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>550</y><w>198</w><h>363</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>13;12;160;310</additional_attributes></element><element><id>Relation</id><coordinates><x>737</x><y>550</y><w>165</w><h>264</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>13;12;130;220</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>550</y><w>132</w><h>187</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>13;12;100;150</additional_attributes></element><element><id>Relation</id><coordinates><x>572</x><y>550</y><w>99</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1056</x><y>286</y><w>231</w><h>209</h></coordinates><panel_attributes>NeighbouringTekton
+--
+-tekton: Tekton
+-isConnected: bool
+--
++getConnection(): bool
++getTekton():Tekton
++setTekton(Tekton t): void
++setIsConnected(bool b): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>847</x><y>363</y><w>231</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;20;190;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>33</x><y>561</y><w>231</w><h>99</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Spore
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>704</y><w>165</w><h>55</h></coordinates><panel_attributes>SlowingSpore
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>495</y><w>66</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;40;60</additional_attributes></element><element><id>Relation</id><coordinates><x>66</x><y>649</y><w>66</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>704</y><w>165</w><h>55</h></coordinates><panel_attributes>AccelerationSpore
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>11</x><y>792</y><w>165</w><h>55</h></coordinates><panel_attributes>NumbingSpore
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>209</x><y>792</y><w>165</w><h>55</h></coordinates><panel_attributes>weakeningSpore
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>165</x><y>649</y><w>165</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;50</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>649</y><w>66</w><h>165</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>143</x><y>649</y><w>154</w><h>165</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;130</additional_attributes></element></diagram>
