@@ -1,0 +1,95 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>33</x><y>319</y><w>242</w><h>187</h></coordinates><panel_attributes>Player
+--
+-score: int
+-isInsect: bool
+-currentTekton: Tekton
+--
++interactWithSpore(Spore spore): void
++InteractWithYarn(Yarn yarn): void
++move(Tekton tekton): void
++setIsInsect(bool b): void
++getIsInsect(): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>935</x><y>242</y><w>231</w><h>110</h></coordinates><panel_attributes>Map
+--
+-tektons: List&lt;Tekton&gt;
+--
++loadMap(): void
++splitTekton(tekton: Tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>605</x><y>286</y><w>231</w><h>308</h></coordinates><panel_attributes>Tekton
+--
+-strategy: TektonSrategy
+-neighbours: List&lt;Tekton&gt;
+-yarns: List&lt;Yarn&gt;
+-shroom: Shroom
+-spores: List&lt;Spore&gt;
+--
++getNeighbours(): List&lt;Tekton&gt;
++getShroom(): Shroom
++getSpores(): List&lt;Spore&gt;
++getYarns(): List&lt;Yarn&gt;
++addYarn(Yarn yarn): void
++addShroom(Shroom shroom): void
++addSpore(Spore spore): void
++split(): void
++removeShroom(): void
++setStrategy(TektonStrategy strategy): void
++doEffect(): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>627</x><y>649</y><w>231</w><h>220</h></coordinates><panel_attributes>Shroom
+--
+-team_id: int
+-tekton: Tekton
+-age: int
+-lastEject: int
+--
++isOld(): boolean
++ejectSpore(): void
++isSporeReady(): boolean
++die(): void
++age(): void
++getAge(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>902</x><y>605</y><w>231</w><h>55</h></coordinates><panel_attributes>SingleYarnTekton
+--
+--
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1045</x><y>528</y><w>231</w><h>55</h></coordinates><panel_attributes>NonShroomTekton
+--
+--
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>231</y><w>231</w><h>154</h></coordinates><panel_attributes>Yarn
+--
+-tekton1: Tekton
+-tekton2: Tekton
+--
++getTekton1():Tekton
++setTekton1(Tekton t): void
++getTekton2():Tekton
++setTekton2(Tekton t): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>143</x><y>561</y><w>231</w><h>77</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Spore
+--
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>11</x><y>704</y><w>165</w><h>55</h></coordinates><panel_attributes>SlowingSpore
+--
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>77</x><y>627</y><w>165</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>407</x><y>704</y><w>165</w><h>55</h></coordinates><panel_attributes>AccelerationSpore
+--
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>99</x><y>792</y><w>165</w><h>55</h></coordinates><panel_attributes>NumbingSpore
+--
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>792</y><w>165</w><h>55</h></coordinates><panel_attributes>WeakeningSpore
+--
+--
++addEffect(Insect i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>275</x><y>627</y><w>198</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;70</additional_attributes></element><element><id>Relation</id><coordinates><x>176</x><y>627</y><w>88</w><h>187</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>253</x><y>627</y><w>165</w><h>187</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;150</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>462</y><w>363</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1</panel_attributes><additional_attributes>10;10;310;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>946</x><y>407</y><w>231</w><h>66</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+TektonStrategy
+--
+--
++doEffect(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1045</x><y>682</y><w>231</w><h>55</h></coordinates><panel_attributes>AbsorvTekton
+--
+--
++doEffect</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1001</x><y>462</y><w>55</w><h>165</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>462</y><w>55</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1078</x><y>462</y><w>110</w><h>242</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>902</x><y>770</y><w>231</w><h>55</h></coordinates><panel_attributes>MultipleYarnTekton
+--
+--
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1012</x><y>462</y><w>66</w><h>330</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>341</y><w>88</w><h>44</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>825</x><y>385</y><w>143</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1</panel_attributes><additional_attributes>10;10;110;40</additional_attributes></element><element><id>Relation</id><coordinates><x>825</x><y>275</y><w>132</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>100;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>264</y><w>77</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>50;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>363</x><y>528</y><w>264</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>220;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>715</x><y>583</y><w>66</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..1</panel_attributes><additional_attributes>10;10;20;60</additional_attributes></element><element><id>Relation</id><coordinates><x>165</x><y>495</y><w>44</w><h>88</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;60;10;10</additional_attributes></element></diagram>
