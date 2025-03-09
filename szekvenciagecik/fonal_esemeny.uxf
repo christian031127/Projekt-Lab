@@ -1,0 +1,55 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text></help_text><element><id>UMLGeneric</id><coordinates><x>280</x><y>106</y><w>70</w><h>21</h></coordinates><panel_attributes>Player P1
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>308</x><y>155</y><w>14</w><h>651</h></coordinates><panel_attributes>
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>120</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>196</x><y>155</y><w>126</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+getIsInsect()</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>147</x><y>64</y><w>889</w><h>763</h></coordinates><panel_attributes>sd Fonal esemeny</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>658</x><y>106</y><w>70</w><h>21</h></coordinates><panel_attributes>Tekton T1
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>693</x><y>155</y><w>14</w><h>546</h></coordinates><panel_attributes>
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>210</x><y>190</y><w>707</w><h>574</h></coordinates><panel_attributes>alt
+--
+
+-.
+[getIsInsect()==True]																																																																																																																																																																																																																																																																																										
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.
+[getIsInsect()==False]																																																																																																																																																																																																																																																																																									
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>225</y><w>392</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+getYarns()																						</panel_attributes><additional_attributes>540;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>253</y><w>392</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+ List&lt;Yarn&gt;																							</panel_attributes><additional_attributes>10;20;540;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>463</y><w>392</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+getNeighbours()																																</panel_attributes><additional_attributes>540;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>484</y><w>399</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+ List&lt;Tekton&gt;																																</panel_attributes><additional_attributes>10;20;550;20</additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>120</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>274</y><w>133</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+InteractWithYarn(Y1)</panel_attributes><additional_attributes>10;40;50;40;50;10;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>483</x><y>106</y><w>70</w><h>21</h></coordinates><panel_attributes>Yarn Y1
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>511</x><y>155</y><w>14</w><h>497</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>511</x><y>120</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>309</y><w>210</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+setTekton1(null)</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>316</y><w>189</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+removeYarn(Y1)</panel_attributes><additional_attributes>250;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>351</y><w>189</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;250;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>365</y><w>210</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;280;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>826</x><y>155</y><w>14</w><h>595</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>798</x><y>106</y><w>70</w><h>21</h></coordinates><panel_attributes>Tekton T2
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>826</x><y>120</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>379</y><w>210</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+setTekton2(null)</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>386</y><w>322</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+removeYarn(Y1)																</panel_attributes><additional_attributes>440;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>421</y><w>322</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;440;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>435</y><w>210</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>505</y><w>133</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+InteractWithYarn(Y1)</panel_attributes><additional_attributes>10;40;50;40;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>540</y><w>210</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+setTekton1(T1)</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>596</y><w>210</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+setTekton2(T2)</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>547</y><w>189</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+addYarn(Y1)</panel_attributes><additional_attributes>250;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>603</y><w>322</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+addYarn(Y1)													</panel_attributes><additional_attributes>440;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>575</y><w>210</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>631</y><w>210</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>568</y><w>189</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;250;10</additional_attributes></element><element><id>Relation</id><coordinates><x>518</x><y>624</y><w>322</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;440;10</additional_attributes></element><element><id>Relation</id><coordinates><x>217</x><y>785</y><w>105</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>659</y><w>392</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+doEffect()																		</panel_attributes><additional_attributes>540;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>708</y><w>525</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+doEffect()																		</panel_attributes><additional_attributes>730;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>687</y><w>392</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;540;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>736</y><w>525</w><h>21</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;730;10</additional_attributes></element></diagram>
