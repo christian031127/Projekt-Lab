@@ -1,0 +1,67 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLGeneric</id><coordinates><x>320</x><y>72</y><w>80</w><h>24</h></coordinates><panel_attributes>Player P1
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>88</y><w>24</w><h>48</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>352</x><y>120</y><w>16</w><h>696</h></coordinates><panel_attributes>
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>112</y><w>168</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+getIsInsect()</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>160</x><y>136</y><w>816</w><h>640</h></coordinates><panel_attributes>alt
+--
+
+-.
+[getIsInsect()==True]																																																																																																																																																																																																																																																																																													
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.
+[getIsInsect()==False]																																																																																																																																																																																																																																																																																												
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>224</y><w>192</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+interactWithSpore(Spore S)</panel_attributes><additional_attributes>10;50;70;50;70;10;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>576</x><y>72</y><w>80</w><h>24</h></coordinates><panel_attributes>Spore S
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>608</x><y>120</y><w>16</w><h>216</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>608</x><y>88</y><w>24</w><h>48</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>272</y><w>264</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+addEffect(P1)</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>304</y><w>264</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;310;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>336</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+removeSpore(S)</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>720</x><y>72</y><w>80</w><h>24</h></coordinates><panel_attributes>Tekton T1
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>752</x><y>120</y><w>16</w><h>696</h></coordinates><panel_attributes>
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>88</y><w>24</w><h>48</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>176</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+getSpores()</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>200</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+List&lt;Spore&gt;</panel_attributes><additional_attributes>10;20;490;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>368</y><w>408</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;490;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>400</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+getShroom()</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>168</x><y>512</y><w>656</w><h>248</h></coordinates><panel_attributes>alt
+--
+
+-.
+[getShroom()==null &amp;&amp; yarns.size()&gt;=5]																																																																																																																																																																																														
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>456</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+getSpores()</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>432</y><w>408</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;490;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>480</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+yarns: List&lt;Spore&gt;</panel_attributes><additional_attributes>10;20;490;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>552</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+addShroom(Sh)</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>584</y><w>408</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;490;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>672</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+doEffect()</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>704</y><w>408</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;490;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>608</y><w>408</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+removeSomeSpore(num)</panel_attributes><additional_attributes>490;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>640</y><w>408</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;490;10</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>784</y><w>168</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element></diagram>
