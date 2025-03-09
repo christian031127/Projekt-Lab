@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>10</x><y>80</y><w>230</w><h>210</h></coordinates><panel_attributes>Player
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>45</y><w>207</w><h>189</h></coordinates><panel_attributes>Player
 --
 -score: int
 -isInsect: bool
@@ -12,12 +12,12 @@
 +setCurrentTekton(Tekton t): void
 +getCurrentTekton(): Tekton
 +getScore(): int
-+setScore(int i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>30</y><w>210</w><h>100</h></coordinates><panel_attributes>Map
++setScore(int i): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>792</x><y>63</y><w>189</w><h>90</h></coordinates><panel_attributes>Map
 --
 -tektons: List&lt;Tekton&gt;
 --
 +loadMap(): void
-+splitTekton(Tekton tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>30</y><w>260</w><h>350</h></coordinates><panel_attributes>Tekton
++splitTekton(Tekton tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>18</y><w>234</w><h>333</h></coordinates><panel_attributes>Tekton
 --
 -strategy: TektonSrategy
 -neighbours: List&lt;Tekton&gt;
@@ -43,7 +43,7 @@
 +removeSpore(Spore s): void
 +removeSomeSpore(int i): void
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>430</y><w>210</w><h>200</h></coordinates><panel_attributes>Shroom
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>405</y><w>189</w><h>243</h></coordinates><panel_attributes>Shroom
 --
 -team_id: int
 -tekton: Tekton
@@ -55,13 +55,19 @@
 +isSporeReady(): boolean
 +die(): void
 +age(): void
-+getAge(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>370</y><w>210</w><h>50</h></coordinates><panel_attributes>SingleYarnTekton
++getTeam_id: int
++getTekton(): Tekton
++getAge(): int
++getLastEject: int
++setTeam_id: void
++setTekton(Tekton tekton): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>738</x><y>369</y><w>189</w><h>45</h></coordinates><panel_attributes>SingleYarnTekton
 --
 --
-+doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>300</y><w>210</w><h>50</h></coordinates><panel_attributes>NonShroomTekton
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>855</x><y>306</y><w>189</w><h>45</h></coordinates><panel_attributes>NonShroomTekton
 --
 --
-+doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>30</y><w>210</w><h>140</h></coordinates><panel_attributes>Yarn
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>252</x><y>27</y><w>189</w><h>126</h></coordinates><panel_attributes>Yarn
 --
 -tekton1: Tekton
 -tekton2: Tekton
@@ -69,38 +75,38 @@
 +getTekton1(): Tekton
 +setTekton1(Tekton tekton): void
 +getTekton2(): Tekton
-+setTekton2(Tekton tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>330</y><w>210</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
++setTekton2(Tekton tekton): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>117</x><y>279</y><w>189</w><h>63</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 Spore
 --
 --
-+addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>460</y><w>150</w><h>50</h></coordinates><panel_attributes>SlowingSpore
++addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>378</y><w>135</w><h>45</h></coordinates><panel_attributes>SlowingSpore
 --
 --
-+addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>390</y><w>150</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>460</y><w>150</w><h>50</h></coordinates><panel_attributes>AccelerationSpore
++addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>54</x><y>333</y><w>144</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>243</x><y>450</y><w>135</w><h>45</h></coordinates><panel_attributes>AccelerationSpore
 --
 --
-+addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>540</y><w>150</w><h>50</h></coordinates><panel_attributes>NumbingSpore
++addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>450</y><w>135</w><h>45</h></coordinates><panel_attributes>NumbingSpore
 --
 --
-+addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>540</y><w>150</w><h>50</h></coordinates><panel_attributes>WeakeningSpore
++addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>171</x><y>522</y><w>135</w><h>45</h></coordinates><panel_attributes>WeakeningSpore
 --
 --
-+addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>390</y><w>180</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;70</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>390</y><w>80</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>390</y><w>150</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;150</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>200</y><w>320</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=1</panel_attributes><additional_attributes>10;20;300;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>190</y><w>210</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
++addEffect(Player p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>333</y><w>72</w><h>135</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;130</additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>333</y><w>81</w><h>135</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>207</x><y>333</y><w>36</w><h>207</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;210</additional_attributes></element><element><id>Relation</id><coordinates><x>198</x><y>162</y><w>315</w><h>45</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1</panel_attributes><additional_attributes>10;10;330;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>774</x><y>207</y><w>189</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 TektonStrategy
 --
 --
 +doEffect(): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>440</y><w>210</w><h>50</h></coordinates><panel_attributes>AbsorvTekton
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>855</x><y>432</y><w>189</w><h>45</h></coordinates><panel_attributes>AbsorvTekton
 --
 --
-+doEffect</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>240</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>240</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;60</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>240</y><w>100</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>520</y><w>210</w><h>50</h></coordinates><panel_attributes>MultipleYarnTekton
++doEffect</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>819</x><y>252</y><w>45</w><h>135</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>252</y><w>45</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;60</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>252</y><w>90</w><h>198</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>738</x><y>504</y><w>189</w><h>45</h></coordinates><panel_attributes>MultipleYarnTekton
 --
 --
-+doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>240</y><w>60</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>110</y><w>60</w><h>50</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>40;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>130</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=1</panel_attributes><additional_attributes>10;10;70;80</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>60</y><w>110</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=0..*</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>60</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=0..*</panel_attributes><additional_attributes>60;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>260</y><w>230</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=0..*</panel_attributes><additional_attributes>210;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>370</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=0..1</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>280</y><w>40</w><h>70</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>370</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=1</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element></diagram>
++doEffect(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>828</x><y>252</y><w>54</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>198</x><y>72</y><w>72</w><h>72</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>108</y><w>72</w><h>135</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1</panel_attributes><additional_attributes>10;10;60;130</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>45</y><w>90</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>80;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>54</y><w>81</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>70;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>225</y><w>216</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>220;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>585</x><y>342</y><w>45</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..1</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>117</x><y>225</y><w>54</w><h>72</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>40;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>342</y><w>36</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element></diagram>
