@@ -1,0 +1,9 @@
+<diagram program="umletino" version="15.1"><zoom_level>16</zoom_level><element><id>UMLGeneric</id><coordinates><x>320</x><y>256</y><w>160</w><h>144</h></coordinates><panel_attributes>
+
+Belső logika
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>672</x><y>256</y><w>160</w><h>144</h></coordinates><panel_attributes>
+
+Játékos j1
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>464</x><y>288</y><w>240</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
+1. move(Tekton t)</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>272</y><w>336</w><h>128</h></coordinates><panel_attributes>lt=&lt;-
+1.1 setCurrentTekton(t)</panel_attributes><additional_attributes>10;60;60;60;60;10;10;10</additional_attributes></element></diagram>

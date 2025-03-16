@@ -1,0 +1,15 @@
+<diagram program="umletino" version="15.1"><zoom_level>18</zoom_level><element><id>UMLGeneric</id><coordinates><x>468</x><y>306</y><w>180</w><h>162</h></coordinates><panel_attributes>
+
+Belső logika
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>864</x><y>306</y><w>180</w><h>162</h></coordinates><panel_attributes>
+
+Tekton t
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>342</y><w>270</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
+1. split()</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>864</x><y>576</y><w>180</w><h>162</h></coordinates><panel_attributes>
+
+Tekton t
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>180</y><w>162</w><h>162</h></coordinates><panel_attributes>lt=&lt;-
+2. clearYarns()</panel_attributes><additional_attributes>70;70;70;20;10;20;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1026</x><y>342</y><w>270</w><h>126</h></coordinates><panel_attributes>lt=&lt;-
+3. getYarns()</panel_attributes><additional_attributes>10;50;60;50;60;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>972</x><y>450</y><w>270</w><h>162</h></coordinates><panel_attributes>lt=&lt;-
+m1=4. removeYarn(Yarn y)</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>450</y><w>360</w><h>162</h></coordinates><panel_attributes>lt=&lt;-
+m2=5. removeNeighbour(Tekton t)</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element></diagram>
