@@ -1,0 +1,10 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLObject</id><coordinates><x>650</x><y>380</y><w>120</w><h>60</h></coordinates><panel_attributes>Belső logika
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>390</y><w>220</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+1. interactWithSpore(Spore S)</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>UMLObject</id><coordinates><x>960</x><y>380</y><w>120</w><h>60</h></coordinates><panel_attributes>Player P
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>380</y><w>170</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+1.1 getIsInsect() 
+</panel_attributes><additional_attributes>10;50;60;50;60;10;10;10</additional_attributes></element><element><id>UMLObject</id><coordinates><x>960</x><y>510</y><w>120</w><h>60</h></coordinates><panel_attributes>Spore S
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>430</y><w>120</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+1.2 addEffect(P1)</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLObject</id><coordinates><x>960</x><y>250</y><w>120</w><h>60</h></coordinates><panel_attributes>Tekton T1
+halign=center</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>300</y><w>140</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+1.3 removeSpore(S)	</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element></diagram>
