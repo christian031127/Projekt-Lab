@@ -1,6 +1,8 @@
 package org.example;
 import java.util.List;
 
+import static org.example.Main.igazHamisKerdes;
+
 public class Tekton {
 
     //public List<Tekton> getNeighbours(){
@@ -9,7 +11,7 @@ public class Tekton {
     }
 
     public void addNeighbour(Tekton tekton){
-        
+
     }
 
     public void removeNeighbour(Tekton tekton){
@@ -43,7 +45,7 @@ public class Tekton {
     }
 
     public void removeYarn(Yarn yarn){
-
+        System.out.println("Tekton.removeYarn(Yarn yarn) meghívva");
     }
 
     public void clearYarns(){
@@ -71,7 +73,26 @@ public class Tekton {
     }
 
     public void split(){
+        System.out.println("Tekton.split() meghívva");
 
+        while(igazHamisKerdes("Van még fonalas összeköttetése?")){
+            this.removeYarn(new Yarn());
+            
+            //Szomszéd
+            new Tekton().removeYarn(new Yarn());
+        }
+
+        while(igazHamisKerdes("Van még szomszédja?")){
+            this.removeNeighbour(new Tekton());
+
+            //Szomszédnak hozzáadása
+            new Tekton().addNeighbour(new Tekton());
+        }
+
+        //Szomszéd tekton hozzáadása
+        new Tekton().addNeighbour(this);
+
+        this.addNeighbour(new Tekton());
     }
 
     public void doEffect(){
