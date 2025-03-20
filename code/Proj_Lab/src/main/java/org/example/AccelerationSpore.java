@@ -1,5 +1,10 @@
 package org.example;
 
-public class AccelerationSpore {
 
+public class AccelerationSpore implements Spore {
+
+    @Override
+    public void addEffect(Player p){
+
+    }
 }
