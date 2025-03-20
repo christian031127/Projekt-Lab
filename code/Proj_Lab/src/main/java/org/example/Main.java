@@ -60,7 +60,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String valasz = scanner.nextLine();
-        scanner.close();
+        
         valasz = valasz.toUpperCase();
         
         if(valasz.equals("Y") || valasz.equals("I")){

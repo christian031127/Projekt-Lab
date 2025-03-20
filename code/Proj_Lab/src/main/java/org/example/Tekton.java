@@ -11,11 +11,11 @@ public class Tekton {
     }
 
     public void addNeighbour(Tekton tekton){
-
+        System.out.println("Tekton.addNeighbour(Tekton tekton) meghívva");
     }
 
     public void removeNeighbour(Tekton tekton){
-
+        System.out.println("Tekton.removeNeighbour(Tekton tekton) meghívva");
     }
 
     public Shroom getShroom(){
