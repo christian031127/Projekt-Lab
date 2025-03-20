@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -39,11 +38,26 @@ public class Main {
             }
             System.out.print("\n\n");
         }
-
         System.out.println("Goodbye...");
     }
 
     public static void callback1() {
         System.out.println("Hello, I'm testing!");
+    }
+
+    public static boolean igazHamisKerdes(String kerdes){
+        System.out.print(kerdes + " [Y/n][I/n]:");
+
+        Scanner scanner = new Scanner(System.in);
+        String valasz = scanner.nextLine();
+        scanner.close();
+        valasz = valasz.toUpperCase();
+        
+        if(valasz.equals("Y") || valasz.equals("I")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
