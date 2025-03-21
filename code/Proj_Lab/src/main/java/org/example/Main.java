@@ -22,8 +22,7 @@ public class Main {
             System.out.println("6. Rovar mozgás");
             System.out.println("7. Spóra elfogyasztása rovarral"); //eset utána
             System.out.println("8. Gomba halál");
-            System.out.println("9. Fonál felszívódás");
-            System.out.println("10. Tekton kettéválás");
+            System.out.println("9. Tekton kettéválás");
             System.out.println("Choose option: ");
 
             try {
