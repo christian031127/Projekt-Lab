@@ -14,12 +14,16 @@ public class Main {
 
         while (user_input >= 0) {
             System.out.println("Tesztek leírása... -1: Exit\n");
-            System.out.println("1. Fonál esemény");
-            System.out.println("2. Mozgás esemény");
-            System.out.println("3. Spóra esemény");
-            System.out.println("4. Gomba halál");
-            System.out.println("5. Fonál felszívódás");
-            System.out.println("6. Tekton kettéválás");
+            System.out.println("1. Fonál növesztés"); //2opciót felajánl: másik tektonra útként/ tektonra rá
+            System.out.println("2. Fonál elrágás");
+            System.out.println("3. Fonál felszívódás");
+            System.out.println("4. Gomba növesztés spórából");
+            System.out.println("5. Spóra szórás gombával");
+            System.out.println("6. Rovar mozgás");
+            System.out.println("7. Spóra elfogyasztása rovarral"); //eset utána
+            System.out.println("8. Gomba halál");
+            System.out.println("9. Fonál felszívódás");
+            System.out.println("10. Tekton kettéválás");
             System.out.println("Choose option: ");
 
             try {
@@ -37,7 +41,7 @@ public class Main {
                     // ...
                     break;
                 }
-                case 6: {
+                case 10: {
                     new Tekton().split();
                     break;
                 }
