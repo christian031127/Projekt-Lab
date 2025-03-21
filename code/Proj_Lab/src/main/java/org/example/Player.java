@@ -32,8 +32,8 @@ public class Player {
         //this.currentTekton = t;
     }
 
-    public void getCurrentTekton() {
-        //return new Tekton();
+    public Tekton getCurrentTekton() {
+        return new Tekton();
     }
 
     public void setEffects(int[] effects) {

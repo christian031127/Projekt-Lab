@@ -31,7 +31,7 @@ public class Tekton {
     }
 
     public TektonStrategy getStrategy(){
-        return new TektonStrategy() {
+        return new NonShroomTekton() {
             
         };
     }
