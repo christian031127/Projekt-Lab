@@ -24,8 +24,8 @@ public class Shroom {
         // return team_id;
     }
 
-    public void getTekton() {
-        // return tekton;
+    public Tekton getTekton() {
+        return new Tekton();
     }
 
     public void getAge() {
