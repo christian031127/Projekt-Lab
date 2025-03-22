@@ -37,7 +37,25 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    new Tekton().doEffect();
+                    new Tekton().getStrategy().doEffect();
+                    foreach(Yarn yarn : new Tekton().getYarns()) {
+                        if(yarn.getTekton1() == new Tekton() || yarn.getTekton2() == new Tekton()) {
+                            new Tekton().removeYarn(yarn);
+                        }
+                    }
+
+                    break;
+                }
+                case 3: {
                     // ...
+                    break;
+                }
+                case 8: {
+                    while(!new Shroom().isOld()) {
+                        new Shroom().age();
+                    }
+                    new Shroom().die();
                     break;
                 }
                 case 10: {
