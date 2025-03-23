@@ -47,7 +47,17 @@ public class Player {
     }
 
     public void move(Tekton tekton) {
-        //this.currentTekton = tekton;
+        getIsInsect();
+        if(igazHamisKerdes("Rovar vagy?")){
+            new Tekton().getYarns();
+            if(igazHamisKerdes("Van gombafonal a mozgó tektonra?"))
+            {
+                new Player().setCurrentTekton(tekton);
+            }
+        }
+        else{
+            //fonal gomba reszerol
+        }
     }
 
     public void setIsInsect(boolean b) {
@@ -56,7 +66,6 @@ public class Player {
 
     public void getIsInsect() {
         System.out.println("Player.getIsInsect() meghivva");
-        //return isInsect;
     }
 
     public void setCurrentTekton(Tekton t) {
@@ -64,6 +73,7 @@ public class Player {
     }
 
     public Tekton getCurrentTekton() {
+        System.out.println("Player.getCurrentTekton() meghivva");
         return new Tekton();
     }
 
@@ -73,7 +83,6 @@ public class Player {
 
     public void getEffects() {
         System.out.println("Player.getEffects() meghivva");
-        // return effects;
     }
 
     public void setScore(int i) {

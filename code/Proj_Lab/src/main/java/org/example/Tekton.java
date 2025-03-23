@@ -28,6 +28,7 @@ public class Tekton {
     }
 
     public List<Yarn> getYarns(){
+        System.out.println("Tekton.getYarns() meghívva");
         return new ArrayList<Yarn>();
     }
 
