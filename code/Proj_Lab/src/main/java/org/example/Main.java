@@ -49,10 +49,8 @@ public class Main {
                 case 3: {
                     new Tekton().doEffect();
                     new Tekton().getStrategy().doEffect();
-                    for(Yarn yarn : new Tekton().getYarns()) {
-                        if(yarn.getTekton1() == new Tekton() || yarn.getTekton2() == new Tekton()) {
-                            new Tekton().removeYarn(yarn);
-                        }
+                    while(igazHamisKerdes("Van még fonal a tektonon?")) {
+                        new Tekton().removeYarn(new Yarn);
                     }
 
                     break;
@@ -62,7 +60,7 @@ public class Main {
                     break;
                 }
                 case 8: {
-                    while(!new Shroom().isOld()) {
+                    while(igazHamisKerdes("Elég öreg már a gomba?")) {
                         new Shroom().age();
                     }
                     new Shroom().die();
