@@ -20,10 +20,12 @@ public class Tekton {
     }
 
     public Shroom getShroom(){
+        System.out.println("Tekton.getShroom() meghívva");
         return new Shroom();
     }
 
     public List<Spore> getSpores(){
+        System.out.println("Tekton.getSpores() meghívva");
         return new ArrayList<Spore>();
     }
 
@@ -67,7 +69,7 @@ public class Tekton {
     }
 
     public void removeSpore(Spore spore){
-
+        System.out.println("Tekton.removeSpore(Spore spore) meghívva");
     }
 
     public void removeSomeSpore(List<Spore> spores){
