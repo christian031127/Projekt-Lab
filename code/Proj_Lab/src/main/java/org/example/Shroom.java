@@ -6,7 +6,8 @@ public class Shroom {
     // private int _age;
     // private int lastEject;
 
-    public void isOld() {
+    public boolean isOld() {
+        return true;
         // return this._age > LIMIT;
     }
 

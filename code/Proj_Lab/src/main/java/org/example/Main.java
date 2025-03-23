@@ -37,9 +37,19 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    for(Yarn yarn : new Player().getCurrentTekton().getYarns()) {
+                        if(yarn.getTekton1() == new Tekton() || yarn.getTekton2() == new Tekton()) {
+                            new Player().interactWithYarn(yarn);
+                        }
+                    }
+
+
+                    break;
+                }
+                case 3: {
                     new Tekton().doEffect();
                     new Tekton().getStrategy().doEffect();
-                    foreach(Yarn yarn : new Tekton().getYarns()) {
+                    for(Yarn yarn : new Tekton().getYarns()) {
                         if(yarn.getTekton1() == new Tekton() || yarn.getTekton2() == new Tekton()) {
                             new Tekton().removeYarn(yarn);
                         }
@@ -47,8 +57,8 @@ public class Main {
 
                     break;
                 }
-                case 3: {
-                    // ...
+                case 4: {
+                    new Player().interactWithSpore(new Tekton().getSpores());
                     break;
                 }
                 case 8: {

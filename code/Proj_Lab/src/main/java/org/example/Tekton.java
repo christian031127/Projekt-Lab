@@ -1,4 +1,5 @@
 package org.example;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.example.Main.igazHamisKerdes;
@@ -22,12 +23,12 @@ public class Tekton {
         return new Shroom();
     }
 
-    public void getSpores(){
-
+    public List<Spore> getSpores(){
+        return new ArrayList<Spore>();
     }
 
-    public void getYarns(){
-
+    public List<Yarn> getYarns(){
+        return new ArrayList<Yarn>();
     }
 
     public TektonStrategy getStrategy(){
@@ -53,7 +54,7 @@ public class Tekton {
     }
 
     public void addShroom(Shroom shroom){
-
+        System.out.println("Tekton.addShroom() meghívva");
     }
 
     public void removeShroom(){
@@ -69,7 +70,7 @@ public class Tekton {
     }
 
     public void removeSomeSpore(List<Spore> spores){
-
+        System.out.println("Tekton.removeSomeSpore() meghívva");
     }
 
     public void split(){
@@ -96,7 +97,7 @@ public class Tekton {
     }
 
     public void doEffect(){
-
+        System.out.println("Tekton.doEffect() meghívva");
     }    
 
 }

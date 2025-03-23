@@ -1,19 +1,19 @@
 package org.example;
 
 public class Yarn {
-    public setTekton1(Tekton tekton1) {
-
+    public void setTekton1(Tekton tekton1) {
+        System.out.println("Yarn.setTekton1() meghívva");
     }
 
-    public setTekton2(Tekton tekton2) {
-
+    public void setTekton2(Tekton tekton2) {
+        System.out.println("Yarn.setTekton2() meghívva");
     }
 
-    public getTekton1() {
-
+    public Tekton getTekton1() {
+        return new Tekton();
     }
 
-    public getTekton2() {
-
+    public Tekton getTekton2() {
+        return new Tekton();
     }
 }
