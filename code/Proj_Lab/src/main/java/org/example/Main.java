@@ -68,7 +68,7 @@ public class Main {
                     new Shroom().die();
                     break;
                 }
-                case 10: {
+                case 9: {
                     new Tekton().split();
                     break;
                 }
