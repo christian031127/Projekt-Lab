@@ -8,74 +8,74 @@ public class Tekton {
 
     //public List<Tekton> getNeighbours(){
     public void getNeighbours(){
-        System.out.println("Tekton.getNeighbours() meghívva");
+        System.out.println("Tekton.getNeighbours() called");
     }
 
     public void addNeighbour(Tekton tekton){
-        System.out.println("Tekton.addNeighbour() meghívva");
+        System.out.println("Tekton.addNeighbour() called");
     }
 
     public void removeNeighbour(Tekton tekton){
-        System.out.println("Tekton.removeNeighbour() meghívva");
+        System.out.println("Tekton.removeNeighbour() called");
     }
 
     public Shroom getShroom(){
-        System.out.println("Tekton.getShroom() meghívva");
+        System.out.println("Tekton.getShroom() called");
         return new Shroom();
     }
 
     public List<Spore> getSpores(){
-        System.out.println("Tekton.getSpores() meghívva");
+        System.out.println("Tekton.getSpores() called");
         return new ArrayList<Spore>();
     }
 
     public List<Yarn> getYarns(){
-        System.out.println("Tekton.getYarns() meghívva");
+        System.out.println("Tekton.getYarns() called");
         return new ArrayList<Yarn>();
     }
 
     public void getStrategy() {
-        System.out.println("Tekton.getStrategy() meghívva");
+        System.out.println("Tekton.getStrategy() called");
     }
 
     public void setStrategy(TektonStrategy strategy){
-        System.out.println("Tekton.setStrategy() meghívva");
+        System.out.println("Tekton.setStrategy() called");
     }
 
     public void addYarn(Yarn yarn){
-        System.out.println("Tekton.addYarn() meghívva.");
+        System.out.println("Tekton.addYarn() called");
     }
 
     public void removeYarn(Yarn yarn){
-        System.out.println("Tekton.removeYarn() meghívva");
+        System.out.println("Tekton.removeYarn() called");
     }
 
     public void clearYarns(){
-        System.out.println("Tekton.clearYarns() meghívva");
+        System.out.println("Tekton.clearYarns() called");
     }
 
     public void addShroom(Shroom shroom){
-        System.out.println("Tekton.addShroom() meghívva");
+        System.out.println("Tekton.addShroom() called");
     }
 
     public void removeShroom(){
-        System.out.println("Tekton.removeShroom() meghívva");
+        System.out.println("Tekton.removeShroom() called");
     }
 
     public void addSpore(Spore spore){
-        System.out.println("Tekton.addSpore() meghívva");
+        System.out.println("Tekton.addSpore() called");
     }
 
     public void removeSpore(Spore spore){
-        System.out.println("Tekton.removeSpore() meghívva");
+        System.out.println("Tekton.removeSpore() called");
     }
 
     public void removeSomeSpore(List<Spore> spores){
-        System.out.println("Tekton.removeSomeSpore() meghívva");
+        System.out.println("Tekton.removeSomeSpore() called");
     }
 
     public void split(){
-        System.out.println("Tekton.split() meghívva");
+        System.out.println("Tekton.split() called");
 
         while(igazHamisKerdes("Van még fonalas összeköttetése?")){
             this.removeYarn(new Yarn());
@@ -98,7 +98,7 @@ public class Tekton {
     }
 
     public void doEffect(){
-        System.out.println("Tekton.doEffect() meghívva");
+        System.out.println("Tekton.doEffect() called");
     }    
 
 }
