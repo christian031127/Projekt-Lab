@@ -34,7 +34,7 @@ public class Tekton {
         return new ArrayList<Yarn>();
     }
 
-    public TektonStrategy getStrategy(){
+    public void getStrategy() {
         System.out.println("Tekton.getStrategy() meghívva");
     }
 
