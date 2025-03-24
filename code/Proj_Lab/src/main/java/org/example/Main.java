@@ -38,6 +38,7 @@ public class Main {
                 user_input = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input!");
+                continue;
             }
 
             switch (user_input) {
@@ -51,8 +52,6 @@ public class Main {
                             new Player().interactWithYarn(yarn);
                         }
                     }
-
-
                     break;
                 }
                 case 3: {
