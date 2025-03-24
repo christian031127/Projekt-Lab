@@ -11,9 +11,13 @@ public class Shroom {
         // return this._age > LIMIT;
     }
 
-    public void ejectSpore(Tekton T) { }
+    public void ejectSpore(Tekton T) {
+        System.out.println("Shroom.ejectSpore() called");
+    }
 
-    public void isSporeReady() { }
+    public void isSporeReady() {
+        System.out.println("Shroom.isSporeReady() called");
+    }
 
     public void die() { 
         System.out.println("A gomba meghalt.");
@@ -32,6 +36,7 @@ public class Shroom {
     }
 
     public void getAge() {
+        System.out.println("Shroom.GetAge() called!");
         // return _age;
     }
 

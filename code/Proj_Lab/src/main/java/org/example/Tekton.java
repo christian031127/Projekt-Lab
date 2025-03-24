@@ -63,7 +63,7 @@ public class Tekton {
     }
 
     public void addSpore(Spore spore){
-
+        System.out.println("Tekton.addSpore called");
     }
 
     public void removeSpore(Spore spore){

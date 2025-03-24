@@ -74,6 +74,7 @@ public class Main {
                     break;
                 }
                 case 5: {
+                    new Player().move(new Tekton());
                     break;
                 }
                 case 6: {
