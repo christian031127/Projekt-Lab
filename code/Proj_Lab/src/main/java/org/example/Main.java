@@ -55,17 +55,8 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    T1.doEffect();
-                    if(igazHamisKerdes("Felszívó tekton vagy?")) {
-                        absorbTekton.doEffect();
-                        while (igazHamisKerdes("Van még fonal a tektonon?")) {
-                            T1.removeYarn(new Yarn());
-                        }
-                        System.out.println("Nincs több fonal a tektonon.");
-                    }
-                    else {
-                        System.out.println("Esemény megszakítva!");
-                    }
+                    new Tekton().doEffect();
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 4: {
@@ -147,10 +138,8 @@ public class Main {
                     break;
                 }
                 case 8: {
-                    while (!igazHamisKerdes("Elég öreg már a gomba?")) {
-                        Shroom1.age();
-                    }
-                    Shroom1.die();
+                    new Shroom().age();
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 9: {

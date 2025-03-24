@@ -99,6 +99,8 @@ public class Tekton {
 
     public void doEffect(){
         System.out.println("Tekton.doEffect() meghívva");
+        if(igazHamisKerdes("Felszívó tekton vagy?")) {
+            new AbsorbTekton().doEffect();
     }    
 
 }
