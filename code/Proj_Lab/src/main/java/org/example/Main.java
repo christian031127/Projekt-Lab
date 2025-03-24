@@ -6,6 +6,7 @@ public class Main {
 
     // Add static variables here
     public static Tekton T1 = new Tekton();
+    public static Tekton T2 = new Tekton();
     public static Player P1 = new Player();
     public static Shroom Shroom1 = new Shroom();
     public static AbsorbTekton absorbTekton = new AbsorbTekton();
@@ -41,7 +42,7 @@ public class Main {
 
             switch (user_input) {
                 case 1: {
-                    callback1();
+                    new Player().interactWithYarn(new Yarn());
                     break;
                 }
                 case 2: {
@@ -94,7 +95,6 @@ public class Main {
                         T1.getSpores();
 
                         int user_input7 = 0;
-                        Scanner scanner7 = new Scanner(System.in);
 
                         System.out.println("\nMelyik típusú spórát szeretnéd elfogyasztani?");
                         System.out.println("1. Bénító spóra");
@@ -162,10 +162,6 @@ public class Main {
             System.out.print("\n\n");
         }
         System.out.println("Goodbye...");
-    }
-
-    public static void callback1() {
-        System.out.println("Hello, I'm testing!");
     }
 
     public static boolean igazHamisKerdes(String kerdes) {

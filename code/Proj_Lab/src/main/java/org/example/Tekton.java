@@ -43,7 +43,7 @@ public class Tekton {
     }
 
     public void addYarn(Yarn yarn){
-
+        System.out.println("Tekton.addYarn() meghívva.");
     }
 
     public void removeYarn(Yarn yarn){
