@@ -1,22 +1,22 @@
 package org.example;
+import static org.example.Main.igazHamisKerdes;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.example.Main.igazHamisKerdes;
 
 public class Tekton {
 
     //public List<Tekton> getNeighbours(){
     public void getNeighbours(){
-        
+        System.out.println("Tekton.getNeighbours() meghívva");
     }
 
     public void addNeighbour(Tekton tekton){
-        System.out.println("Tekton.addNeighbour(Tekton tekton) meghívva");
+        System.out.println("Tekton.addNeighbour() meghívva");
     }
 
     public void removeNeighbour(Tekton tekton){
-        System.out.println("Tekton.removeNeighbour(Tekton tekton) meghívva");
+        System.out.println("Tekton.removeNeighbour() meghívva");
     }
 
     public Shroom getShroom(){
@@ -39,7 +39,7 @@ public class Tekton {
     }
 
     public void setStrategy(TektonStrategy strategy){
-
+        System.out.println("Tekton.setStrategy() meghívva");
     }
 
     public void addYarn(Yarn yarn){
@@ -47,11 +47,11 @@ public class Tekton {
     }
 
     public void removeYarn(Yarn yarn){
-        System.out.println("Tekton.removeYarn(Yarn yarn) meghívva");
+        System.out.println("Tekton.removeYarn() meghívva");
     }
 
     public void clearYarns(){
-
+        System.out.println("Tekton.clearYarns() meghívva");
     }
 
     public void addShroom(Shroom shroom){
@@ -59,15 +59,15 @@ public class Tekton {
     }
 
     public void removeShroom(){
-        
+        System.out.println("Tekton.removeShroom() meghívva");
     }
 
     public void addSpore(Spore spore){
-        System.out.println("Tekton.addSpore called");
+        System.out.println("Tekton.addSpore() meghívva");
     }
 
     public void removeSpore(Spore spore){
-        System.out.println("Tekton.removeSpore(Spore spore) meghívva");
+        System.out.println("Tekton.removeSpore() meghívva");
     }
 
     public void removeSomeSpore(List<Spore> spores){
@@ -99,8 +99,6 @@ public class Tekton {
 
     public void doEffect(){
         System.out.println("Tekton.doEffect() meghívva");
-        if(igazHamisKerdes("Felszívó tekton vagy?")) {
-            new AbsorbTekton().doEffect();
     }    
 
 }
