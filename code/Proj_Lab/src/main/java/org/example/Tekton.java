@@ -35,9 +35,7 @@ public class Tekton {
     }
 
     public TektonStrategy getStrategy(){
-        return new NonShroomTekton() {
-            
-        };
+        System.out.println("Tekton.getStrategy() meghívva");
     }
 
     public void setStrategy(TektonStrategy strategy){

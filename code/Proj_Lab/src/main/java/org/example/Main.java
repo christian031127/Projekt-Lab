@@ -7,6 +7,8 @@ public class Main {
     // Add static variables here
     public static Tekton T1 = new Tekton();
     public static Player P1 = new Player();
+    public static Shroom Shroom1 = new Shroom();
+    public static AbsorbTekton absorbTekton = new AbsorbTekton();
 
     public static NumbingSpore N1 = new NumbingSpore();
     public static WeakeningSpore W1 = new WeakeningSpore();
@@ -53,10 +55,16 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    new Tekton().doEffect();
-                    new Tekton().getStrategy().doEffect();
-                    while (igazHamisKerdes("Van még fonal a tektonon?")) {
-                        new Tekton().removeYarn(new Yarn());
+                    T1.doEffect();
+                    if(igazHamisKerdes("Felszívó tekton vagy?")) {
+                        absorbTekton.doEffect();
+                        while (igazHamisKerdes("Van még fonal a tektonon?")) {
+                            T1.removeYarn(new Yarn());
+                        }
+                        System.out.println("Nincs több fonal a tektonon.");
+                    }
+                    else {
+                        System.out.println("Esemény megszakítva!");
                     }
                     break;
                 }
@@ -137,9 +145,9 @@ public class Main {
                 }
                 case 8: {
                     while (!igazHamisKerdes("Elég öreg már a gomba?")) {
-                        new Shroom().age();
+                        Shroom1.age();
                     }
-                    new Shroom().die();
+                    Shroom1.die();
                     break;
                 }
                 case 9: {

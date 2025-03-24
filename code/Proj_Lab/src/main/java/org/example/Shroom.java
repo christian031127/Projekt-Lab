@@ -15,10 +15,12 @@ public class Shroom {
 
     public void isSporeReady() { }
 
-    public void die() { }
+    public void die() { 
+        System.out.println("A gomba meghalt.");
+    }
 
     public void age() {
-        // _age++;
+        System.out.println("A gomba öregszik.");
     }
 
     public void getTeam_id() {
