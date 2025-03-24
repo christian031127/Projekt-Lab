@@ -46,7 +46,7 @@ public class Player {
         else{
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("1. Szomszédos tektonra nő a fonál\n2. Szomszéd szomszédjára nő a fonál");
+            System.out.println("1. Szomszédos tektonra nő a fonál\n2. A jelenlegi tektont növi be a fonál");
             System.out.println("Válassz egy lehetőséget: ");
             try {
                 int user_input1 = Integer.parseInt(scanner.nextLine());
@@ -55,18 +55,20 @@ public class Player {
                     return;
                 }
 
-                if (user_input1 == 1) {
-                    new Tekton().getStrategy();
-                    if (igazHamisKerdes("Nőhet fonál a kiválasztott tektonra?")) {
-                        new Yarn().setTekton1(T1);
-                        T1.addYarn(new Yarn());
+                if (igazHamisKerdes("Nőhet fonál a kiválasztott tektonra?")) {
+                    new Yarn().setTekton1(T1);
+                    T1.addYarn(new Yarn());
+                    if (user_input1 == 1) {
                         new Yarn().setTekton2(T2);
                         T2.addYarn(new Yarn());
-                        T1.doEffect();
                         T2.doEffect();
                     } else {
-                        System.out.println("A tektonra nem nőhet fonál, sikertelen növesztés!");
+                        new Yarn().setTekton2(T1);
                     }
+                    T1.doEffect();
+
+                } else {
+                    System.out.println("A tektonra nem nőhet fonál, sikertelen növesztés!");
                 }
 
             } catch (NumberFormatException e) {

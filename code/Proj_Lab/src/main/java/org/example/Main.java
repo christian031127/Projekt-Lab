@@ -73,6 +73,9 @@ public class Main {
                     new Player().interactWithSpore(new Tekton().getSpores());
                     break;
                 }
+                case 5: {
+                    break;
+                }
                 case 6: {
                     P1.getIsInsect();
                     if (igazHamisKerdes("Rovar vagy?")) {
