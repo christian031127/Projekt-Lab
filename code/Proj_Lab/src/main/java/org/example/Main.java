@@ -105,21 +105,25 @@ public class Main {
                             case 1: {
                                 N1.addEffect(P1);
                                 T1.removeSpore(N1);
+                                System.out.println("Spóra elfogyasztva.");
                                 break;
                             }
                             case 2: {
                                 W1.addEffect(P1);
                                 T1.removeSpore(W1);
+                                System.out.println("Spóra elfogyasztva.");
                                 break;
                             }
                             case 3: {
                                 A1.addEffect(P1);
                                 T1.removeSpore(A1);
+                                System.out.println("Spóra elfogyasztva.");
                                 break;
                             }
                             case 4: {
                                 S1.addEffect(P1);
                                 T1.removeSpore(S1);
+                                System.out.println("Spóra elfogyasztva.");
                                 break;
                             }
                             default: {
