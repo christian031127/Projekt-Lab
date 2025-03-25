@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -44,15 +45,12 @@ public class Main {
             switch (user_input) {
                 case 1: {
                     new Player().interactWithYarn(new Yarn());
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 2: {
                     new Player().getCurrentTekton().getYarns();
-                    new Yarn().getTekton1();
-                    new Yarn().getTekton2();
                     new Player().interactWithYarn(new Yarn());
-
-
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
@@ -62,27 +60,19 @@ public class Main {
                     break;
                 }
                 case 4: {
-                    new Player().interactWithSpore(new Tekton().getSpores());
+                    new Player().getCurrentTekton().getSpores();
+                    new Player().interactWithSpore(new ArrayList<Spore>());
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 5: {
                     new Player().move(new Tekton());
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 6: {
-                    P1.getIsInsect();
-                    if (igazHamisKerdes("Rovar vagy?")) {
-                        T1.getYarns();
-                        if (igazHamisKerdes("Van gombafonal a mozgó tektonra?")) {
-                            P1.setCurrentTekton(T1); //T2 tektonra megy át igazából
-                            P1.move(T1); //T2 tektonra megy át igazából
-                        } else {
-                            System.out.println("Esemény megszakítva!");
-                        }
-                    } else {
-                        System.out.println("Esemény megszakítva!");
-                    }
+                    new Player().move(new Tekton());
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 7: {

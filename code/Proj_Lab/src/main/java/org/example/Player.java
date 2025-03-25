@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.example.Main.*;
+import static org.example.Main.T1;
+import static org.example.Main.T2;
+import static org.example.Main.igazHamisKerdes;
 
 public class Player {
     //private int score;
@@ -14,6 +16,7 @@ public class Player {
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
+        System.err.println("interactWithSpore(List<Spore> spores) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")) {
         }
@@ -25,6 +28,12 @@ public class Player {
                     getCurrentTekton().removeSomeSpore(new ArrayList<Spore>());
                     getCurrentTekton().doEffect();
                 }
+                else {
+                    System.out.println("Nincs elég spóra a tektonon, nem nőhet gomba!");
+                }
+            }
+            else {
+                System.out.println("A tektonon van már gomba, nem nőhet újabb!");
             }
 
         }
@@ -33,7 +42,7 @@ public class Player {
 
     public void interactWithYarn(Yarn yarn) {
         // Implementation
-        System.err.println("interactWithYarn(Yarn yarn) called");
+        System.err.println("\ninteractWithYarn(Yarn yarn) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")){
            getEffects();
@@ -43,13 +52,17 @@ public class Player {
                 yarn.setTekton2(null);
 
                 System.out.println("A fonál el lett távolítva!");
+           } else {
+               System.out.println("A fonál nem távolítható el!");
            }
         }
         else {
-            Scanner scanner = new Scanner(System.in);
-
+            T1.getNeighbours();
+            System.out.println("Melyik tektonra szeretnéd felhelyezni a fonált?");
             System.out.println("1. Szomszédos tektonra nő a fonál\n2. A jelenlegi tektont növi be a fonál");
             System.out.println("Válassz egy lehetőséget: ");
+            Scanner scanner = new Scanner(System.in);
+
             try {
                 int user_input1 = Integer.parseInt(scanner.nextLine());
                 if (user_input1 < 1 || user_input1 > 2) {
@@ -81,8 +94,16 @@ public class Player {
 
     public void move(Tekton tekton) {
         System.out.println("Player.move(Tekton tekton) called");
-        if (igazHamisKerdes("Gomba vagy?")) {
+        new Player().getIsInsect();
+        if (!igazHamisKerdes("Rovar vagy?")) {
             new Shroom().ejectSpore(tekton);
+        }else {
+            new Tekton().getYarns();
+            if (igazHamisKerdes("Van gombafonal a mozgó tektonra?")) {
+                new Player().setCurrentTekton(new Tekton()); //T2 tektonra megy át igazából //T2 tektonra megy át igazából
+            } else {
+                System.out.println("Esemény megszakítva!");
+            }
         }
     }
 

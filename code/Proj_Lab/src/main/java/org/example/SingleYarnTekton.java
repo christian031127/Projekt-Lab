@@ -4,5 +4,6 @@ public class SingleYarnTekton implements TektonStrategy {
     @Override
     public void doEffect() {
         //deletes all yarns from the tekton except one
+        System.out.println("SingleYarnTekton.doEffect() called");
     }
 }

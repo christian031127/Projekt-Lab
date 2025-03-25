@@ -1,4 +1,6 @@
 package org.example;
+import java.io.Console;
+
 import static org.example.Main.igazHamisKerdes;
 
 import java.util.ArrayList;
@@ -7,8 +9,9 @@ import java.util.List;
 public class Tekton {
 
     //public List<Tekton> getNeighbours(){
-    public void getNeighbours(){
+    public List<Tekton> getNeighbours(){
         System.out.println("Tekton.getNeighbours() called");
+        return new ArrayList<Tekton>();
     }
 
     public void addNeighbour(Tekton tekton){
@@ -99,6 +102,26 @@ public class Tekton {
 
     public void doEffect(){
         System.out.println("Tekton.doEffect() called");
+        System.err.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
+        System.out.println("Válassz egy lehetőséget: ");
+        Console console = System.console();
+        int user_input = Integer.parseInt(console.readLine());
+        switch (user_input) {
+            case 1:
+                new AbsorbTekton().doEffect();
+                break;
+            case 2:
+                new MultipleYarnTekton().doEffect();
+                break;
+            case 3:
+                new NonShroomTekton().doEffect();
+                break;
+            case 4:
+                new SingleYarnTekton().doEffect();
+                break;
+            default:
+                throw new AssertionError();
+        }
     }    
 
 }

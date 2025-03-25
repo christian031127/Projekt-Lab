@@ -12,7 +12,7 @@ public class Shroom {
     // private int lastEject;
 
     public boolean isOld() {
-        System.out.println("Gomba isOld() metódusa meghívva");
+        System.out.println("Gomba isOld() called.");
         return true;
     }
 
