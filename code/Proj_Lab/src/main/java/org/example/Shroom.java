@@ -57,7 +57,7 @@ public class Shroom {
     public void age() {
         System.out.println("Gomba age() called.");
         if(!isOld()) {
-            System.err.println("Gomba nem elég idős a halálhoz.");
+            System.out.println("Gomba nem elég idős a halálhoz.");
             return;
         }
         die();
