@@ -1,5 +1,10 @@
 package org.example;
 
+import java.util.Scanner;
+
+import static org.example.Main.T1;
+import static org.example.Main.igazHamisKerdes;
+
 public class Shroom {
     // private int team_id;
     // private Tekton tekton;
@@ -13,6 +18,29 @@ public class Shroom {
 
     public void ejectSpore(Tekton T) {
         System.out.println("Shroom.ejectSpore() called");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("1. Spóra szórása szomszédos tektonra \n2. Spóra szórása szomszéd szomszédjára");
+        System.out.println("Válassz egy lehetőséget: ");
+        try {
+            int user_input = Integer.parseInt(scanner.nextLine());
+            if(user_input != 1 && user_input != 2) {
+                System.out.println("Hibás válasz!");
+                return;
+            }
+
+            new Shroom().getAge();
+            if (user_input == 2 && !igazHamisKerdes("Elég idős a gomba, hogy ilyen messzire szórjon spórát?")) {
+                System.out.println("A gomba nem elég idős, sikertelen spóra szórás.");
+                return;
+            }
+
+            new Shroom().isSporeReady();
+            T1.addSpore(new NumbingSpore());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Hibás válasz!");
+        }
     }
 
     public void isSporeReady() {

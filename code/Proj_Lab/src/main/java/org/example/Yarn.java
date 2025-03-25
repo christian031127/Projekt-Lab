@@ -2,11 +2,13 @@ package org.example;
 
 public class Yarn {
     public void setTekton1(Tekton tekton1) {
-        System.out.println("Yarn.setTekton1() meghívva");
+        tekton1.addYarn(this);
+        System.out.println("Yarn.setTekton1() called");
     }
 
     public void setTekton2(Tekton tekton2) {
-        System.out.println("Yarn.setTekton2() meghívva");
+        tekton2.addYarn(this);
+        System.out.println("Yarn.setTekton2() called");
     }
 
     public Tekton getTekton1() {

@@ -43,7 +43,7 @@ public class Player {
                 System.out.println("A fonál el lett távolítva!");
            }
         }
-        else{
+        else {
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("1. Szomszédos tektonra nő a fonál\n2. A jelenlegi tektont növi be a fonál");
@@ -55,12 +55,12 @@ public class Player {
                     return;
                 }
 
+                new Tekton().getStrategy();
+
                 if (igazHamisKerdes("Nőhet fonál a kiválasztott tektonra?")) {
                     new Yarn().setTekton1(T1);
-                    T1.addYarn(new Yarn());
                     if (user_input1 == 1) {
                         new Yarn().setTekton2(T2);
-                        T2.addYarn(new Yarn());
                         T2.doEffect();
                     } else {
                         new Yarn().setTekton2(T1);
@@ -80,29 +80,7 @@ public class Player {
     public void move(Tekton tekton) {
         System.out.println("Player.move(Tekton tekton) meghivva");
         if (igazHamisKerdes("Gomba vagy?")) {
-            Scanner scanner = new Scanner(System.in);
-
-            System.out.println("1. Spóra szórása szomszédos tektonra \n2. Spóra szórása szomszéd szomszédjára");
-            System.out.println("Válassz egy lehetőséget: ");
-            try {
-                int user_input = Integer.parseInt(scanner.nextLine());
-                if(user_input != 1 && user_input != 2) {
-                    System.out.println("Hibás válasz!");
-                    return;
-                }
-
-                if (user_input == 2 && !igazHamisKerdes("Elég idős a gomba, hogy ilyen messzire szórjon spórát?")) {
-                    System.out.println("A gomba nem elég idős, sikertelen spóra szórás.");
-                    return;
-                }
-                new Shroom().getAge();
-                new Shroom().isSporeReady();
-                new Shroom().ejectSpore(T1);
-                T1.addSpore(new NumbingSpore());
-
-            } catch (NumberFormatException e) {
-                System.out.println("Hibás válasz!");
-            }
+            new Shroom().ejectSpore(tekton);
         }
     }
 
