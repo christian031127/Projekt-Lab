@@ -13,7 +13,10 @@ public class Shroom {
 
     public boolean isOld() {
         System.out.println("Gomba isOld() called.");
-        return true;
+        if(igazHamisKerdes("Elég idős a gomba?")) {
+            return true;
+        }
+        return false;
     }
 
     public void ejectSpore(Tekton T) {
@@ -53,8 +56,12 @@ public class Shroom {
 
     public void age() {
         System.out.println("Gomba age() called.");
-        if(isOld())
-            die();
+        if(!isOld()) {
+            System.err.println("Gomba nem elég idős a halálhoz.");
+            return;
+        }
+        die();
+        System.out.println("Gomba meghalt.");
     }
 
     public void getTeam_id() {

@@ -27,7 +27,7 @@ public class Player {
             System.out.println("3. Gyorsító spóra");
             System.out.println("4. Lassító spóra");
             System.out.println("Choose option: ");
-
+            Scanner scanner = new Scanner(System.in);
             try {
                 user_input7 = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
