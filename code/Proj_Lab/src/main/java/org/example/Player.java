@@ -19,6 +19,50 @@ public class Player {
         System.err.println("interactWithSpore(List<Spore> spores) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")) {
+            int user_input7 = 0;
+
+            System.out.println("\nMelyik típusú spórát szeretnéd elfogyasztani?");
+            System.out.println("1. Bénító spóra");
+            System.out.println("2. Gyengítő spóra");
+            System.out.println("3. Gyorsító spóra");
+            System.out.println("4. Lassító spóra");
+            System.out.println("Choose option: ");
+
+            try {
+                user_input7 = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong input!");
+            }
+
+            switch (user_input7) {
+                case 1: {
+                    new NumbingSpore().addEffect(this);
+                    new Tekton().removeSpore(new NumbingSpore());
+                    System.out.println("Spóra elfogyasztva.");
+                    break;
+                }
+                case 2: {
+                    new WeakeningSpore().addEffect(this);
+                    new Tekton().removeSpore(new WeakeningSpore());
+                    System.out.println("Spóra elfogyasztva.");
+                    break;
+                }
+                case 3: {
+                    new AccelerationSpore().addEffect(this);
+                    new Tekton().removeSpore(new AccelerationSpore());
+                    System.out.println("Spóra elfogyasztva.");
+                    break;
+                }
+                case 4: {
+                    new SlowingSpore().addEffect(this);
+                    new Tekton().removeSpore(new SlowingSpore());
+                    System.out.println("Spóra elfogyasztva.");
+                    break;
+                }
+                default: {
+                    System.out.println("Unknown option.");
+                }
+            }
         }
         else{
             getCurrentTekton().getShroom();
@@ -100,7 +144,7 @@ public class Player {
         }else {
             new Tekton().getYarns();
             if (igazHamisKerdes("Van gombafonal a mozgó tektonra?")) {
-                new Player().setCurrentTekton(new Tekton()); //T2 tektonra megy át igazából //T2 tektonra megy át igazából
+                new Player().setCurrentTekton(new Tekton());
             } else {
                 System.out.println("Esemény megszakítva!");
             }
