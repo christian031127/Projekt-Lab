@@ -8,14 +8,6 @@ public class Main {
     // Add static variables here
     public static Tekton T1 = new Tekton();
     public static Tekton T2 = new Tekton();
-    public static Player P1 = new Player();
-    public static Shroom Shroom1 = new Shroom();
-    public static AbsorbTekton absorbTekton = new AbsorbTekton();
-
-    public static NumbingSpore N1 = new NumbingSpore();
-    public static WeakeningSpore W1 = new WeakeningSpore();
-    public static AccelerationSpore A1 = new AccelerationSpore();
-    public static SlowingSpore S1 = new SlowingSpore();
     // ...
 
     public static void main(String[] args) {
