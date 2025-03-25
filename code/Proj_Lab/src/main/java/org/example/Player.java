@@ -16,7 +16,7 @@ public class Player {
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
-        System.err.println("interactWithSpore(List<Spore> spores) called");
+        System.out.println("interactWithSpore(List<Spore> spores) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")) {
             int user_input7 = 0;
@@ -87,7 +87,7 @@ public class Player {
 
     public void interactWithYarn(Yarn yarn) {
         // Implementation
-        System.err.println("\ninteractWithYarn(Yarn yarn) called");
+        System.out.println("interactWithYarn(Yarn yarn) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")){
            getEffects();
