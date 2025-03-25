@@ -20,6 +20,7 @@ public class Player {
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")) {
             int user_input7 = 0;
+            Scanner scanner = new Scanner(System.in);
 
             System.out.println("\nMelyik típusú spórát szeretnéd elfogyasztani?");
             System.out.println("1. Bénító spóra");
