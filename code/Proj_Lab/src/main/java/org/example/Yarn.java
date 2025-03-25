@@ -2,12 +2,23 @@ package org.example;
 
 public class Yarn {
     public void setTekton1(Tekton tekton1) {
-        tekton1.addYarn(this);
+        if(tekton1==null){
+            new Tekton().removeYarn(this);
+        }
+        else{
+            tekton1.addYarn(this);
+        }
+
         System.out.println("Yarn.setTekton1() called");
     }
 
     public void setTekton2(Tekton tekton2) {
-        tekton2.addYarn(this);
+        if(tekton2==null){
+            new Tekton().removeYarn(this);
+        }
+        else{
+            tekton2.addYarn(this);
+        }
         System.out.println("Yarn.setTekton2() called");
     }
 

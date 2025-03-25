@@ -47,11 +47,12 @@ public class Main {
                     break;
                 }
                 case 2: {
-                    for (Yarn yarn : new Player().getCurrentTekton().getYarns()) {
-                        if (yarn.getTekton1() == new Tekton() || yarn.getTekton2() == new Tekton()) {
-                            new Player().interactWithYarn(yarn);
-                        }
-                    }
+                    new Player().getCurrentTekton().getYarns();
+                    new Yarn().getTekton1();
+                    new Yarn().getTekton2();
+                    new Player().interactWithYarn(new Yarn());
+
+
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }

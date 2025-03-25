@@ -39,9 +39,8 @@ public class Player {
            if(!igazHamisKerdes("Rajtad van a gyengítő spóra?")){
 
                 yarn.setTekton1(null);
-                new Tekton().removeYarn(yarn);
                 yarn.setTekton2(null);
-                new Tekton().removeYarn(yarn);
+
                 System.out.println("A fonál el lett távolítva!");
            }
         }
