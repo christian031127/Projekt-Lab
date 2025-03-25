@@ -102,7 +102,7 @@ public class Tekton {
 
     public void doEffect(){
         System.out.println("Tekton.doEffect() called");
-        System.err.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
+        System.out.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
         System.out.println("Válassz egy lehetőséget: ");
         Console console = System.console();
         int user_input = 0;
