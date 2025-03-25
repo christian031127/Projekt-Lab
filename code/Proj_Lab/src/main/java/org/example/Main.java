@@ -52,6 +52,7 @@ public class Main {
                             new Player().interactWithYarn(yarn);
                         }
                     }
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 3: {
@@ -61,6 +62,7 @@ public class Main {
                 }
                 case 4: {
                     new Player().interactWithSpore(new Tekton().getSpores());
+                    System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
                 case 5: {

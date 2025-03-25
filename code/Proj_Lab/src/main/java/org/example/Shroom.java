@@ -48,11 +48,11 @@ public class Shroom {
     }
 
     public void die() { 
-        System.out.println("Gomba die() metódusa meghívva.");
+        System.out.println("Gomba die() called.");
     }
 
     public void age() {
-        System.out.println("Gomba age() metódusa meghívva.");
+        System.out.println("Gomba age() called.");
         if(isOld())
             die();
     }
