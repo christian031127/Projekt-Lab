@@ -33,6 +33,7 @@ public class Player {
 
     public void interactWithYarn(Yarn yarn) {
         // Implementation
+        System.err.println("interactWithYarn(Yarn yarn) called");
         getIsInsect();
         if(igazHamisKerdes("Rovar vagy?")){
            getEffects();
