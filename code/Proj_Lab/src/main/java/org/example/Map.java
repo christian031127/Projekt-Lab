@@ -6,6 +6,7 @@ public class Map {
 
     }
     public void splitTekton(Tekton tekton){
-
+        System.out.println("Map.splitTekton() called");
+        new Tekton().split();
     }
 }

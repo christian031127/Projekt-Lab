@@ -136,7 +136,7 @@ public class Main {
                     break;
                 }
                 case 9: {
-                    new Tekton().split();
+                    new Map().splitTekton(new Tekton());
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
