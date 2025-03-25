@@ -105,7 +105,19 @@ public class Tekton {
         System.err.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
         System.out.println("Válassz egy lehetőséget: ");
         Console console = System.console();
-        int user_input = Integer.parseInt(console.readLine());
+        int user_input = 0;
+        try {
+            user_input = Integer.parseInt(console.readLine());
+            if (user_input < 1 || user_input > 4) {
+                throw new AssertionError("Hibás formátumú válasz!");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Hibás formátumú válasz!");
+            return;
+        } catch (AssertionError e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         switch (user_input) {
             case 1:
                 new AbsorbTekton().doEffect();
