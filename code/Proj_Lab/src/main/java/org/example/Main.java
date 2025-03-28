@@ -8,11 +8,11 @@ public class Main {
     // Add static variables here
     public static Tekton T1 = new Tekton();
     public static Tekton T2 = new Tekton();
+    public static Scanner scanner = new Scanner(System.in);
     // ...
 
     public static void main(String[] args) {
         int user_input = 0;
-        Scanner scanner = new Scanner(System.in);
 
         while (user_input >= 0) {
             System.out.println("Tesztek leírása... -1: Exit\n");
@@ -94,8 +94,6 @@ public class Main {
 
     public static boolean igazHamisKerdes(String kerdes) {
         System.out.print(kerdes + " [Y/n][I/n]: ");
-
-        Scanner scanner = new Scanner(System.in);
         String valasz = scanner.nextLine();
 
         valasz = valasz.toUpperCase();
