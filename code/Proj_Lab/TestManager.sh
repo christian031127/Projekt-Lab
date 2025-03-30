@@ -42,9 +42,9 @@ done
 #cat Tests/Test1/input.txt | mvn exec:java > Tests/Test1/output.txt
 
 echo "Tesztek futtatásának vége!"
-echo "Eredmények: ${sikeres} / ${osszTesztSzam} (Sikeres / sikeretelenek tesztek)"
+echo "Eredmények: ${sikeresTesztek} / ${osszTesztSzam} (Sikeres / sikeretelenek tesztek)"
 
-if [[ $sikeres -eq $osszTesztSzam ]]; then
+if [[ $sikeresTesztek -eq $osszTesztSzam ]]; then
     echo -e "${GREEN}ÖSSZES TESZT SIKERES!${NC}"
 else
     echo -e "${RED}SIKERTELEN${NC}, van még mit javítani!"

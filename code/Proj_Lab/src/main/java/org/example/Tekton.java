@@ -1,7 +1,7 @@
 package org.example;
-import java.io.Console;
 
 import static org.example.Main.igazHamisKerdes;
+import static org.example.Main.scanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,10 +104,9 @@ public class Tekton {
         System.out.println("Tekton.doEffect() called");
         System.out.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
         System.out.println("Válassz egy lehetőséget: ");
-        Console console = System.console();
         int user_input = 0;
         try {
-            user_input = Integer.parseInt(console.readLine());
+            user_input = Integer.parseInt(scanner.nextLine());
             if (user_input < 1 || user_input > 4) {
                 throw new AssertionError("Hibás formátumú válasz!");
             }

@@ -102,7 +102,6 @@ public class Player {
             System.out.println("Melyik tektonra szeretnéd felhelyezni a fonált?");
             System.out.println("1. Szomszédos tektonra nő a fonál\n2. A jelenlegi tektont növi be a fonál");
             System.out.println("Válassz egy lehetőséget: ");
-            Scanner scanner = new Scanner(System.in);
 
             try {
                 int user_input1 = Integer.parseInt(scanner.nextLine());

@@ -1,9 +1,9 @@
 package org.example;
 
-import java.util.Scanner;
 
 import static org.example.Main.T1;
 import static org.example.Main.igazHamisKerdes;
+import static org.example.Main.scanner;
 
 public class Shroom {
     // private int team_id;
@@ -21,7 +21,6 @@ public class Shroom {
 
     public void ejectSpore(Tekton T) {
         System.out.println("Shroom.ejectSpore() called");
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("1. Spóra szórása szomszédos tektonra \n2. Spóra szórása szomszéd szomszédjára");
         System.out.println("Válassz egy lehetőséget: ");
