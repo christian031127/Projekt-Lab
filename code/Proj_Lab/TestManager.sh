@@ -39,7 +39,6 @@ for file in Tests/*; do
     echo "---- $file Vége ----"
 done
 
-#cat Tests/Test1/input.txt | mvn exec:java > Tests/Test1/output.txt
 
 echo "Tesztek futtatásának vége!"
 echo "Eredmények: ${sikeresTesztek} / ${osszTesztSzam} (Sikeres / sikeretelenek tesztek)"
