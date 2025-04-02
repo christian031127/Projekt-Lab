@@ -2,14 +2,15 @@
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
 echo "Project buildelése"
-mvn compile
+#mvn compile
 echo "Project csomagolása"
-mvn package
+#mvn package
 
 osszTesztSzam=$(ls Tests | wc -l)
 echo "$osszTesztSzam teszteset található"
@@ -24,13 +25,24 @@ for file in Tests/*; do
 
     #Eredmény ellenőrzése
     if [[ -e "$file/output.txt" ]]; then
-        if [[ $(cat $file/output.txt | grep "BUILD SUCCESS" | wc -l) -gt 0 ]]; then
+
+        sikeres=1
+
+        while IFS= read -r line; do
+            # Ha a sor nincs benne a file2-ben, kiírjuk
+            if ! grep -Fq "$line" "$file/output.txt"; then
+                echo -e "Nem található: ${YELLOW}$line${NC}"
+                sikeres=0
+            fi
+        done < "$file/expected.txt"
+
+        if [[ $sikeres -gt 0 ]]; then
             sikeresTesztek=$((sikeresTesztek+1))
             echo -e "${GREEN}$file lefutása SIKERES!${NC}" 
         else
             echo -e "${RED}$file lefutása SIKERTELEN!${NC}"
             echo "Részletek: "
-            cat $file/output.txt | grep "ERROR"
+            cat $file/output.txt | grep -E "ERROR|WARNING"
         fi
     else
         echo "nem található fájl"
