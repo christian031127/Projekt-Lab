@@ -79,6 +79,7 @@ public class Main {
                                         break;
                                     case "KeelAliveTekton":
                                         
+                                            throw new Exception("Befejezetlen funkció!");
                                         break;
                                     default:
 
@@ -106,7 +107,8 @@ public class Main {
                                     case "SplitterSpore":
                                         //uj = new SplitterSpore();
                                         //uj.SetName(command[2]);
-                                            break;
+                                             throw new Exception("Befejezetlen funkció!");
+                                            //break;
                                     default:
 
                                         throw new AssertionError();
@@ -124,27 +126,127 @@ public class Main {
                 }
 
                 case "neighbour": {
+                    if(command.length != 3){
+                        logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
+                        throw new Exception("Command neighbour takes 2 arguments!");
+                    }
+                    Tekton elso = (Tekton)findGameObject(command[1]);
+                    Tekton masodik = (Tekton)findGameObject(command[2]);
+
+                    elso.addNeighbour((Tekton)masodik);
+                    masodik.addNeighbour((Tekton)elso);
 
                     break;
                 }
                 case "yarn": {
-                
+                    if(command.length < 2 || command.length > 3){
+                        logger.log(Level.SEVERE, "Command yarn takes 2 arguments!");
+                        throw new Exception("Command yarn takes 2 arguments!");
+                    }
+
+                    //Tektonon fonál növesztés
+                    if(command.length == 2){
+                        GameObject tekton = findGameObject(command[1]);
+                        Yarn yarn = new Yarn();
+                        yarn.setTekton1(tekton);
+                        yarn.setTekton2(tekton);
+                        tekton.addYarn(yarn);
+                        logger.log(Level.INFO, "Yarn created on Tekton {0}", command[1]);
+                    }
+                    if(command.length == 2){
+                        Tekton tekton1 = (Tekton)findGameObject(command[1]);
+                        Tekton tekton2 = (Tekton)findGameObject(command[2]);
+                        GameObject yarn = new Yarn();
+                        yarn.setTekton1((Tekton)tekton1);
+                        yarn.setTekton2((Tekton)tekton2);
+                        tekton1.addYarn(yarn);
+                        tekton2.addYarn(yarn);
+                        logger.log(Level.INFO, "Yarn created between Tekton {0}", command[1] + " and Tekton " + command[2]);
+                    }
                     break;     
                 } 
                 case "remove-yarn": {
+                    if(command.length < 2 || command.length > 3){
+                        logger.log(Level.SEVERE, "Command remove-yarn takes 2 arguments!");
+                        throw new Exception("Command remove-yarn takes 2 arguments!");
+                    }
 
+                    //Tektonon fonál törlés
+                    if(command.length == 2){
+                        Tekton tekton = (Tekton)findGameObject(command[1]);
+                        List<Yarn> yarns = tekton.getYarns();
+                        Yarn talalat = null;
+                        for (Yarn yarn : yarns) {
+                            if(yarn.getTekton1() == tekton && yarn.getTekton2() == tekton){
+                                talalat = yarn;
+                            }
+                        }
+                        if(talalat == null){
+                            logger.log(Level.SEVERE, "Cannot find yarn on Tekton {0}!", command[1]);
+                            throw new Exception("Cannot find yarn on Tekton!");
+                        }
+                        yarn.setTekton1(null);
+                        yarn.setTekton2(null);
+                        tekton.removeYarn(yarn);
+                        logger.log(Level.INFO, "Yarn removed on Tekton {0}", command[1]);
+                        throw new Exception("Befejezetlen funkció!");
+                    }
+                    if(command.length == 3){
+                        Tekton tekton1 = (Tekton)findGameObject(command[1]);
+                        Tekton tekton2 = (Tekton)findGameObject(command[2]);
+                        List<Yarn> yarns1 = tekton1.getYarns();
+                        List<Yarn> yarns2 = tekton2.getYarns();
+                        Yarn talalat = null;
+                        for (Yarn elso : yarns1) {
+                            for (Yarn masodik : yarns2) {
+                                if(elso == masodik){
+                                    talalat = elso;
+                                    logger.log(Level.FINE, "Talált egyező yarnt!");
+                                }
+                            }
+                        }
+                        
+                        if(talalat == null){
+                            logger.log(Level.SEVERE, "Cannot find yarn between 2 given Tektons!");
+                            throw  new Exception("Cannot find yarn between 2 given Tektons!");
+                        }
+                        talalat.setTekton1(null);
+                        talalat.setTekton2(null);
+                        tekton1.removeYarn(talalat);
+                        tekton2.removeYarn(talalat);
+                        logger.log(Level.INFO, "Yarn removed between Tekton {0}", command[1] + " and Tekton " + command[2]);
+                    }
                     break;   
                 }
                 case "split": {
+                    if(command.length != 4){
+                        logger.log(Level.SEVERE, "Command split takes 3 arguments!");
+                        throw new Exception("Command split takes 2 arguments!");
+                    }
 
-                    break;   
+                    Tekton eredeti = (Tekton)findGameObject(command[1]);
+                    eredeti.split();
+
+                    throw new Exception("Befejezetlen. Itt még át kéne adni a létrejövő két új Tekton nevét");
+
+
+                    //break;   
                 }   
                 case "move": {
+                    if(command.length != 2){
+                        logger.log(Level.SEVERE, "Command move takes 3 arguments!");
+                        throw new Exception("Command move takes 2 arguments!");
+                    }
 
+                    Player player = (Player)findGameObject(command[1]);
+                    Tekton celpont = (Tekton)findGameObject(command[2]);
+                    player.move(celpont);
+                    logger.warning("Ellenőrizni, kell, hogy tud-e a megadott tektonra mozogni!");
+                    logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {}-ra!", command[2]);
                     break;      
                 }
                 case "eat": {
-
+                    
                     break;      
                 }
                 default:{
