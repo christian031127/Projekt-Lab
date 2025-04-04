@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -17,14 +16,14 @@ public class Main {
         String [] command = null;
 
         System.out.println("Az exit paranccsal lehet kilépni");
-        while(!(sorBe = scanner.nextLine().split(",")).equals("exit"){
+        while(!(sorBe = scanner.nextLine()).equals("exit")){
 
             System.out.println("soros" + sorBe);
-            command = sorBe.split(",");
+            command = sorBe.split(" ");
 
             switch(command[0]){
                 case "add": {
-
+                        
                     break;   
                 }
 
@@ -52,7 +51,7 @@ public class Main {
 
                     break;      
                 }
-                case default:{
+                default:{
                     //HELP
                     break;      
                 }
