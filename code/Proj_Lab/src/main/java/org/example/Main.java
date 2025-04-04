@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.*;
 import org.example.*;
@@ -61,26 +62,28 @@ public class Main {
                     if(command.length > 3){
                         switch (command[1]) {
                             case "Tekton":
+                                //Ez a sor lehet nem azt csinálja amit kellene 
+                                Tekton uj2 = (Tekton)uj;
                                 switch (command[3]) {
                                     case "AbsorbTekton":
-                                        uj = new Tekton();
-                                        uj.SetName(command[2]);
-                                        uj.setStrategy(new AbsorbTekton());
+                                        uj2 = new Tekton();
+                                        uj2.SetName(command[2]);
+                                        uj2.setStrategy((TektonStrategy)new AbsorbTekton());
                                         break;
                                     case "SingleYarnTekton":
-                                        uj = new Tekton();
-                                        uj.SetName(command[2]);
-                                        uj.setStrategy(new SingleYarnTekton());
+                                        uj2 = new Tekton();
+                                        uj2.SetName(command[2]);
+                                        uj2.setStrategy(new SingleYarnTekton());
                                         break;
                                     case "NonShroomTekton":
-                                        uj = new Tekton();
-                                        uj.SetName(command[2]);
-                                        uj.setStrategy(new NonShroomTekton());
+                                        uj2 = new Tekton();
+                                        uj2.SetName(command[2]);
+                                        uj2.setStrategy(new NonShroomTekton());
                                         break;
                                     case "KeelAliveTekton":
                                         
                                             throw new Exception("Befejezetlen funkció!");
-                                        break;
+                                        //break;
                                     default:
 
                                         throw new AssertionError();
@@ -146,17 +149,17 @@ public class Main {
 
                     //Tektonon fonál növesztés
                     if(command.length == 2){
-                        GameObject tekton = findGameObject(command[1]);
+                        Tekton tekton = (Tekton)findGameObject(command[1]);
                         Yarn yarn = new Yarn();
                         yarn.setTekton1(tekton);
                         yarn.setTekton2(tekton);
                         tekton.addYarn(yarn);
                         logger.log(Level.INFO, "Yarn created on Tekton {0}", command[1]);
                     }
-                    if(command.length == 2){
+                    if(command.length == 3){
                         Tekton tekton1 = (Tekton)findGameObject(command[1]);
                         Tekton tekton2 = (Tekton)findGameObject(command[2]);
-                        GameObject yarn = new Yarn();
+                        Yarn yarn = new Yarn();
                         yarn.setTekton1((Tekton)tekton1);
                         yarn.setTekton2((Tekton)tekton2);
                         tekton1.addYarn(yarn);
@@ -185,9 +188,9 @@ public class Main {
                             logger.log(Level.SEVERE, "Cannot find yarn on Tekton {0}!", command[1]);
                             throw new Exception("Cannot find yarn on Tekton!");
                         }
-                        yarn.setTekton1(null);
-                        yarn.setTekton2(null);
-                        tekton.removeYarn(yarn);
+                        talalat.setTekton1(null);
+                        talalat.setTekton2(null);
+                        tekton.removeYarn(talalat);
                         logger.log(Level.INFO, "Yarn removed on Tekton {0}", command[1]);
                         throw new Exception("Befejezetlen funkció!");
                     }
@@ -246,7 +249,7 @@ public class Main {
                     break;      
                 }
                 case "eat": {
-                    
+
                     break;      
                 }
                 default:{
