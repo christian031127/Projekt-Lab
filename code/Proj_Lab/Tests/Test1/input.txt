@@ -1,7 +1,4 @@
-9
-Y
-Y
-N
-Y
-N
--1
+add Tekton T1
+add Tekton T2
+neighbour T1 T2
+yarn T1 T2

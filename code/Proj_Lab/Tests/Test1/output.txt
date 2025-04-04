@@ -5,50 +5,35 @@
 [[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.1.0:java[m [1m(default-cli)[m @ [36mProj_Lab[0;1m ---[m
-Tesztek leírása... -1: Exit
-
-1. Fonál növesztés
-2. Fonál elrágás
-3. Fonál felszívódás
-4. Gomba növesztés spórából
-5. Spóra szórás gombával
-6. Rovar mozgás
-7. Spóra elfogyasztása rovarral
-8. Gomba halál
-9. Tekton kettéválás
-Choose option: 
-Map.splitTekton() called
-Tekton.split() called
-Van még fonalas összeköttetése? [Y/n][I/n]: Tekton.removeYarn() called
-Tekton.removeYarn() called
-Van még fonalas összeköttetése? [Y/n][I/n]: Tekton.removeYarn() called
-Tekton.removeYarn() called
-Van még fonalas összeköttetése? [Y/n][I/n]: Van még szomszédja? [Y/n][I/n]: Tekton.removeNeighbour() called
+Az exit paranccsal lehet kilépni
 Tekton.addNeighbour() called
-Van még szomszédja? [Y/n][I/n]: Tekton.addNeighbour() called
 Tekton.addNeighbour() called
-Teszt sikeresen lefutott.
-
-
-Tesztek leírása... -1: Exit
-
-1. Fonál növesztés
-2. Fonál elrágás
-3. Fonál felszívódás
-4. Gomba növesztés spórából
-5. Spóra szórás gombával
-6. Rovar mozgás
-7. Spóra elfogyasztása rovarral
-8. Gomba halál
-9. Tekton kettéválás
-Choose option: 
-Unknown option.
-
-
-Goodbye...
+Tekton.addYarn() called
+Yarn.setTekton1() called
+Tekton.addYarn() called
+Yarn.setTekton2() called
+Tekton.addYarn() called
+Tekton.addYarn() called
+[[1;33mWARNING[m] 
+[1;31mjava.util.NoSuchElementException[m: [1;31mNo line found[m
+    [1mat[m java.util.Scanner.nextLine ([1mScanner.java:1660[m)
+    [1mat[m org.example.Main.main ([1mMain.java:54[m)
+    [1mat[m org.codehaus.mojo.exec.ExecJavaMojo$1.run ([1mExecJavaMojo.java:279[m)
+    [1mat[m java.lang.Thread.run ([1mThread.java:1583[m)
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  0.138 s
-[[1;34mINFO[m] Finished at: 2025-04-02T12:41:08+02:00
+[[1;34mINFO[m] Total time:  0.146 s
+[[1;34mINFO[m] Finished at: 2025-04-04T12:28:07+02:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.codehaus.mojo:exec-maven-plugin:3.1.0:java[m [1m(default-cli)[m on project [36mProj_Lab[m: [1;31mAn exception occurred while executing the Java class. No line found[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+INFO: Adding new gameObject T1!
+INFO: Adding new gameObject T2!
+INFO: Tekton T1 Tekton T2 are now neighbours!
+INFO: Yarn created between Tekton T1 and Tekton T2

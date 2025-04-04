@@ -8,9 +8,9 @@ BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
 echo "Project buildelése"
-#mvn compile
+mvn compile
 echo "Project csomagolása"
-#mvn package
+mvn package
 
 osszTesztSzam=$(ls Tests | wc -l)
 echo "$osszTesztSzam teszteset található"
@@ -22,6 +22,8 @@ for file in Tests/*; do
     #cat $file/input.txt
     #cat $file/input.txt | java -jar target/Proj_Lab-1.0-SNAPSHOT.jar > $file/output.txt
     cat $file/input.txt | mvn exec:java > $file/output.txt
+    cat logfile.log >> $file/output.txt
+    #rm logfile.log
 
     #Eredmény ellenőrzése
     if [[ -e "$file/output.txt" ]]; then

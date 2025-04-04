@@ -1,2 +1,3 @@
-Tekton.removeYarn()
-Tekton.addNeighbour()
+Adding new gameObject T1!
+Yarn created between Tekton T1 and Tekton T2
+Tekton T1 Tekton T2 are now neighbours!

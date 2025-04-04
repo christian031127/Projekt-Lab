@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,6 +21,29 @@ public class Main {
     private static ArrayList<GameObject> gameObjectList = new ArrayList<GameObject>();
     public static void main(String[] args) throws Exception {
 
+        logger.setLevel(Level.ALL);
+        FileHandler fileHandler = new FileHandler("logfile.log");  // true: append, hogy hozzáfűzze a logokat
+        fileHandler.setLevel(Level.ALL);  // Minden log szint rögzítése a fájlban
+        logger.addHandler(fileHandler);
+
+        SimpleFormatter formatter = new SimpleFormatter() {
+            @Override
+            public synchronized String format(java.util.logging.LogRecord record) {
+                String message = record.getMessage();
+                Object[] params = record.getParameters();
+                if (params != null && params.length > 0) {
+                    // Paraméterek behelyettesítése a log üzenetbe
+                    message = MessageFormat.format(message, params);
+                }
+
+
+                return record.getLevel() + ": " + message + "\n";  // Csak a log üzenet, semmi extra információ
+            }
+        };
+        fileHandler.setFormatter(formatter);
+
+
+
         String sorBe = "";
         String [] command = null;
 
@@ -28,8 +52,6 @@ public class Main {
 
         System.out.println("Az exit paranccsal lehet kilépni");
         while(!(sorBe = scanner.nextLine()).equals("exit")){
-
-            System.out.println("soros" + sorBe);
             command = sorBe.split(" ");
 
             switch(command[0]){
@@ -124,7 +146,7 @@ public class Main {
                     }
 
                     gameObjectList.add(uj);
-                    logger.log(Level.INFO, "Adding ");
+                    logger.log(Level.INFO, "Adding new gameObject {0}!", command[2]);
                     break;   
                 }
 
@@ -138,7 +160,7 @@ public class Main {
 
                     elso.addNeighbour((Tekton)masodik);
                     masodik.addNeighbour((Tekton)elso);
-
+                    logger.log(Level.INFO, "Tekton " + command[1] + " Tekton " + command[2] + " are now neighbours!");
                     break;
                 }
                 case "yarn": {
