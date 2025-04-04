@@ -1,6 +1,6 @@
 package org.example;
 
-public class NonShroomTekton implements TektonStrategy {
+public class NonShroomTekton extends GameObject implements TektonStrategy {
     @Override
     public void doEffect() {
         //deletes all shrooms from the tekton

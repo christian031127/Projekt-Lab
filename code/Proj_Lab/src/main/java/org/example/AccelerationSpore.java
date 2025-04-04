@@ -1,7 +1,7 @@
 package org.example;
 
 
-public class AccelerationSpore implements Spore {
+public class AccelerationSpore extends GameObject implements Spore {
 
     @Override
     public void addEffect(Player p){
