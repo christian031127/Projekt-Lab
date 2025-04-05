@@ -57,6 +57,12 @@ public class Teszt {
 
         System.out.println("Az exit paranccsal lehet kilépni");
         while(!(sorBe = scanner.nextLine()).equals("exit")){
+
+            //Kommente figyelmen kívül hagyása
+            if(sorBe.contains("#") || sorBe.contains("//")) {
+                continue;
+            }           
+            
             command = sorBe.split(" ");
 
             switch(command[0]){
@@ -276,11 +282,12 @@ public class Teszt {
                     break;      
                 }
                 case "eat": {
-
-                    break;      
+                    throw new Exception("Not inplementetd!");
+                    //break;      
                 }
                 default:{
                     //HELP
+                    logger.log(Level.WARNING, "Command {0} not found!", command[0]);
                     break;      
                 }
             }
