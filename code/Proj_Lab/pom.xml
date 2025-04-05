@@ -21,7 +21,12 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>org.example.Main</mainClass> <!-- Replace with your main class path -->
+                    <archive>
+                        <manifestEntries>
+                            <!-- Specify the main class to be used when running the JAR -->
+                            <Main-Class>org.example.Main</Main-Class>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
 
