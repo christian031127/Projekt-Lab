@@ -20,8 +20,8 @@ sikeresTesztek=0
 for file in Tests/*; do
     echo "---- A következő teszt indul: $file ----"
     #cat $file/input.txt
-    #cat $file/input.txt | java -jar target/Proj_Lab-1.0-SNAPSHOT.jar > $file/output.txt
-    cat $file/input.txt | mvn exec:java > $file/output.txt
+    cat $file/input.txt | java -cp target/Proj_Lab-1.0-SNAPSHOT.jar org.example.Teszt > $file/output.txt
+    #cat $file/input.txt | mvn exec:java > $file/output.txt
     cat logfile.log >> $file/output.txt
     #rm logfile.log
 
