@@ -1,0 +1,8 @@
+Az exit paranccsal lehet kilépni
+Tekton.addYarn() called
+Yarn.setTekton1() called
+Tekton.addYarn() called
+Yarn.setTekton2() called
+Tekton.addYarn() called
+INFO: Adding new gameObject T1!
+INFO: Yarn created on Tekton T1
