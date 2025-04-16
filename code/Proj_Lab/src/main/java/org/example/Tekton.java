@@ -6,7 +6,7 @@ import static org.example.Main.scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekton extends GameObject{
+public class Tekton{
 
     //public List<Tekton> getNeighbours(){
     public List<Tekton> getNeighbours(){

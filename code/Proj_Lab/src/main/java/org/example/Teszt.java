@@ -2,6 +2,7 @@ package org.example;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.*;
@@ -18,7 +19,8 @@ public class Teszt {
     public static Scanner scanner = new Scanner(System.in);
 
     //Mesterséges Tároló a tesztesetek változóinak kezelésére
-    private static ArrayList<GameObject> gameObjectList = new ArrayList<GameObject>();
+    private static HashMap<String, Object> gameObjectList = new HashMap<String,Object>();
+    static String Name;
     public static void main(String[] args) throws Exception {
 
         ConsoleHandler consoleHandler = new ConsoleHandler();
@@ -67,7 +69,7 @@ public class Teszt {
 
             switch(command[0]){
                 case "add": {
-                    GameObject uj = new GameObject();
+                    Object uj = new Object();
                     //Van e elég argumentum?
                     if(command.length < 3){
                         logger.log(Level.SEVERE, "Not enough arguments for 'add' command! (minimum 2 argument)");
@@ -77,15 +79,15 @@ public class Teszt {
                         switch (command[1]) {
                             case "Tekton":
                                 uj = new Tekton();
-                                uj.SetName(command[2]);
+                                Name=command[2];
                                 break;
                             case "Shroom":
                                 uj = new Shroom();
-                                uj.SetName(command[2]);
+                                Name=command[2];
                                 break;
                             case "Yarn":
                                 uj = new Yarn();
-                                uj.SetName(command[2]);
+                                Name=command[2];
                                 break;
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
@@ -95,28 +97,29 @@ public class Teszt {
                     if(command.length > 3){
                         switch (command[1]) {
                             case "Tekton":
-                                //Ez a sor lehet nem azt csinálja amit kellene 
+                                //Ez a sor lehet nem azt csinálja amit kellene
+                                uj = new Tekton();
                                 Tekton uj2 = (Tekton)uj;
                                 switch (command[3]) {
                                     case "AbsorbTekton":
-                                        uj2 = new Tekton();
-                                        uj2.SetName(command[2]);
+                                        uj2= new Tekton();
                                         uj2.setStrategy((TektonStrategy)new AbsorbTekton());
+                                        Name=command[2];
                                         break;
                                     case "SingleYarnTekton":
-                                        uj2 = new Tekton();
-                                        uj2.SetName(command[2]);
+                                        uj2= new Tekton();
                                         uj2.setStrategy(new SingleYarnTekton());
+                                        Name=command[2];
                                         break;
                                     case "NonShroomTekton":
-                                        uj2 = new Tekton();
-                                        uj2.SetName(command[2]);
+                                        uj2= new Tekton();
                                         uj2.setStrategy(new NonShroomTekton());
+                                        Name=command[2];
                                         break;
                                     case "KeepAliveTekton":
-                                        uj2 = new Tekton();
-                                        uj2.SetName(command[2]);
+                                        uj2= new Tekton();
                                         uj2.setStrategy(new KeepAliveTekton());
+                                        Name=command[2];
                                             break;
                                     default:
 
@@ -127,23 +130,23 @@ public class Teszt {
                                 switch (command[3]) {
                                     case "SlowingSpore":
                                         uj = new SlowingSpore();
-                                        uj.SetName(command[2]);
+                                        Name=command[2];
                                         break;
                                     case "NumbingSpore":
                                         uj = new NumbingSpore();
-                                        uj.SetName(command[2]);
+                                        Name=command[2];
                                         break;
                                     case "WeakeningSpore":
                                         uj = new WeakeningSpore();
-                                        uj.SetName(command[2]);
+                                        Name=command[2];
                                         break;
                                     case "AccelerationSpore":
                                         uj = new AccelerationSpore();
-                                        uj.SetName(command[2]);
+                                        Name=command[2];
                                             break;
                                     case "SplitterSpore":
                                         uj = new SplitterSpore();
-                                        uj.SetName(command[2]);
+                                        Name=command[2];
                                             break;
                                     default:
 
@@ -155,8 +158,7 @@ public class Teszt {
                                 throw new AssertionError();
                         }
                     }
-
-                    gameObjectList.add(uj);
+                    gameObjectList.put(Name,uj);
                     logger.log(Level.INFO, "Adding new gameObject {0}!", command[2]);
                     break;   
                 }
@@ -166,8 +168,8 @@ public class Teszt {
                         logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
                         throw new Exception("Command neighbour takes 2 arguments!");
                     }
-                    Tekton elso = (Tekton)findGameObject(command[1]);
-                    Tekton masodik = (Tekton)findGameObject(command[2]);
+                    Tekton elso = (Tekton)gameObjectList.get(command[1]);
+                    Tekton masodik = (Tekton)gameObjectList.get(command[2]);
 
                     elso.addNeighbour((Tekton)masodik);
                     masodik.addNeighbour((Tekton)elso);
@@ -182,7 +184,7 @@ public class Teszt {
 
                     //Tektonon fonál növesztés
                     if(command.length == 2){
-                        Tekton tekton = (Tekton)findGameObject(command[1]);
+                        Tekton tekton = (Tekton)gameObjectList.get(command[1]);
                         Yarn yarn = new Yarn();
                         yarn.setTekton1(tekton);
                         yarn.setTekton2(tekton);
@@ -190,8 +192,8 @@ public class Teszt {
                         logger.log(Level.INFO, "Yarn created on Tekton {0}", command[1]);
                     }
                     if(command.length == 3){
-                        Tekton tekton1 = (Tekton)findGameObject(command[1]);
-                        Tekton tekton2 = (Tekton)findGameObject(command[2]);
+                        Tekton tekton1 = (Tekton)gameObjectList.get(command[1]);
+                        Tekton tekton2 = (Tekton)gameObjectList.get(command[2]);
                         Yarn yarn = new Yarn();
                         yarn.setTekton1((Tekton)tekton1);
                         yarn.setTekton2((Tekton)tekton2);
@@ -209,7 +211,7 @@ public class Teszt {
 
                     //Tektonon fonál törlés
                     if(command.length == 2){
-                        Tekton tekton = (Tekton)findGameObject(command[1]);
+                        Tekton tekton = (Tekton)gameObjectList.get(command[1]);
                         List<Yarn> yarns = tekton.getYarns();
                         Yarn talalat = null;
                         for (Yarn yarn : yarns) {
@@ -228,8 +230,8 @@ public class Teszt {
                         throw new Exception("Befejezetlen funkció!");
                     }
                     if(command.length == 3){
-                        Tekton tekton1 = (Tekton)findGameObject(command[1]);
-                        Tekton tekton2 = (Tekton)findGameObject(command[2]);
+                        Tekton tekton1 = (Tekton)gameObjectList.get(command[1]);
+                        Tekton tekton2 = (Tekton)gameObjectList.get(command[2]);
                         List<Yarn> yarns1 = tekton1.getYarns();
                         List<Yarn> yarns2 = tekton2.getYarns();
                         Yarn talalat = null;
@@ -260,7 +262,7 @@ public class Teszt {
                         throw new Exception("Command split takes 2 arguments!");
                     }
 
-                    Tekton eredeti = (Tekton)findGameObject(command[1]);
+                    Tekton eredeti = (Tekton)gameObjectList.get(command[1]);
                     eredeti.split();
 
                     throw new Exception("Befejezetlen. Itt még át kéne adni a létrejövő két új Tekton nevét");
@@ -274,8 +276,8 @@ public class Teszt {
                         throw new Exception("Command move takes 2 arguments!");
                     }
 
-                    Player player = (Player)findGameObject(command[1]);
-                    Tekton celpont = (Tekton)findGameObject(command[2]);
+                    Player player = (Player)gameObjectList.get(command[1]);
+                    Tekton celpont = (Tekton)gameObjectList.get(command[2]);
                     player.move(celpont);
                     logger.warning("Ellenőrizni, kell, hogy tud-e a megadott tektonra mozogni!");
                     logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {}-ra!", command[2]);
@@ -308,13 +310,5 @@ public class Teszt {
         }
     }
 
-    private static GameObject findGameObject(String name) throws Exception{
-        for (GameObject gameObject : gameObjectList) {
-            if (gameObject.name.equals(name)) {
-                return gameObject;
-            }
-        }
-        logger.log(Level.SEVERE, "Cannot find gameObject called: {0}", name);
-        throw new Exception("Nem található " + name + " nevű gameObject!");
-    }
+
 }
