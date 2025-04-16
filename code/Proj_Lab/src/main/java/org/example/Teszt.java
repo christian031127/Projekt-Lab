@@ -113,10 +113,11 @@ public class Teszt {
                                         uj2.SetName(command[2]);
                                         uj2.setStrategy(new NonShroomTekton());
                                         break;
-                                    case "KeelAliveTekton":
-                                        
-                                            throw new Exception("Befejezetlen funkció!");
-                                        //break;
+                                    case "KeepAliveTekton":
+                                        uj2 = new Tekton();
+                                        uj2.SetName(command[2]);
+                                        uj2.setStrategy(new KeepAliveTekton());
+                                            break;
                                     default:
 
                                         throw new AssertionError();
@@ -141,10 +142,9 @@ public class Teszt {
                                         uj.SetName(command[2]);
                                             break;
                                     case "SplitterSpore":
-                                        //uj = new SplitterSpore();
-                                        //uj.SetName(command[2]);
-                                             throw new Exception("Befejezetlen funkció!");
-                                            //break;
+                                        uj = new SplitterSpore();
+                                        uj.SetName(command[2]);
+                                            break;
                                     default:
 
                                         throw new AssertionError();
