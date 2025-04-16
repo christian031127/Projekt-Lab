@@ -74,8 +74,8 @@ Fonál evés
     //eat a játékost szimulálja
 
     remove-yarn <Név> <Tekton változó> [Tekton változó]
-    remove-yarn Y1 T1 //T1 Tektonon fonál létrehozása
-    remove-yarn Y2 T1 T2 //T1 és T2 Tekton között fonál létrehozása
+    remove-yarn Y1 T1 //T1 Tektonon fonál törlése
+    remove-yarn Y2 T1 T2 //T1 és T2 Tekton közötti fonál törlése
 ```
 
 Gomba növesztés

@@ -1,4 +1,3 @@
-Az exit paranccsal lehet kilépni
 Tekton.addNeighbour() called
 Tekton.addNeighbour() called
 Tekton.addYarn() called
@@ -7,6 +6,7 @@ Tekton.addYarn() called
 Yarn.setTekton2() called
 Tekton.addYarn() called
 Tekton.addYarn() called
+Goodbye...
 INFO: Adding new gameObject T1!
 INFO: Adding new gameObject T2!
 INFO: Tekton T1 Tekton T2 are now neighbours!

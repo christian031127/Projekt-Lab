@@ -57,8 +57,9 @@ public class Teszt {
         //Jelenleg a splitTekton() kivételével a gameObjectList kiváltja
         Map map = new Map();
 
-        System.out.println("Az exit paranccsal lehet kilépni");
-        while(!(sorBe = scanner.nextLine()).equals("exit")){
+        //System.out.println("Az exit paranccsal lehet kilépni");
+        while(scanner.hasNext()){
+            sorBe = scanner.nextLine();
 
             //Kommente figyelmen kívül hagyása
             if(sorBe.contains("#") || sorBe.contains("//")) {
@@ -296,19 +297,4 @@ public class Teszt {
         }
         System.out.println("Goodbye...");
     }
-
-    public static boolean igazHamisKerdes(String kerdes) {
-        System.out.print(kerdes + " [Y/n][I/n]: ");
-        String valasz = scanner.nextLine();
-
-        valasz = valasz.toUpperCase();
-
-        if (valasz.equals("Y") || valasz.equals("I")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
 }
