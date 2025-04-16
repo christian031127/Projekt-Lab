@@ -85,10 +85,10 @@ public class Teszt {
                                 uj = new Shroom();
                                 Name=command[2];
                                 break;
-                            case "Yarn":
-                                uj = new Yarn();
-                                Name=command[2];
-                                break;
+                            //case "Yarn":
+                            //    uj = new Yarn();
+                            //    uj.SetName(command[2]);
+                            //    break;
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
                                 throw new AssertionError();
@@ -259,7 +259,7 @@ public class Teszt {
                 case "split": {
                     if(command.length != 4){
                         logger.log(Level.SEVERE, "Command split takes 3 arguments!");
-                        throw new Exception("Command split takes 2 arguments!");
+                        throw new Exception("Command split takes 3 arguments!");
                     }
 
                     Tekton eredeti = (Tekton)gameObjectList.get(command[1]);
