@@ -67,9 +67,20 @@ Fonál növesztés
     yarn Y2 T1 T2 //T1 és T2 Tekton között fonál létrehozása
 ```
 
+Fonál evés
+```java
+    eat Yarn <Yarn változó> <Player változó>
+    eat Yarn Y1
+    //eat a játékost szimulálja
+
+    remove-yarn <Név> <Tekton változó> [Tekton változó]
+    remove-yarn Y1 T1 //T1 Tektonon fonál létrehozása
+    remove-yarn Y2 T1 T2 //T1 és T2 Tekton között fonál létrehozása
+```
+
 Gomba növesztés
 ```java
-    grow <Név> <Tekton változó> <Gombász változó>
+    grow <Név> <Tekton változó> <Játékos változó>
     grow MS T1 //T1 Tektonon gomba növesztése
     grow MS2 T1 G2 //Gombász a T1 es Tektonon gombát növesztést kezdeményez (modell ellenőrzi, hogy megteheti-e)
 ```
@@ -78,4 +89,22 @@ Spóra szórás
 ```java
     eject <Típus> <Név> <Tekton változó>
     eject SlowingSpore SP1 T1 // Lassító spóra szórása T1 Tektonra ? kell-e gombász?
+```
+
+Spóra evés
+```java
+    eat Spore <Spóra változó> <Játékos változó>
+    eat Spore SP1 Sr1 //SR1 játékos elfogyasztani próbálja a SP1 spórát
+```
+
+Tekton split
+```java
+    split <Tekton változó> <Tekton Újváltozó> <Tekton Újváltozó>
+    neighbour T1 T2 T3
+```
+
+Player mozgatás
+```java
+    move <Player változó> <Tekton változó>
+    move P1 T1
 ```
