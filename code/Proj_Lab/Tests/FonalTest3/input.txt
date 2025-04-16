@@ -1,0 +1,3 @@
+//Célpont tekton típusának ellenőrzése
+add Tekton T1 SingleYarnTekton
+yarn T1

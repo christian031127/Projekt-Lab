@@ -1,0 +1,5 @@
+//A gombatest fonal növesztése egy szomszédos tektonra
+add Tekton T1
+add Tekton T2
+neighbour T1 T2
+Yarn T1 T2
