@@ -272,9 +272,9 @@ public class Teszt {
                     //break;   
                 }   
                 case "move": {
-                    if(command.length != 2){
+                    if(command.length != 3){
                         logger.log(Level.SEVERE, "Command move takes 3 arguments!");
-                        throw new Exception("Command move takes 2 arguments!");
+                        throw new Exception("Command move takes 3 arguments!");
                     }
 
                     Player player = (Player)gameObjectList.get(command[1]);
