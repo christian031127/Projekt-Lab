@@ -44,7 +44,7 @@ public class Teszt {
                 }
 
 
-                return record.getLevel() + ": " + message + "\n";  // Csak a log üzenet, semmi extra információ
+                return "[" + record.getLevel() + "]: " + message + "\n";  // Csak a log üzenet, semmi extra információ
             }
         };
         fileHandler.setFormatter(formatter);
@@ -80,6 +80,8 @@ public class Teszt {
                         switch (command[1]) {
                             case "Tekton":
                                 uj = new Tekton();
+                                Tekton uj2 = (Tekton)uj;
+                                uj2.setStrategy(new MultipleYarnTekton());
                                 Name=command[2];
                                 break;
                             case "Shroom":
@@ -104,7 +106,7 @@ public class Teszt {
                                 switch (command[3]) {
                                     case "AbsorbTekton":
                                         uj2= new Tekton();
-                                        uj2.setStrategy((TektonStrategy)new AbsorbTekton());
+                                        uj2.setStrategy(new AbsorbTekton());
                                         Name=command[2];
                                         break;
                                     case "SingleYarnTekton":
@@ -153,6 +155,23 @@ public class Teszt {
 
                                         throw new AssertionError();
                                 }
+                                break;
+                            case "Player":
+                                if (command.length != 5) {
+                                    throw new Exception("add Player takes 3 argument!");
+                                }   
+                                if(command[4].equals("Shroomer") || command[4].equals("Insect")){
+                                    throw new Exception("add Player invalid argument: only [Shroomer/Insect] allowed!");
+                                }
+
+                                Player p1 = new Player();
+                                p1.setIsInsect(command[4].equals("Insect"));
+                                Tekton t1 = (Tekton) gameObjectList.get(command[3]);
+                                p1.setCurrentTekton(t1);
+
+                                uj = p1;
+                                Name = command[2];
+
                                 break;
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
@@ -227,6 +246,9 @@ public class Teszt {
                         talalat.setTekton1(null);
                         talalat.setTekton2(null);
                         tekton.removeYarn(talalat);
+
+                        //megszüntetett Yarn kitörlése, hogy a gc működjön
+                        gameObjectList.remove(command[1]);
                         logger.log(Level.INFO, "Yarn removed on Tekton {0}", command[1]);
                         throw new Exception("Befejezetlen funkció!");
                     }
@@ -253,6 +275,9 @@ public class Teszt {
                         talalat.setTekton2(null);
                         tekton1.removeYarn(talalat);
                         tekton2.removeYarn(talalat);
+
+                        //megszüntetett Yarn kitörlése, hogy a gc működjön
+                        gameObjectList.remove(command[1]);
                         logger.log(Level.INFO, "Yarn removed between Tekton {0}", command[1] + " and Tekton " + command[2]);
                     }
                     break;   
@@ -266,10 +291,19 @@ public class Teszt {
                     Tekton eredeti = (Tekton)gameObjectList.get(command[1]);
                     eredeti.split();
 
-                    throw new Exception("Befejezetlen. Itt még át kéne adni a létrejövő két új Tekton nevét");
+                    Tekton elso = new Tekton();
+                    Tekton masodik = new Tekton();
+                    elso.setStrategy(new MultipleYarnTekton());
+                    masodik.setStrategy(new MultipleYarnTekton());
+                    elso.addNeighbour(masodik);
+                    masodik.addNeighbour(elso);
 
+                    gameObjectList.put(command[2], elso);
+                    gameObjectList.put(command[3], masodik);
 
-                    //break;   
+                    //Eredeti szomszédokkal mi legyen?
+
+                    break;   
                 }   
                 case "move": {
                     if(command.length != 3){
@@ -285,8 +319,27 @@ public class Teszt {
                     break;      
                 }
                 case "eat": {
-                    throw new Exception("Not inplementetd!");
-                    //break;      
+
+                    //A player csak a jelen tektonról tud fogyasztani
+                    Player player = (Player)gameObjectList.get(command[3]);
+                        
+                    switch (command[1]) {
+                        case "Spore":
+                            Spore spore = (Spore)gameObjectList.get(command[2]);
+                            player.getCurrentTekton().removeSpore(spore);
+                            //Ha nem sikerül a spóra evés, akkor a .removeSpore() nak kell kivételt dobnia!
+                            break;
+
+                        case "Yarn":
+                            Yarn yarn = (Yarn)gameObjectList.get(command[2]);
+                            player.getCurrentTekton().removeYarn(yarn);
+                            //Ha nem sikerül a yarn evés, akkor a .removeYarn() nak kell kivételt dobnia!
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+
+                    break;      
                 }
                 default:{
                     //HELP

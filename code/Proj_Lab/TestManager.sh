@@ -26,6 +26,7 @@ for file in Tests/*; do
     #rm logfile.log
 
     #Eredmény ellenőrzése
+    #Ha exception van benne, akkor instant bukó
     if [[ -e "$file/output.txt" ]]; then
 
         sikeres=1
@@ -55,7 +56,7 @@ done
 
 
 echo "Tesztek futtatásának vége!"
-echo "Eredmények: ${sikeresTesztek} / ${osszTesztSzam} (Sikeres / sikeretelenek tesztek)"
+echo "Eredmények: ${sikeresTesztek} / ${osszTesztSzam} (Sikeres / Összes tesztek)"
 
 if [[ $sikeresTesztek -eq $osszTesztSzam ]]; then
     echo -e "${GREEN}ÖSSZES TESZT SIKERES!${NC}"

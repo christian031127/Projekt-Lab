@@ -1,3 +1,5 @@
+Tekton.setStrategy() called
+Tekton.setStrategy() called
 Tekton.addNeighbour() called
 Tekton.addNeighbour() called
 Tekton.addYarn() called
@@ -7,7 +9,7 @@ Yarn.setTekton2() called
 Tekton.addYarn() called
 Tekton.addYarn() called
 Goodbye...
-INFO: Adding new gameObject T1!
-INFO: Adding new gameObject T2!
-INFO: Tekton T1 Tekton T2 are now neighbours!
-INFO: Yarn created between Tekton T1 and Tekton T2
+[INFO]: Adding new gameObject T1!
+[INFO]: Adding new gameObject T2!
+[INFO]: Tekton T1 Tekton T2 are now neighbours!
+[INFO]: Yarn created between Tekton T1 and Tekton T2

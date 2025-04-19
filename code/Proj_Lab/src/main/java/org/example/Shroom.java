@@ -5,7 +5,7 @@ import static org.example.Main.T1;
 import static org.example.Main.igazHamisKerdes;
 import static org.example.Main.scanner;
 
-public class Shroom extends  GameObject {
+public class Shroom {
     // private int team_id;
     // private Tekton tekton;
     // private int _age;

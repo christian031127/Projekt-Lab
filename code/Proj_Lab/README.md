@@ -70,7 +70,7 @@ Fonál növesztés
 Fonál evés
 ```java
     eat Yarn <Yarn változó> <Player változó>
-    eat Yarn Y1
+    eat Yarn Y1 P1
     //eat a játékost szimulálja
 
     remove-yarn <Név> <Tekton változó> [Tekton változó]
@@ -100,7 +100,7 @@ Spóra evés
 Tekton split
 ```java
     split <Tekton változó> <Tekton Újváltozó> <Tekton Újváltozó>
-    neighbour T1 T2 T3
+    split T1 T2 T3
 ```
 
 Player mozgatás

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static org.example.Main.*;
 
-public class Player extends GameObject {
+public class Player {
     //private int score;
     //private boolean isInsect;
     //private Tekton currentTekton;

@@ -5,5 +5,5 @@ Tekton.addYarn() called
 Yarn.setTekton2() called
 Tekton.addYarn() called
 Goodbye...
-INFO: Adding new gameObject T1!
-INFO: Yarn created on Tekton T1
+[INFO]: Adding new gameObject T1!
+[INFO]: Yarn created on Tekton T1

@@ -1,6 +1,6 @@
 package org.example;
 
-public class KeepAliveTekton extends GameObject implements TektonStrategy {
+public class KeepAliveTekton implements TektonStrategy {
     @Override
     public void doEffect() {
         //keeps the yarns on this tekton alive even after disconnecting from their shroom

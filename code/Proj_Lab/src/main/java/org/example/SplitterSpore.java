@@ -1,6 +1,6 @@
 package org.example;
 
-public class SplitterSpore extends GameObject implements Spore{
+public class SplitterSpore implements Spore{
 
     @Override
     public void addEffect(Player p){

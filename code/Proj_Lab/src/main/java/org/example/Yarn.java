@@ -1,6 +1,6 @@
 package org.example;
 
-public class Yarn extends GameObject{
+public class Yarn {
     public void setTekton1(Tekton tekton1) {
         if(tekton1==null){
             new Tekton().removeYarn(this);
