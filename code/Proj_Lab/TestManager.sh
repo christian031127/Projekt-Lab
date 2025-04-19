@@ -37,6 +37,12 @@ for file in Tests/*; do
                 echo -e "Nem található: ${YELLOW}$line${NC}"
                 sikeres=0
             fi
+
+            if cat $file/output.txt | grep -q "Exception"; then
+                problema = cat $file/output.txt | grep -q "Exception"
+                echo -e "Hiba található a tesztben (Exception): ${RED}$problema${NC}"
+                sikeres=0
+            fi
         done < "$file/expected.txt"
 
         if [[ $sikeres -gt 0 ]]; then
