@@ -8,7 +8,8 @@ import java.util.List;
 
 public class Tekton{
 
-    //public List<Tekton> getNeighbours(){
+    // add parameters
+    // Spore limit for shroom growing (3?)
     public List<Tekton> getNeighbours(){
         System.out.println("Tekton.getNeighbours() called");
         return new ArrayList<Tekton>();
@@ -61,7 +62,7 @@ public class Tekton{
         System.out.println("Tekton.addShroom() called");
     }
 
-    public void removeShroom(){
+    public void removeShroom(Shroom S){
         System.out.println("Tekton.removeShroom() called");
     }
 
@@ -119,16 +120,16 @@ public class Tekton{
         }
         switch (user_input) {
             case 1:
-                new AbsorbTekton().doEffect();
+                new AbsorbTekton().doEffect(this);
                 break;
             case 2:
-                new MultipleYarnTekton().doEffect();
+                new MultipleYarnTekton().doEffect(this);
                 break;
             case 3:
-                new NonShroomTekton().doEffect();
+                new NonShroomTekton().doEffect(this);
                 break;
             case 4:
-                new SingleYarnTekton().doEffect();
+                new SingleYarnTekton().doEffect(this);
                 break;
             default:
                 throw new AssertionError();

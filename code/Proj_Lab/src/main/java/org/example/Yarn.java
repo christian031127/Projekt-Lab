@@ -1,6 +1,10 @@
 package org.example;
 
 public class Yarn {
+
+    // private Tekton T1;
+    // private Tekton T2;
+    // private int shroom_player_id;
     public void setTekton1(Tekton tekton1) {
         if(tekton1==null){
             new Tekton().removeYarn(this);
@@ -28,5 +32,9 @@ public class Yarn {
 
     public Tekton getTekton2() {
         return new Tekton();
+    }
+
+    public boolean isSingleTektonYarn() {
+        return true;
     }
 }

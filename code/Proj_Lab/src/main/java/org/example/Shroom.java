@@ -1,18 +1,20 @@
 package org.example;
 
-
-import static org.example.Main.T1;
 import static org.example.Main.igazHamisKerdes;
 import static org.example.Main.scanner;
 
 public class Shroom {
-    // private int team_id;
     // private Tekton tekton;
     // private int _age;
     // private int lastEject;
+    // private int player_id;
+    // private static OLD_LIMIT = 10;
+
+    // 100 - (100 / _age/2) chance of dying
 
     public boolean isOld() {
         System.out.println("Gomba isOld() called.");
+        // _age >= OLD_LIMIT ?
         if(igazHamisKerdes("Elég idős a gomba?")) {
             return true;
         }
@@ -31,14 +33,14 @@ public class Shroom {
                 return;
             }
 
-            new Shroom().getAge();
+            new Shroom().isOld();
             if (user_input == 2 && !igazHamisKerdes("Elég idős a gomba, hogy ilyen messzire szórjon spórát?")) {
                 System.out.println("A gomba nem elég idős, sikertelen spóra szórás.");
                 return;
             }
 
             new Shroom().isSporeReady();
-            T1.addSpore(new NumbingSpore());
+            T.addSpore(new NumbingSpore());
 
         } catch (NumberFormatException e) {
             System.out.println("Hibás válasz!");
@@ -46,6 +48,7 @@ public class Shroom {
     }
 
     public void isSporeReady() {
+        // ready after every second turn
         System.out.println("Shroom.isSporeReady() called");
     }
 

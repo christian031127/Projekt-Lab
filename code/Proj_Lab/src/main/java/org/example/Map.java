@@ -2,11 +2,15 @@ package org.example;
 
 public class Map {
 
-    public void loadMap(){
+    //private Tektons;
+    //private Players;
+    //public currentPlayer;
 
+    public void loadMap(){
+        // read file, load map
     }
     public void splitTekton(Tekton tekton){
         System.out.println("Map.splitTekton() called");
-        new Tekton().split();
+        tekton.split();
     }
 }

@@ -62,9 +62,9 @@ neighbour T1 T2
 
 Fonál növesztés
 ```java
-yarn <Név> <Tekton változó> [Tekton változó]
-yarn Y1 T1 //T1 Tektonon fonál létrehozása
-yarn Y2 T1 T2 //T1 és T2 Tekton között fonál létrehozása
+yarn <Player> <Név> <Tekton változó> [Tekton változó]
+yarn Sh1 Y1 T1 //T1 Tektonon fonál létrehozása
+yarn Sh1 Y2 T1 T2 //T1 és T2 Tekton között fonál létrehozása
 ```
 
 Fonál evés
@@ -80,15 +80,15 @@ remove-yarn Y2 T1 T2 //T1 és T2 Tekton közötti fonál törlése
 
 Gomba növesztés
 ```java
-grow <Név> <Tekton változó> <Játékos változó>
-grow MS T1 //T1 Tektonon gomba növesztése
-grow MS2 T1 G2 //Gombász a T1 es Tektonon gombát növesztést kezdeményez (modell ellenőrzi, hogy megteheti-e)
+grow <Név> <Tekton változó> <Játékos változó> <Gomba kora>
+grow MS T1 G2 5//T1 Tektonon gomba növesztése
+grow MS2 T1 G2 0//G2 Gombász a T1 es Tektonon gombát növesztést kezdeményez (modell ellenőrzi, hogy megteheti-e)
 ```
 
 Spóra szórás
 ```java
-eject <Típus> <Név> <Tekton változó>
-eject SlowingSpore SP1 T1 // Lassító spóra szórása T1 Tektonra ? kell-e gombász?
+eject <Típus> <Név> <Tekton változó> <Player>
+eject SlowingSpore SP1 T1 Sh1 // Lassító spóra szórása T1 Tektonra ? kell-e gombász?
 ```
 
 Spóra evés

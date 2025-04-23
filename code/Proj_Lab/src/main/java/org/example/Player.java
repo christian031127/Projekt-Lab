@@ -2,15 +2,16 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.example.Main.*;
 
 public class Player {
     //private int score;
+    // private int player_id;
     //private boolean isInsect;
     //private Tekton currentTekton;
-    //private int[] effects = new int[4];
+    //private int[] effects = new int[5];
+    //private steps_in_round = 0;
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
@@ -164,7 +165,7 @@ public class Player {
         return new Tekton();
     }
 
-    public void setEffects(int[] effects) {
+    public void setEffects(int index, int value) {
         System.out.println("Player.setEffects(int[] effects) called");
     }
 
@@ -172,8 +173,8 @@ public class Player {
         System.out.println("Player.getEffects() called");
     }
 
-    public void setScore(int i) {
-        // this.score = i;
+    public void addScore(int i) {
+        // this.score += i;
     }
 
     public void getScore() {

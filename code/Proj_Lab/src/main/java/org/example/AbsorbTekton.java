@@ -3,10 +3,11 @@ import static org.example.Main.igazHamisKerdes;
 
 public class AbsorbTekton implements TektonStrategy{
     @Override
-    public void doEffect() {
+    public void doEffect(Tekton T) {
         System.out.println("AbsorbTekton.doEffect() called");
         while (igazHamisKerdes("Van még fonal a tektonon?")) {
-            new Tekton().removeYarn(new Yarn());
+            // Yarn mindkét attr ugyanaz akkor remove
+            T.removeYarn(new Yarn());
         }
     }
 
