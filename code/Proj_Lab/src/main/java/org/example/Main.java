@@ -2,10 +2,12 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Main {
 
     // Add static variables here
+    public static Logger logger = Logger.getLogger("MainLogger");
     public static Tekton T1 = new Tekton();
     public static Tekton T2 = new Tekton();
     public static Scanner scanner = new Scanner(System.in);

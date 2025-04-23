@@ -15,7 +15,7 @@ public class Teszt {
     public static Tekton T2 = new Tekton();
 
 
-    public static Logger logger = Logger.getLogger("MainLogger");
+    public static Logger logger = Logger.getLogger("TesztLogger");
     public static Scanner scanner = new Scanner(System.in);
 
     //Mesterséges Tároló a tesztesetek változóinak kezelésére
