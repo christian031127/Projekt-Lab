@@ -43,7 +43,7 @@ Vagy
 chmod +X TesztManager.sh
 ./TesztManager.sh
 ```
-## Teszhez használható parancsok
+## Teszthez használható parancsok
 
 Az add parancsot csak a pálya generálásához lehet használni.
 ```java
