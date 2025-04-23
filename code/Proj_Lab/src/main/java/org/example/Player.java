@@ -6,97 +6,46 @@ import java.util.List;
 import static org.example.Main.*;
 
 public class Player {
-    //private int score;
-    // private int player_id;
-    //private boolean isInsect;
-    //private Tekton currentTekton;
-    //private int[] effects = new int[5];
-    //private steps_in_round = 0;
+
+    private int player_id;
+    private boolean isInsect;
+
+    private Tekton currentTekton;
+    private int score;
+    private int[] effects = new int[5];
+    private int steps_in_round = 0;
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
-        System.out.println("interactWithSpore(List<Spore> spores) called");
-        getIsInsect();
-        if(igazHamisKerdes("Rovar vagy?")) {
-            int user_input7 = 0;
-
-            System.out.println("\nMelyik típusú spórát szeretnéd elfogyasztani?");
-            System.out.println("1. Bénító spóra");
-            System.out.println("2. Gyengítő spóra");
-            System.out.println("3. Gyorsító spóra");
-            System.out.println("4. Lassító spóra");
-            System.out.println("Choose option: ");
-            try {
-                user_input7 = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Wrong input!");
-            }
-
-            switch (user_input7) {
-                case 1: {
-                    new NumbingSpore().addEffect(this);
-                    new Tekton().removeSpore(new NumbingSpore());
-                    System.out.println("Spóra elfogyasztva.");
-                    break;
-                }
-                case 2: {
-                    new WeakeningSpore().addEffect(this);
-                    new Tekton().removeSpore(new WeakeningSpore());
-                    System.out.println("Spóra elfogyasztva.");
-                    break;
-                }
-                case 3: {
-                    new AccelerationSpore().addEffect(this);
-                    new Tekton().removeSpore(new AccelerationSpore());
-                    System.out.println("Spóra elfogyasztva.");
-                    break;
-                }
-                case 4: {
-                    new SlowingSpore().addEffect(this);
-                    new Tekton().removeSpore(new SlowingSpore());
-                    System.out.println("Spóra elfogyasztva.");
-                    break;
-                }
-                default: {
-                    System.out.println("Unknown option.");
-                }
+        if(getIsInsect()) {
+            for (Spore _spore : spores) {
+                _spore.addEffect(this);
+                this.currentTekton.removeSpore(_spore);
             }
         }
         else{
-            getCurrentTekton().getShroom();
-            if(!igazHamisKerdes("Van a tektonon gomba?")) {
-                if(igazHamisKerdes("Van elegendő spóra a tektonon, hogy gomba nőjön?")) {
-                    getCurrentTekton().addShroom(new Shroom());
-                    getCurrentTekton().removeSomeSpore(new ArrayList<Spore>());
-                    getCurrentTekton().doEffect();
-                }
-                else {
-                    System.out.println("Nincs elég spóra a tektonon, nem nőhet gomba!");
-                }
+            if (getCurrentTekton().getShroom() != null) {
+                return;
             }
-            else {
-                System.out.println("A tektonon van már gomba, nem nőhet újabb!");
+            if (getCurrentTekton().getSpores().size() >= 3) {
+                Shroom s = new Shroom();
+                getCurrentTekton().addShroom(s);
+                getCurrentTekton().removeSomeSpore(spores);
+                getCurrentTekton().doEffect();
             }
-
         }
-
     }
 
     public void interactWithYarn(Yarn yarn) {
         // Implementation
-        System.out.println("interactWithYarn(Yarn yarn) called");
-        getIsInsect();
-        if(igazHamisKerdes("Rovar vagy?")){
-           getEffects();
-           if(!igazHamisKerdes("Rajtad van a gyengítő spóra?")){
-
-                yarn.setTekton1(null);
-                yarn.setTekton2(null);
-
-                System.out.println("A fonál el lett távolítva!");
-           } else {
-               System.out.println("A fonál nem távolítható el!");
+        if(getIsInsect()){
+           if(getEffects()[4] == 1) {
+               return;
            }
+           yarn.getTekton1().removeYarn(yarn);
+           yarn.getTekton2().removeYarn(yarn);
+           yarn.setTekton1(null);
+           yarn.setTekton2(null);
         }
         else {
             T1.getNeighbours();
@@ -135,49 +84,52 @@ public class Player {
 
     public void move(Tekton tekton) {
         System.out.println("Player.move(Tekton tekton) called");
-        new Player().getIsInsect();
-        if (!igazHamisKerdes("Rovar vagy?")) {
-            new Shroom().ejectSpore(tekton);
-        }else {
-            new Tekton().getYarns();
-            if (igazHamisKerdes("Van gombafonal a mozgó tektonra?")) {
-                new Player().setCurrentTekton(new Tekton());
-            } else {
-                System.out.println("Esemény megszakítva!");
+        if (!isInsect) {
+            Shroom s = tekton.getShroom();
+            if(s != null) {
+                s.ejectSpore(tekton);
             }
+        } else {
+            List<Yarn> yarns = this.currentTekton.getYarns();
+            for(Yarn y : yarns) {
+                if(y.getTekton1() == tekton || y.getTekton2() == tekton) {
+                    this.setCurrentTekton(tekton);
+                    break;
+                }
+            }
+
         }
     }
 
     public void setIsInsect(boolean b) {
-        System.out.println("Player.setIsInsect(boolean b) called");
+        this.isInsect = b;
     }
 
-    public void getIsInsect() {
-        System.out.println("Player.getIsInsect() called");
+    public boolean getIsInsect() {
+        return this.isInsect;
     }
 
     public void setCurrentTekton(Tekton tekton) {
-        System.out.println("Player.setCurrentTekton(Tekton tekton) called");
+        this.currentTekton = tekton;
     }
 
     public Tekton getCurrentTekton() {
-        System.out.println("Player.getCurrentTekton() called");
-        return new Tekton();
+        return this.currentTekton;
     }
 
     public void setEffects(int index, int value) {
-        System.out.println("Player.setEffects(int[] effects) called");
+        this.effects[index] = value;
     }
 
-    public void getEffects() {
-        System.out.println("Player.getEffects() called");
+    public int[] getEffects() {
+        return this.effects;
     }
 
     public void addScore(int i) {
-        // this.score += i;
+        this.score += i;
     }
 
-    public void getScore() {
-        // return score;
+    public int getScore() {
+        return score;
     }
 }

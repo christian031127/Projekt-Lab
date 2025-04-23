@@ -13,7 +13,7 @@ public class Tekton{
     private List<Tekton> neighbours;
     private List<Yarn> yarns;
     private List<Spore> spores;
-    private Shroom shroom;
+    private Shroom shroom = null;
 
 
     // Spore limit for shroom growing (3?)
