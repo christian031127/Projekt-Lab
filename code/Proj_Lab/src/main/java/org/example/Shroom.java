@@ -71,7 +71,8 @@ public class Shroom {
         if (isOld() && advanced) {
 
             SporeType selectedSpore = getRandomSpore();
-            target.addSpore(createSpore(selectedSpore));
+            Spore spore = createSpore(selectedSpore);
+            target.addSpore(spore);
             lastEject = currentTurn;
             ejectCount++;
 
@@ -79,11 +80,12 @@ public class Shroom {
                 die();
             }
 
-            return createSpore(selectedSpore);
+            return spore;
         } else if (basic) {
 
             SporeType selectedSpore = getRandomSpore();
-            target.addSpore(createSpore(selectedSpore));
+            Spore spore = createSpore(selectedSpore);
+            target.addSpore(spore);
             lastEject = currentTurn;
             ejectCount++;
 
@@ -91,9 +93,9 @@ public class Shroom {
                 die();
             }
 
-            return createSpore(selectedSpore);
+            return spore;
         }
-        
+
         return null;
     }
 
