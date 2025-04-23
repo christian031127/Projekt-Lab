@@ -1,139 +1,120 @@
 package org.example;
 
-import static org.example.Main.igazHamisKerdes;
-import static org.example.Main.scanner;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+
+import static org.example.Main.logger;
 
 public class Tekton{
 
     // add parameters
+    private TektonStrategy strategy;
+    private List<Tekton> neighbours;
+    private List<Yarn> yarns;
+    private List<Spore> spores;
+    private Shroom shroom;
+
+
     // Spore limit for shroom growing (3?)
     public List<Tekton> getNeighbours(){
-        System.out.println("Tekton.getNeighbours() called");
-        return new ArrayList<Tekton>();
+        logger.log(Level.FINE, "Tekton.getNeighbours() called");
+        return neighbours;
     }
 
     public void addNeighbour(Tekton tekton){
-        System.out.println("Tekton.addNeighbour() called");
+        logger.log(Level.FINE, "Tekton.addNeighbour() called");
+        neighbours.add(tekton);
     }
 
     public void removeNeighbour(Tekton tekton){
-        System.out.println("Tekton.removeNeighbour() called");
+        logger.log(Level.FINE, "Tekton.removeNeighbour() called");
+        neighbours.remove(tekton);
     }
 
     public Shroom getShroom(){
-        System.out.println("Tekton.getShroom() called");
-        return new Shroom();
+        logger.log(Level.FINE, "Tekton.getShroom() called");
+        return shroom;
     }
 
     public List<Spore> getSpores(){
-        System.out.println("Tekton.getSpores() called");
-        return new ArrayList<Spore>();
+        logger.log(Level.FINE, "Tekton.getSpores() called");
+        return spores;
     }
 
     public List<Yarn> getYarns(){
-        System.out.println("Tekton.getYarns() called");
-        return new ArrayList<Yarn>();
+        logger.log(Level.FINE, "Tekton.getYarns() called");
+        return yarns;
     }
 
-    public void getStrategy() {
-        System.out.println("Tekton.getStrategy() called");
+    public TektonStrategy getStrategy() {
+        logger.log(Level.FINE, "Tekton.getStrategy() called");
+        return strategy;
     }
 
     public void setStrategy(TektonStrategy strategy){
-        System.out.println("Tekton.setStrategy() called");
+        logger.log(Level.FINE, "Tekton.setStrategy() called");
+        this.strategy = strategy;
     }
 
     public void addYarn(Yarn yarn){
-        System.out.println("Tekton.addYarn() called");
+        logger.log(Level.FINE, "Tekton.addYarn() called");
+        yarns.add(yarn);
     }
 
     public void removeYarn(Yarn yarn){
-        System.out.println("Tekton.removeYarn() called");
+        logger.log(Level.FINE, "Tekton.removeYarn() called");
+        yarns.remove(yarn);
     }
 
     public void clearYarns(){
-        System.out.println("Tekton.clearYarns() called");
+        logger.log(Level.FINE, "Tekton.clearYarns() called");
+        yarns = new ArrayList<Yarn>();
     }
 
     public void addShroom(Shroom shroom){
-        System.out.println("Tekton.addShroom() called");
+        logger.log(Level.FINE, "Tekton.addShroom() called");
+        this.shroom = shroom;
     }
 
-    public void removeShroom(Shroom S){
-        System.out.println("Tekton.removeShroom() called");
+    public void removeShroom(){
+        logger.log(Level.FINE, "Tekton.removeShroom() called");
+        shroom = null;
     }
 
     public void addSpore(Spore spore){
-        System.out.println("Tekton.addSpore() called");
+        logger.log(Level.FINE, "Tekton.addSpore() called");
+        spores.add(spore);
     }
 
     public void removeSpore(Spore spore){
-        System.out.println("Tekton.removeSpore() called");
+        logger.log(Level.FINE, "Tekton.removeSpore() called");
+        spores.remove(spore);
     }
 
-    public void removeSomeSpore(List<Spore> spores){
-        System.out.println("Tekton.removeSomeSpore() called");
+    public void removeSomeSpore(List<Spore> spores_list){
+        logger.log(Level.FINE, "Tekton.removeSomeSpore() called");
+        for (Spore s : spores_list){
+            removeSpore(s);
+        }
     }
 
     public void split(){
-        System.out.println("Tekton.split() called");
+        logger.log(Level.FINE, "Tekton.split() called");
 
-        while(igazHamisKerdes("Van még fonalas összeköttetése?")){
-            this.removeYarn(new Yarn());
-            
-            //Szomszéd
-            new Tekton().removeYarn(new Yarn());
+        for(Yarn y : yarns){
+            removeYarn(y);
         }
 
-        while(igazHamisKerdes("Van még szomszédja?")){
-            this.removeNeighbour(new Tekton());
-
-            //Szomszédnak hozzáadása
-            new Tekton().addNeighbour(new Tekton());
+        //A Map.split ben al kell tárolni a szomszédokat a törlés előtt!
+        for(Tekton t : neighbours){
+            removeNeighbour(t);
         }
-
-        //Szomszéd tekton hozzáadása
-        new Tekton().addNeighbour(this);
-
-        this.addNeighbour(new Tekton());
     }
 
     public void doEffect(){
-        System.out.println("Tekton.doEffect() called");
-        System.out.println("Milyen fajta tekton vagyok?\n1. Abszorbáló\n2. Több fonalas\n3. Gombatagadó\n4. Egy fonalas");
-        System.out.println("Válassz egy lehetőséget: ");
-        int user_input = 0;
-        try {
-            user_input = Integer.parseInt(scanner.nextLine());
-            if (user_input < 1 || user_input > 4) {
-                throw new AssertionError("Hibás formátumú válasz!");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Hibás formátumú válasz!");
-            return;
-        } catch (AssertionError e) {
-            System.out.println(e.getMessage());
-            return;
-        }
-        switch (user_input) {
-            case 1:
-                new AbsorbTekton().doEffect(this);
-                break;
-            case 2:
-                new MultipleYarnTekton().doEffect(this);
-                break;
-            case 3:
-                new NonShroomTekton().doEffect(this);
-                break;
-            case 4:
-                new SingleYarnTekton().doEffect(this);
-                break;
-            default:
-                throw new AssertionError();
-        }
+        logger.log(Level.FINE, "Tekton.doEffect() called");
+        strategy.doEffect(this);
     }    
 
 }
