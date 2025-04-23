@@ -37,4 +37,8 @@ public class Yarn {
     public boolean isSingleTektonYarn() {
         return true;
     }
+
+    public int getShroomPlayerId() {
+        return 0;
+    }
 }

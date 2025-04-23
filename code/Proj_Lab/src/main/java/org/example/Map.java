@@ -5,6 +5,7 @@ public class Map {
     //private Tektons;
     //private Players;
     //public currentPlayer;
+    public static int currentTurn = 0;
 
     public void loadMap(){
         // read file, load map

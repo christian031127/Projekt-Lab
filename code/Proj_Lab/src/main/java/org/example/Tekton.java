@@ -115,6 +115,25 @@ public class Tekton{
     public void doEffect(){
         logger.log(Level.FINE, "Tekton.doEffect() called");
         strategy.doEffect(this);
-    }    
+    }
+
+    public void deleteYarnsOnTekton(){
+        logger.log(Level.FINE, "Tekton.deleteYarnsOnTekton() called");
+        for (Yarn yarn : getYarns()) {
+            if (yarn.isSingleTektonYarn()) {
+                int id = yarn.getShroomPlayerId();
+                boolean hasneighbour = false;
+                for (Yarn yarn1 : getYarns()) {
+                    if (yarn1.getShroomPlayerId() == id) {
+                        hasneighbour = true;
+                        break;
+                    }
+                }
+                if (!hasneighbour && shroom.getTeam_id()!= yarn.getShroomPlayerId()) {
+                    removeYarn(yarn);
+                }
+            }
+        }
+    }
 
 }
