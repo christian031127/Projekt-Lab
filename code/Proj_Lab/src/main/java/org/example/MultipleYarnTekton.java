@@ -6,6 +6,7 @@ public class MultipleYarnTekton implements TektonStrategy {
         //lets the tekton have multiple yarns
         // default
         System.out.println("MultipleYarnTekton.doEffect() called");
+        T.deleteYarnsOnTekton();
     }
 
 }

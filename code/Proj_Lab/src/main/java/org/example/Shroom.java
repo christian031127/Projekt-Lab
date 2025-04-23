@@ -66,7 +66,7 @@ public class Shroom {
         System.out.println("Gomba meghalt.");
     }
 
-    public void getTeam_id() {
+    public int getTeam_id() {
         // return team_id;
     }
 
