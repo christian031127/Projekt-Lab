@@ -28,7 +28,7 @@ public class Shroom {
         SPLITTING;
     }
 
-    public Shroom () {
+    public Shroom() {
         this.tekton = null;
         this.playerId = -1;
     }
@@ -56,7 +56,7 @@ public class Shroom {
         return cooldownElapsed && hasRemainingEjects && isAlive;
     }
 
-    public void ejectSpore(Tekton target) {
+    public Spore ejectSpore(Tekton target) {
 
         //Lekérdezni a jelenlegi kör számát
         int currentTurn = Map.currentTurn;
@@ -65,26 +65,36 @@ public class Shroom {
         boolean advanced = tekton.getNeighbours().stream().anyMatch(neighbour -> neighbour.getNeighbours().contains(target));
 
         if (!isSporeReady()) {
-            return; 
+            return null;
         }
 
         if (isOld() && advanced) {
 
-            SporeType selectedSpore = getRandomSpore();  
-            target.addSpore(createSpore(selectedSpore)); 
-            lastEject = currentTurn;
-            ejectCount++;
-        } else if (basic) {
-
-            SporeType selectedSpore = getRandomSpore();  
+            SporeType selectedSpore = getRandomSpore();
             target.addSpore(createSpore(selectedSpore));
             lastEject = currentTurn;
             ejectCount++;
-        }
 
-        if (ejectCount >= MAX_EJECTS) {
-            die();
+            if (ejectCount >= MAX_EJECTS) {
+                die();
+            }
+
+            return createSpore(selectedSpore);
+        } else if (basic) {
+
+            SporeType selectedSpore = getRandomSpore();
+            target.addSpore(createSpore(selectedSpore));
+            lastEject = currentTurn;
+            ejectCount++;
+
+            if (ejectCount >= MAX_EJECTS) {
+                die();
+            }
+
+            return createSpore(selectedSpore);
         }
+        
+        return null;
     }
 
     private void die() {
