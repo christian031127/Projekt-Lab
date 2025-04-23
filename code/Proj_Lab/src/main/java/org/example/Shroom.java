@@ -12,7 +12,7 @@ public class Shroom {
     private int lastEject = 0;
     private int ejectCount = 0;
 
-    private static final int OLD_LIMIT = 10;
+    private static final int OLD_LIMIT = 12;
     private static final int MAX_EJECTS = 5; // max ennyiszer szórhat
     private static final int EJECT_COOLDOWN = 2; // ennyi körönként szórhat újra
 
