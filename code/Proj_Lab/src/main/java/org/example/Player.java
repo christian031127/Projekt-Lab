@@ -34,6 +34,7 @@ public class Player {
                 getCurrentTekton().doEffect();
             }
         }
+        steps_in_round++;
     }
 
     public void interactWithYarn(Yarn yarn) {
@@ -48,46 +49,17 @@ public class Player {
            yarn.setTekton2(null);
         }
         else {
-            T1.getNeighbours();
-            System.out.println("Melyik tektonra szeretnéd felhelyezni a fonált?");
-            System.out.println("1. Szomszédos tektonra nő a fonál\n2. A jelenlegi tektont növi be a fonál");
-            System.out.println("Válassz egy lehetőséget: ");
-
-            try {
-                int user_input1 = Integer.parseInt(scanner.nextLine());
-                if (user_input1 < 1 || user_input1 > 2) {
-                    System.out.println("Hibás válasz!");
-                    return;
-                }
-
-                new Tekton().getStrategy();
-
-                if (igazHamisKerdes("Nőhet fonál a kiválasztott tektonra?")) {
-                    new Yarn().setTekton1(T1);
-                    if (user_input1 == 1) {
-                        new Yarn().setTekton2(T2);
-                        T2.doEffect();
-                    } else {
-                        new Yarn().setTekton2(T1);
-                    }
-                    T1.doEffect();
-
-                } else {
-                    System.out.println("A tektonra nem nőhet fonál, sikertelen növesztés!");
-                }
-
-            } catch (NumberFormatException e) {
-                System.out.println("Hibás válasz!");
-            }
+            yarn.getTekton2().doEffect();
+            yarn.getTekton1().doEffect();
         }
     }
 
-    public void move(Tekton tekton) {
+    public Spore move(Tekton tekton) {
         System.out.println("Player.move(Tekton tekton) called");
         if (!isInsect) {
             Shroom s = tekton.getShroom();
             if(s != null) {
-                s.ejectSpore(tekton);
+                return s.ejectSpore(tekton);
             }
         } else {
             List<Yarn> yarns = this.currentTekton.getYarns();
@@ -97,8 +69,8 @@ public class Player {
                     break;
                 }
             }
-
         }
+        return null;
     }
 
     public void setIsInsect(boolean b) {
