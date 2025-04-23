@@ -129,7 +129,7 @@ public class Tekton{
                         break;
                     }
                 }
-                if (!hasneighbour && shroom.getTeam_id()!= yarn.getShroomPlayerId()) {
+                if (!hasneighbour && shroom.getPlayerId()!= yarn.getShroomPlayerId()) {
                     removeYarn(yarn);
                 }
             }

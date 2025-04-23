@@ -28,6 +28,11 @@ public class Shroom {
         SPLITTING;
     }
 
+    public Shroom () {
+        this.tekton = null;
+        this.playerId = -1;
+    }
+    
     public Shroom(Tekton tekton, int playerId) {
         this.tekton = tekton;
         this.playerId = playerId;
