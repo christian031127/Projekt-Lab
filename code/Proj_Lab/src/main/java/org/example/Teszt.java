@@ -88,10 +88,7 @@ public class Teszt {
                                 uj = new Shroom();
                                 Name=command[2];
                                 break;
-                            //case "Yarn":
-                            //    uj = new Yarn();
-                            //    uj.SetName(command[2]);
-                            //    break;
+                            
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
                                 throw new AssertionError();
@@ -173,6 +170,23 @@ public class Teszt {
                                 Name = command[2];
 
                                 break;
+
+                            case "Yarn":
+                                if (command.length < 4){
+                                    throw new Exception("add Yarn not enough arguments!");
+                                }
+                                uj = new Yarn();
+                                Yarn uj3 = (Yarn) uj;
+                                Tekton t3 = (Tekton)gameObjectList.get(command[2]);
+                                Tekton t4 = (Tekton)gameObjectList.get(command[3]);
+                                uj3.setTekton1(t3);
+                                uj3.setTekton2(t4);
+
+                                t3.addYarn(uj3);
+                                t4.addYarn(uj3);
+
+                                Name= command[2];
+                                break;
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
                                 throw new AssertionError();
@@ -197,30 +211,30 @@ public class Teszt {
                     break;
                 }
                 case "yarn": {
-                    if(command.length < 2 || command.length > 3){
-                        logger.log(Level.SEVERE, "Command yarn takes 2 arguments!");
-                        throw new Exception("Command yarn takes 2 arguments!");
+                    if(command.length < 3 || command.length > 6){
+                        logger.log(Level.SEVERE, "Command yarn takes 3 arguments!");
+                        throw new Exception("Command yarn takes 3 arguments!");
                     }
-
+                    Yarn yarn = new Yarn();
                     //Tektonon fonál növesztés
-                    if(command.length == 2){
-                        Tekton tekton = (Tekton)gameObjectList.get(command[1]);
-                        Yarn yarn = new Yarn();
-                        yarn.setTekton1(tekton);
-                        yarn.setTekton2(tekton);
-                        tekton.addYarn(yarn);
-                        logger.log(Level.INFO, "Yarn created on Tekton {0}", command[1]);
+                    if(command.length == 4){
+                        Player p1 = (Player) gameObjectList.get(command[1]);
+                        yarn.setTekton1((Tekton)gameObjectList.get(command[3]));
+                        yarn.setTekton2((Tekton)gameObjectList.get(command[3]));
+                        p1.interactWithYarn(yarn);
+
+                        logger.log(Level.INFO, "Yarn created on Tekton {0}", command[2]);
                     }
-                    if(command.length == 3){
-                        Tekton tekton1 = (Tekton)gameObjectList.get(command[1]);
-                        Tekton tekton2 = (Tekton)gameObjectList.get(command[2]);
-                        Yarn yarn = new Yarn();
-                        yarn.setTekton1((Tekton)tekton1);
-                        yarn.setTekton2((Tekton)tekton2);
-                        tekton1.addYarn(yarn);
-                        tekton2.addYarn(yarn);
+                    if(command.length == 5){
+                        Player p1 = (Player) gameObjectList.get(command[1]);
+                        yarn.setTekton1((Tekton)gameObjectList.get(command[3]));
+                        yarn.setTekton2((Tekton)gameObjectList.get(command[4]));
+                        p1.interactWithYarn(yarn);
+                        
                         logger.log(Level.INFO, "Yarn created between Tekton {0}", command[1] + " and Tekton " + command[2]);
+                        
                     }
+                    gameObjectList.put(command[1], yarn);
                     break;     
                 } 
                 case "remove-yarn": {
@@ -340,6 +354,33 @@ public class Teszt {
                     }
 
                     break;      
+                }
+
+                case "eject":{
+                    if(command.length != 4){
+                        logger.log(Level.SEVERE, "Command move takes 4 arguments!");
+                        throw new Exception("Command move takes 4 arguments!");
+                    }
+                    
+                    Player p1 = (Player) gameObjectList.get(command[3]);
+                    Tekton t1 = (Tekton) gameObjectList.get(command[2]);
+                    Spore spore = p1.move(t1);
+                    gameObjectList.put(command[1], spore);
+                }
+                case "grow":{
+                    if(command.length != 5){
+                        logger.log(Level.SEVERE, "Command move takes 4 arguments!");
+                        throw new Exception("Command move takes 4 arguments!");
+                    }
+                    Shroom s = new Shroom();
+                    Player p1 = (Player) gameObjectList.get(command[3]);
+                    Tekton t1 = (Tekton) gameObjectList.get(command[2]);
+
+                    int kor = Integer.parseInt(command[4]);
+                    for(int i = 0; i < kor; i++){
+                        s.age();
+                    }
+                    gameObjectList.put(command[1], s);
                 }
                 default:{
                     //HELP

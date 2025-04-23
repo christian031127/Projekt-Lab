@@ -87,8 +87,8 @@ grow MS2 T1 G2 0//G2 Gombász a T1 es Tektonon gombát növesztést kezdeményez
 
 Spóra szórás
 ```java
-eject <Típus> <Név> <Tekton változó> <Player>
-eject SlowingSpore SP1 T1 Sh1 // Lassító spóra szórása T1 Tektonra ? kell-e gombász?
+eject <Név> <Tekton változó> <Player>
+eject SP1 T1 Sh1 // Lassító spóra szórása T1 Tektonra ? kell-e gombász?
 ```
 
 Spóra evés
