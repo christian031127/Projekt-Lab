@@ -1,2 +1,0 @@
-Adding new gameObject T1!
-Yarn created on Tekton

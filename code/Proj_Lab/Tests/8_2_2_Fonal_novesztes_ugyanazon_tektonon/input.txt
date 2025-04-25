@@ -1,3 +1,4 @@
 //Fonal növesztés ugyanazon tektonon
 add Tekton T1
-yarn T1
+add Player Sh1 T1 Shroomer
+yarn Sh1 Y1 T1

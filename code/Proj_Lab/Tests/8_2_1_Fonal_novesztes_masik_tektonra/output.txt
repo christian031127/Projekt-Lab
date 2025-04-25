@@ -1,4 +1,6 @@
-Goodbye...
+Yarn.setTekton1() called
+Yarn.setTekton2() called
 [INFO]: Adding new gameObject T1!
 [INFO]: Adding new gameObject T2!
+[INFO]: Adding new gameObject Sh1!
 [INFO]: Tekton T1 Tekton T2 are now neighbours!

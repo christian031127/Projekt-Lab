@@ -10,9 +10,9 @@ public class Tekton{
 
     // add parameters
     private TektonStrategy strategy;
-    private List<Tekton> neighbours;
-    private List<Yarn> yarns;
-    private List<Spore> spores;
+    private List<Tekton> neighbours = new ArrayList<Tekton>();
+    private List<Yarn> yarns = new ArrayList<Yarn>();
+    private List<Spore> spores = new ArrayList<Spore>();
     private Shroom shroom = null;
 
 

@@ -157,7 +157,7 @@ public class Teszt {
                                 if (command.length != 5) {
                                     throw new Exception("add Player takes 3 argument!");
                                 }   
-                                if(command[4].equals("Shroomer") || command[4].equals("Insect")){
+                                if(!command[4].equals("Shroomer") && !command[4].equals("Insect")){
                                     throw new Exception("add Player invalid argument: only [Shroomer/Insect] allowed!");
                                 }
 

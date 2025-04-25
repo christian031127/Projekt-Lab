@@ -1,2 +1,0 @@
-[INFO]: Adding new gameObject T1!
-[INFO]: Adding new gameObject T2!

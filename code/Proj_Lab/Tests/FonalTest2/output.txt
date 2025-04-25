@@ -1,2 +1,0 @@
-[INFO]: Adding new gameObject T1!
-[SEVERE]: Command yarn takes 3 arguments!
