@@ -1,0 +1,7 @@
+Goodbye...
+[INFO]: Adding new gameObject T1!
+[INFO]: Adding new gameObject S1!
+[INFO]: Adding new gameObject S2!
+[INFO]: Adding new gameObject S3!
+[INFO]: Adding new gameObject Sh1!
+[WARNING]: Command grow not found!

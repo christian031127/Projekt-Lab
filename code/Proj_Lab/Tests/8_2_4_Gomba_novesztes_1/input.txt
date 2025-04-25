@@ -1,0 +1,7 @@
+//NonShroomTektonnon gomba növesztés próba
+add Tekton T1 NonShroomTekton
+add Spore S1 T1 AccelerationSpore
+add Spore S2 T1 AccelerationSpore
+add Spore S3 T1 AccelerationSpore
+add Player Sh1 T1 Shroomer
+grow Ms1 T1 Sh1 0

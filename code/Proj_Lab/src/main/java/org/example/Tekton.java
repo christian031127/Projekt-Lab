@@ -16,6 +16,10 @@ public class Tekton{
     private Shroom shroom = null;
 
 
+    public Tekton(){
+        strategy = new MultipleYarnTekton();
+    }
+
     // Spore limit for shroom growing (3?)
     public List<Tekton> getNeighbours(){
         logger.log(Level.FINE, "Tekton.getNeighbours() called");

@@ -57,7 +57,7 @@ for file in Tests/*; do
         echo "nem található fájl"
     fi
 
-    echo "---- $file Vége ----"
+    #echo "---- $file Vége ----"
 done
 
 

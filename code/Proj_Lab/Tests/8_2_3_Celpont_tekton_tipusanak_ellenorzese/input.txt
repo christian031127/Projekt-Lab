@@ -1,0 +1,5 @@
+//Célpont tekton típusának ellenőrzése
+//Célszerűbb lenne azt, hogy a második fonal növesztéskor nem enged
+add Tekton T1 SingleYarnTekton
+add Player Sh1 T1 Shroomer
+yarn Sh1 Y1 T1

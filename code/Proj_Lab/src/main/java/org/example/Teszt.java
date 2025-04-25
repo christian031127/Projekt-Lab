@@ -127,7 +127,7 @@ public class Teszt {
                                 }
                                 break;
                             case "Spore":
-                                switch (command[3]) {
+                                switch (command[4]) {
                                     case "SlowingSpore":
                                         uj = new SlowingSpore();
                                         Name=command[2];
@@ -149,9 +149,12 @@ public class Teszt {
                                         Name=command[2];
                                             break;
                                     default:
-
                                         throw new AssertionError();
                                 }
+
+                                Tekton t8 = (Tekton) gameObjectList.get(command[3]);
+                                t8.addSpore((Spore)uj);
+
                                 break;
                             case "Player":
                                 if (command.length != 5) {
@@ -223,7 +226,7 @@ public class Teszt {
                         yarn.setTekton2((Tekton)gameObjectList.get(command[3]));
                         p1.interactWithYarn(yarn);
 
-                        logger.log(Level.INFO, "Yarn created on Tekton {0}", command[2]);
+                        logger.log(Level.INFO, "Yarn created on Tekton {0}", command[3]);
                     }
                     if(command.length == 5){
                         Player p1 = (Player) gameObjectList.get(command[1]);
@@ -231,7 +234,7 @@ public class Teszt {
                         yarn.setTekton2((Tekton)gameObjectList.get(command[4]));
                         p1.interactWithYarn(yarn);
                         
-                        logger.log(Level.INFO, "Yarn created between Tekton {0}", command[1] + " and Tekton " + command[2]);
+                        logger.log(Level.INFO, "Yarn created between Tekton {0}", command[3] + " and Tekton " + command[4]);
                         
                     }
                     gameObjectList.put(command[1], yarn);
