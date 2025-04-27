@@ -64,6 +64,7 @@ public class Player {
                 return s.ejectSpore(tekton);
             }
         } else {
+            if(getEffects()[1]==1){return new NumbingSpore(); }
             List<Yarn> yarns = this.currentTekton.getYarns();
             boolean moved = false;
             for(Yarn y : yarns) {
