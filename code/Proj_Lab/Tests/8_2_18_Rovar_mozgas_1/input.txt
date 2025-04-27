@@ -1,0 +1,5 @@
+add Tekton T1
+add Tekton T2
+neighbour T1 T2
+add Player I1 T1 Insect
+move I1 T2

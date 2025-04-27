@@ -1,0 +1,5 @@
+Adding new gameObject T1!
+Adding new gameObject T2!
+Tekton T1 Tekton T2 are now neighbours!
+Adding new gameObject I1!
+Failed to move Player I1 to Tekton T2
