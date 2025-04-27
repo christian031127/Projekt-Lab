@@ -1,7 +1,3 @@
-command: add Tekton T1command[0]: add
-command: add Tekton T2command[0]: add
-command: neighbour T1 T2command[0]: neighbour
-command: yarn T1 T2command[0]: yarn
 Goodbye...
 [INFO]: Adding new gameObject T1!
 [INFO]: Adding new gameObject T2!

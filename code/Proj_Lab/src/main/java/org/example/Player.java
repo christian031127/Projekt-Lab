@@ -58,7 +58,7 @@ public class Player {
         }
     }
 
-    public Spore move(Tekton tekton) throws Exception {
+    public Spore move(Tekton tekton) {
         if (!isInsect) {
             Shroom s = tekton.getShroom();
             if(s != null) {
@@ -75,7 +75,8 @@ public class Player {
                 }
             }
             if(!moved) {
-                throw new Exception("Could not move to tekton!");
+                // Ha nem null a return érték akkor sikertelen a mozgás
+                return new NumbingSpore();
             }
         }
         return null;

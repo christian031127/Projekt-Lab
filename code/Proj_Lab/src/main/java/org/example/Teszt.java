@@ -329,11 +329,12 @@ public class Teszt {
 
                     Player player = (Player)gameObjectList.get(command[1]);
                     Tekton celpont = (Tekton)gameObjectList.get(command[2]);
-                    try {
-                        player.move(celpont);
-                        logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {}-ra!", command[2]);
-                    } catch (Exception e) {
-                        logger.log(Level.WARNING, "Failed to move Player {0}", command[1] + " to Tekton " + command[2]);
+
+                    Spore ret = player.move(celpont);
+                    if(ret == null) {
+                        logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {0}-ra!", command[2]);
+                    } else {
+                        logger.log(Level.WARNING, "Failed to move Player {0}", String.valueOf(command[1]) + " to Tekton " + String.valueOf(command[2]));
                     }
                     // A move függvény ellenőrzi
                     //logger.warning("Ellenőrizni, kell, hogy tud-e a megadott tektonra mozogni!")

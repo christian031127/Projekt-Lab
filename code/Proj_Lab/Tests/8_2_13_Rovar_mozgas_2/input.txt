@@ -1,0 +1,7 @@
+add Tekton T1
+add Tekton T2
+neighbour T1 T2
+add Player Sh1 T1 Shroomer
+yarn Sh1 Y1 T1 T2
+add Player I1 T1 Insect
+move I1 T2
