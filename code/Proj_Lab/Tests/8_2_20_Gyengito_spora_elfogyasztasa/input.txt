@@ -1,0 +1,9 @@
+add Tekton T1
+add Tekton T2
+neighbour T1 T2
+add Player Sh1 T2 Shroomer
+yarn Sh1 Y1 T1 T2
+add Spore Sp1 T1 WeakeningSpore
+add Player In1 T1 Insect
+eat Spore Sp1 In1
+eat Yarn Y1 In1

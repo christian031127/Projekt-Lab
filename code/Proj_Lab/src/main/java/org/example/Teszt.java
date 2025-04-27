@@ -177,8 +177,8 @@ public class Teszt {
                                 }
                                 uj = new Yarn();
                                 Yarn uj3 = (Yarn) uj;
-                                Tekton t3 = (Tekton) gameObjectList.get(command[2]);
-                                Tekton t4 = (Tekton) gameObjectList.get(command[3]);
+                                Tekton t3 = (Tekton)gameObjectList.get(command[2]);
+                                Tekton t4 = (Tekton)gameObjectList.get(command[3]);
                                 uj3.setTekton1(t3);
                                 uj3.setTekton2(t4);
 
@@ -320,7 +320,7 @@ public class Teszt {
 
                     gameObjectList.put(command[2], elso);
                     gameObjectList.put(command[3], masodik);
-
+                    logger.log(Level.INFO,"Tekton {0} splitted!",command[1]);
                     //Eredeti szomszédokkal mi legyen?
                     break;
                 }
@@ -346,7 +346,7 @@ public class Teszt {
                 case "eat": {
 
                     //A player csak a jelen tektonról tud fogyasztani
-                    Player player = (Player) gameObjectList.get(command[3]);
+                    Player player = (Player) gameObjectList.get(command[2]);
 
                     switch (command[1]) {
                         case "Spore":
@@ -354,6 +354,7 @@ public class Teszt {
                             List<Spore> spores = new ArrayList<>();
                             spores.add(spore);
                             player.interactWithSpore(spores);
+                            logger.log(Level.INFO, "Sikeres spora evés!");
                             //Ha nem sikerül a spóra evés, akkor a .removeSpore() nak kell kivételt dobnia!
                             break;
 
@@ -366,6 +367,17 @@ public class Teszt {
                                 logger.log(Level.INFO, "Sikeres fonal elrágás!");
                             }
                             //Ha nem sikerül a yarn evés, akkor a .removeYarn() nak kell kivételt dobnia!
+                            break;
+                        case "Insect":
+                            Yarn yarn2 = (Yarn)gameObjectList.get(command[2]);
+                            Player p= (Player)gameObjectList.get(command[3]);
+
+                            boolean ret2 = yarn2.eatNumbInsect(p);;
+                            if(!ret2) {
+                                logger.log(Level.WARNING, "Sikertelen rovar evés!");
+                            } else {
+                                logger.log(Level.INFO, "Sikeres rovar evés!");
+                            }
                             break;
                         default:
                             throw new AssertionError();

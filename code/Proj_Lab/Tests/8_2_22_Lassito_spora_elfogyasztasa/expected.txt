@@ -1,0 +1,10 @@
+Adding new gameObject T1
+Adding new gameObject T2
+Tekton T1 Tekton T2 are now neighbours!
+Adding new gameObject Sh1
+Yarn created between Tekton T1 and Tekton T2
+Adding new gameObject Sp1
+Adding new gameObject In1
+Sikeres spora
+Player mozgatása megtörtént Tekton T2-ra!
+Failed to move Player In1 to Tekton T1

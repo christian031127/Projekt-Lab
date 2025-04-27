@@ -1,0 +1,6 @@
+add Tekton T1
+add Tekton T2
+add Tekton T3
+neighbour T1 T2
+neighbour T2 T3
+split T1 T2 T3

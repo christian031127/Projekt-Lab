@@ -1,0 +1,6 @@
+Adding new gameObject T1
+Adding new gameObject T2
+Adding new gameObject T3
+Tekton T1 Tekton T2 are now neighbours!
+Tekton T2 Tekton T3 are now neighbours!
+Tekton T1 splitted!

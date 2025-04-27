@@ -42,11 +42,11 @@ public class Yarn {
         return T2;
     }
 
-    public void setShroom_player_id(int shroom_player_id) {
+    public void setShroomPlayerId(int shroom_player_id) {
         this.shroom_player_id = shroom_player_id;
         logger.log(Level.FINE,"Yarn.setShroom_player_id() called");
     }
-    public int getShroom_player_id() {
+    public int getShroomPlayerId() {
         return shroom_player_id;
     }
     public boolean isSingleTektonYarn() {
@@ -55,8 +55,12 @@ public class Yarn {
         }
         else return false;
     }
-
-    public int getShroomPlayerId() {
-        return 0;
+    public boolean eatNumbInsect(Player p){
+        if(p.getEffects()[1]==1){
+            p.gameOver();
+            return true;
+        }
+        return false;
     }
+
 }
