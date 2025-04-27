@@ -3,4 +3,8 @@ Goodbye...
 [INFO]: Adding new gameObject T2!
 [INFO]: Adding new gameObject Sh1!
 [INFO]: Tekton T1 Tekton T2 are now neighbours!
+[INFO]: Yarn.setTekton1() called
+[INFO]: Yarn.setTekton2() called
+[INFO]: MultipleYarnTekton.doeffect() sikeres
+[INFO]: MultipleYarnTekton.doeffect() sikeres
 [INFO]: Yarn created between Tekton T1 and Tekton T2
