@@ -4,6 +4,6 @@ import static org.example.Main.logger;
 public class KeepAliveTekton implements TektonStrategy {
     @Override
     public void doEffect(Tekton T) {
-        logger.info("KeepAliveTekton.doEffect() called");
+        logger.info("doEffect() sikeres");
     }
 }

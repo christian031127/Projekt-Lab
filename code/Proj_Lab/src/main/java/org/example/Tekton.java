@@ -135,6 +135,7 @@ public class Tekton{
                 }
                 if (!hasneighbour && shroom.getPlayerId()!= yarn.getShroomPlayerId()) {
                     removeYarn(yarn);
+                    logger.info("deleteYarnsOnTekton() sikeres");
                 }
             }
         }
