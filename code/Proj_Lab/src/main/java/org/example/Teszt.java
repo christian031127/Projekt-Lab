@@ -23,9 +23,9 @@ public class Teszt {
     static String Name;
     public static void main(String[] args) throws Exception {
 
-        ConsoleHandler consoleHandler = new ConsoleHandler();
-        logger.addHandler(consoleHandler);
-        logger.setLevel(Level.ALL);
+        //ConsoleHandler consoleHandler = new ConsoleHandler();
+        //logger.addHandler(consoleHandler);
+        logger.setLevel(Level.INFO);
         
 
 

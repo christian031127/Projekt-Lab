@@ -3,4 +3,4 @@ Goodbye...
 [INFO]: Adding new gameObject T2!
 [INFO]: Tekton T1 Tekton T2 are now neighbours!
 [INFO]: Adding new gameObject I1!
-[WARNING]: Failed to move Player I1to TektonT2
+[WARNING]: Failed to move Player I1 to Tekton T2
