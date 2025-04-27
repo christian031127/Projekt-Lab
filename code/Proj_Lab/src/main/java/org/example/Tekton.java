@@ -66,9 +66,9 @@ public class Tekton{
         yarns.add(yarn);
     }
 
-    public void removeYarn(Yarn yarn){
+    public boolean removeYarn(Yarn yarn){
         logger.log(Level.FINE, "Tekton.removeYarn() called");
-        yarns.remove(yarn);
+        return yarns.remove(yarn);
     }
 
     public void clearYarns(){

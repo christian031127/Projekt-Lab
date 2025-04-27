@@ -221,22 +221,28 @@ public class Teszt {
                     //Tektonon fonál növesztés
                     if(command.length == 4){
                         Player p1 = (Player) gameObjectList.get(command[1]);
-                        yarn.setTekton1((Tekton)gameObjectList.get(command[3]));
-                        yarn.setTekton2((Tekton)gameObjectList.get(command[3]));
+                        Tekton T1 = (Tekton) gameObjectList.get(command[3]);
+                        yarn.setTekton1(T1);
+                        yarn.setTekton2(T1);
+                        T1.addYarn(yarn);
                         p1.interactWithYarn(yarn);
 
                         logger.log(Level.INFO, "Yarn created on Tekton {0}", command[3]);
                     }
                     if(command.length == 5){
                         Player p1 = (Player) gameObjectList.get(command[1]);
-                        yarn.setTekton1((Tekton)gameObjectList.get(command[3]));
-                        yarn.setTekton2((Tekton)gameObjectList.get(command[4]));
+                        Tekton T1 = (Tekton)gameObjectList.get(command[3]);
+                        Tekton T2 = (Tekton)gameObjectList.get(command[4]);
+                        yarn.setTekton1(T1);
+                        yarn.setTekton2(T2);
+                        T1.addYarn(yarn);
+                        T2.addYarn(yarn);
                         p1.interactWithYarn(yarn);
                         
                         logger.log(Level.INFO, "Yarn created between Tekton {0}", command[3] + " and Tekton " + command[4]);
                         
                     }
-                    gameObjectList.put(command[1], yarn);
+                    gameObjectList.put(command[2], yarn);
                     break;     
                 } 
                 case "remove-yarn": {
@@ -332,7 +338,7 @@ public class Teszt {
 
                     Spore ret = player.move(celpont);
                     if(ret == null) {
-                        logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {0}-ra!", command[2]);
+                        logger.log(Level.INFO, "Player mozgatása sikeresen megtörtént Tekton {0}-ra!", command[2]);
                     } else {
                         logger.log(Level.WARNING, "Failed to move Player {0}", String.valueOf(command[1]) + " to Tekton " + String.valueOf(command[2]));
                     }
@@ -354,7 +360,12 @@ public class Teszt {
 
                         case "Yarn":
                             Yarn yarn = (Yarn)gameObjectList.get(command[2]);
-                            player.getCurrentTekton().removeYarn(yarn);
+                            boolean ret = player.getCurrentTekton().removeYarn(yarn);
+                            if(!ret) {
+                                logger.log(Level.WARNING, "Sikertelen fonal elrágás: A fonal nem létezik!");
+                            } else {
+                                logger.log(Level.INFO, "Sikeres fonal elrágás!");
+                            }
                             //Ha nem sikerül a yarn evés, akkor a .removeYarn() nak kell kivételt dobnia!
                             break;
                         default:
