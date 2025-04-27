@@ -243,7 +243,7 @@ public class Teszt {
                         
                     }
                     gameObjectList.put(command[2], yarn);
-                    break;     
+                    break;
                 } 
                 case "remove-yarn": {
                     if(command.length < 2 || command.length > 3){
@@ -354,15 +354,17 @@ public class Teszt {
                     switch (command[1]) {
                         case "Spore":
                             Spore spore = (Spore)gameObjectList.get(command[2]);
-                            player.getCurrentTekton().removeSpore(spore);
+                            List<Spore> spores = new ArrayList<>();
+                            spores.add(spore);
+                            player.interactWithSpore(spores);
                             //Ha nem sikerül a spóra evés, akkor a .removeSpore() nak kell kivételt dobnia!
                             break;
 
                         case "Yarn":
                             Yarn yarn = (Yarn)gameObjectList.get(command[2]);
-                            boolean ret = player.getCurrentTekton().removeYarn(yarn);
+                            boolean ret = player.interactWithYarn(yarn);
                             if(!ret) {
-                                logger.log(Level.WARNING, "Sikertelen fonal elrágás: A fonal nem létezik!");
+                                logger.log(Level.WARNING, "Sikertelen fonal elrágás!");
                             } else {
                                 logger.log(Level.INFO, "Sikeres fonal elrágás!");
                             }

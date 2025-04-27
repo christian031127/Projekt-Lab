@@ -1,7 +1,12 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.example.Main.*;
 
 public class Player {
 
@@ -37,11 +42,11 @@ public class Player {
         steps_in_round++;
     }
 
-    public void interactWithYarn(Yarn yarn) {
+    public boolean interactWithYarn(Yarn yarn) {
         // Implementation
         if(getIsInsect()){
            if(getEffects()[4] == 1) {
-               return;
+               return false;
            }
            yarn.getTekton1().removeYarn(yarn);
            yarn.getTekton2().removeYarn(yarn);
@@ -52,11 +57,12 @@ public class Player {
             yarn.getTekton2().doEffect();
             yarn.getTekton1().doEffect();
         }
+        return true;
     }
 
     public Spore move(Tekton tekton) {
         if (!isInsect) {
-            Shroom s = currentTekton.getShroom();
+            Shroom s = tekton.getShroom();
             if(s != null) {
                 return s.ejectSpore(tekton);
             }
