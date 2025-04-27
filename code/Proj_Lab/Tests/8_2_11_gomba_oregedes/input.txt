@@ -1,0 +1,10 @@
+add Tekton T1 MultipleYarnTekton
+add Tekton T2 MultipleYarnTekton
+neighbour T1 T2
+add Player Sr1 T2 Shroomer
+grow S1 T2 Sr1 0
+eject Sp1 T1 Sr1
+eject Sp2 T1 Sr1
+eject Sp3 T1 Sr1
+eject Sp4 T1 Sr1
+eject Sp5 T1 Sr1
