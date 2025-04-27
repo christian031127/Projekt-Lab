@@ -3,5 +3,4 @@ Adding new gameObject S1
 Adding new gameObject S2
 Adding new gameObject S3
 Adding new gameObject Sh1
-Yarn created on Tekton T1
 
