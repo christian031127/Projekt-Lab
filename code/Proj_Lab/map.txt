@@ -1,0 +1,44 @@
+add Tekton T1
+add Tekton T2
+add Tekton T3
+add Tekton T4
+add Tekton T5
+add Tekton T6
+add Tekton T7
+add Tekton T8
+add Tekton T9
+add Tekton T10
+add Tekton T11
+add Tekton T12
+add Tekton T13
+add Tekton T14
+add Tekton T15
+add Tekton T16
+neighbour T1 T2
+neighbour T2 T3
+neighbour T3 T4
+neighbour T5 T6
+neighbour T6 T7
+neighbour T7 T8
+neighbour T9 T10
+neighbour T10 T11
+neighbour T11 T12
+neighbour T13 T14
+neighbour T14 T15
+neighbour T15 T16
+neighbour T1 T5
+neighbour T2 T6
+neighbour T3 T7
+neighbour T4 T8
+neighbour T5 T9
+neighbour T6 T10
+neighbour T7 T11
+neighbour T8 T12
+neighbour T9 T13
+neighbour T10 T14
+neighbour T11 T15
+neighbour T12 T16
+add Player Sr1 T1 Shroomer
+add Player Sr2 T4 Shroomer
+add Player Is1 T16 Insect
+add Player Is2 T12 Insect
