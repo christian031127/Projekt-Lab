@@ -67,7 +67,6 @@ public class Teszt {
             }           
             
             command = sorBe.split(" ");
-            System.out.println("command: " + sorBe + "command[0]: " + command[0]);
             switch(command[0]){
                 case "add": {
                     Object uj = new Object();
@@ -374,6 +373,8 @@ public class Teszt {
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
                     Spore spore = p1.move(t1);
                     gameObjectList.put(command[1], spore);
+
+                    break;
                 }
                 case "grow":{
                     if(command.length != 5){
@@ -383,6 +384,9 @@ public class Teszt {
                     Shroom s = new Shroom();
                     Player p1 = (Player) gameObjectList.get(command[3]);
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
+                    
+                    p1.setCurrentTekton(t1);
+                    p1.interactWithSpore(t1.getSpores());
 
                     int kor = Integer.parseInt(command[4]);
                     for(int i = 0; i < kor; i++){
