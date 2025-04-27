@@ -132,12 +132,11 @@ public class Tekton{
                         break;
                     }
                 }
-                if (!hasneighbour && shroom.getPlayerId()!= yarn.getShroomPlayerId()) {
+                if ((!hasneighbour && shroom.getPlayerId() != yarn.getShroomPlayerId())|| (shroom == null)) {
                     removeYarn(yarn);
                     logger.info("deleteYarnsOnTekton() sikeres");
                 }
             }
         }
     }
-
 }
