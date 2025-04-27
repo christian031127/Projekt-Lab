@@ -346,7 +346,7 @@ public class Teszt {
                 case "eat": {
 
                     //A player csak a jelen tektonról tud fogyasztani
-                    Player player = (Player) gameObjectList.get(command[2]);
+                    Player player = (Player) gameObjectList.get(command[3]);
 
                     switch (command[1]) {
                         case "Spore":
