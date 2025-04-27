@@ -1,7 +1,11 @@
 package org.example;
-import static org.example.Main.logger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SingleYarnTekton implements TektonStrategy {
+    private static Logger logger = Logger.getLogger("TesztLogger");
+
     @Override
     public void doEffect(Tekton T) {
         if (T.getYarns().size() > 1) {
@@ -11,7 +15,7 @@ public class SingleYarnTekton implements TektonStrategy {
                     T.removeYarn(yarn);
                 }
             }
-            logger.info("SingleYarnTekton.doEffect() sikeres");
+            logger.log(Level.INFO, "SingleYarnTekton.doEffect() sikeres");
         }
         T.deleteYarnsOnTekton();
     }

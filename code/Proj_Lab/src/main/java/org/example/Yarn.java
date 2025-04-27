@@ -1,10 +1,11 @@
 package org.example;
 
 import java.util.logging.Level;
-
-import static org.example.Main.logger;
+import java.util.logging.Logger;
 
 public class Yarn {
+
+    private static Logger logger = Logger.getLogger("TesztLogger");
 
     private Tekton T1;
     private Tekton T2;
@@ -20,7 +21,7 @@ public class Yarn {
             T1.addYarn(this);
         }
 
-        logger.log(Level.FINE,"Yarn.setTekton1() called");
+        logger.log(Level.INFO,"Yarn.setTekton1() called");
     }
 
     public void setTekton2(Tekton tekton2) {
@@ -31,7 +32,7 @@ public class Yarn {
             T2 = tekton2;
             T2.addYarn(this);
         }
-        logger.log(Level.FINE,"Yarn.setTekton2() called");
+        logger.log(Level.INFO,"Yarn.setTekton2() called");
     }
 
     public Tekton getTekton1() {
@@ -44,7 +45,7 @@ public class Yarn {
 
     public void setShroom_player_id(int shroom_player_id) {
         this.shroom_player_id = shroom_player_id;
-        logger.log(Level.FINE,"Yarn.setShroom_player_id() called");
+        logger.log(Level.INFO,"Yarn.setShroom_player_id() called");
     }
     public int getShroom_player_id() {
         return shroom_player_id;

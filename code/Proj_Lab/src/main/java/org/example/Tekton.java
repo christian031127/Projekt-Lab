@@ -2,11 +2,13 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
-import static org.example.Main.logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Tekton{
+
+    private static Logger logger = Logger.getLogger("TesztLogger");
 
     // add parameters
     private TektonStrategy strategy;
@@ -134,7 +136,7 @@ public class Tekton{
                 }
                 if ((!hasneighbour && shroom.getPlayerId() != yarn.getShroomPlayerId())|| (shroom == null)) {
                     removeYarn(yarn);
-                    logger.info("deleteYarnsOnTekton() sikeres");
+                    logger.log(Level.INFO, "deleteYarnsOnTekton() sikeres");
                 }
             }
         }

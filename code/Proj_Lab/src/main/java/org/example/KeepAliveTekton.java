@@ -1,9 +1,13 @@
 package org.example;
-import static org.example.Main.logger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class KeepAliveTekton implements TektonStrategy {
+    private static Logger logger = Logger.getLogger("TesztLogger");
+
     @Override
     public void doEffect(Tekton T) {
-        logger.info("KeepAliveTekton.doEffect() sikeres");
+        logger.log(Level.INFO,"KeepAliveTekton.doEffect() sikeres");
     }
 }

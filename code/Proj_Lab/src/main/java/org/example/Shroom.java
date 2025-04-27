@@ -2,10 +2,11 @@ package org.example;
 
 import java.util.Random;
 import java.util.logging.Level;
-
-import static org.example.Main.logger;
+import java.util.logging.Logger;
 
 public class Shroom {
+
+    private static Logger logger = Logger.getLogger("TesztLogger");
 
     private int playerId;
     private Tekton tekton;
@@ -36,23 +37,23 @@ public class Shroom {
     }
 
     public Shroom(Tekton tekton, int playerId) {
-        logger.log(Level.FINE, "Shroom constructor called");
+        logger.log(Level.INFO, "Shroom constructor called");
         this.tekton = tekton;
         this.playerId = playerId;
     }
 
     public boolean isOld() {
-        logger.log(Level.FINE, "Shroom.isOld() called");
+        logger.log(Level.INFO, "Shroom.isOld() called");
         return age >= OLD_LIMIT;
     }
 
     public boolean isDead() {
-        logger.log(Level.FINE, "Shroom.isDead() called");
+        logger.log(Level.INFO, "Shroom.isDead() called");
         return dead;
     }
 
     public boolean isSporeReady() {
-        logger.log(Level.FINE, "Shroom.isSporeReady() called");
+        logger.log(Level.INFO, "Shroom.isSporeReady() called");
         int currentTurn = Map.currentTurn; //Lekérdezni a jelenlegi kör számát
 
         boolean cooldownElapsed = (currentTurn - lastEject) >= EJECT_COOLDOWN;
@@ -63,7 +64,7 @@ public class Shroom {
     }
 
     public Spore ejectSpore(Tekton target) {
-        logger.log(Level.FINE, "Shroom.ejectSpore() called");
+        logger.log(Level.INFO, "Shroom.ejectSpore() called");
         //Lekérdezni a jelenlegi kör számát
         int currentTurn = Map.currentTurn;
 
@@ -86,7 +87,7 @@ public class Shroom {
                 die();
             }
 
-            logger.info("ejectspore sikeres!");
+            logger.log(Level.INFO, "ejectspore sikeres!");
             return spore;
         } else if (basic) {
 
@@ -100,7 +101,7 @@ public class Shroom {
                 die();
             }
 
-            logger.info("ejectspore sikeres!");
+            logger.log(Level.INFO, "ejectspore sikeres!");
             return spore;
         }
 
@@ -108,15 +109,16 @@ public class Shroom {
     }
 
     private void die() {
-        logger.log(Level.FINE, "Shroom.die() called");
+        logger.log(Level.INFO, "Shroom.die() called");
         this.dead = true;
         if (tekton != null) {
             tekton.removeShroom();
+            logger.log(Level.INFO, "Shroom died and removed from tekton sikeres!");
         }
     }
 
     public void age() {
-        logger.log(Level.FINE, "Shroom.age() called");
+        logger.log(Level.INFO, "Shroom.age() called");
         if (dead) {
             return;
         }
@@ -127,7 +129,7 @@ public class Shroom {
     }
 
     private boolean shouldDieFromOldAge() {
-        logger.log(Level.FINE, "Shroom.shouldDieFromOldAge() called");
+        logger.log(Level.INFO, "Shroom.shouldDieFromOldAge() called");
         if (age < OLD_LIMIT) {
             return false;
         }
@@ -138,13 +140,13 @@ public class Shroom {
 
     // Véletlen spóra típust generál
     private SporeType getRandomSpore() {
-        logger.log(Level.FINE, "Shroom.getRandomSpore() called");
+        logger.log(Level.INFO, "Shroom.getRandomSpore() called");
         SporeType[] values = SporeType.values();
         return values[rand.nextInt(values.length)];
     }
 
     private Spore createSpore(SporeType sporeType) {
-        logger.log(Level.FINE, "Shroom.createSpore() called");
+        logger.log(Level.INFO, "Shroom.createSpore() called");
         return switch (sporeType) {
             case ACCELERATION ->
                 new AccelerationSpore();
@@ -161,17 +163,17 @@ public class Shroom {
 
     // GETTERS, SETTERS
     public int getPlayerId() {
-        logger.log(Level.FINE, "Shroom.getPlayerId() called");
+        logger.log(Level.INFO, "Shroom.getPlayerId() called");
         return playerId;
     }
 
     public void setPlayerId(int id) {
-        logger.log(Level.FINE, "Shroom.setPlayerId() called");
+        logger.log(Level.INFO, "Shroom.setPlayerId() called");
         this.playerId = id;
     }
 
     public Tekton getTekton() {
-        logger.log(Level.FINE, "Shroom.getTekton() called");
+        logger.log(Level.INFO, "Shroom.getTekton() called");
         return tekton;
     }
 
@@ -181,12 +183,12 @@ public class Shroom {
     }
 
     public int getAge() {
-        logger.log(Level.FINE, "Shroom.getAge() called");
+        logger.log(Level.INFO, "Shroom.getAge() called");
         return age;
     }
 
     public int getLastEject() {
-        logger.log(Level.FINE, "Shroom.getLastEject() called");
+        logger.log(Level.INFO, "Shroom.getLastEject() called");
         return lastEject;
     }
 }

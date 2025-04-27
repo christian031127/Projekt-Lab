@@ -1,12 +1,8 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static org.example.Main.*;
 
 public class Player {
 
@@ -18,7 +14,7 @@ public class Player {
     private int[] effects = new int[5];
     private int steps_in_round = 0;
 
-    private static Logger logger = Logger.getLogger("PlayerLogger");
+    private static Logger logger = Logger.getLogger("TesztLogger");
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
@@ -61,6 +57,7 @@ public class Player {
     }
 
     public Spore move(Tekton tekton) {
+        logger.log(Level.INFO, "Player.move() called");
         if (!isInsect) {
             Shroom s = tekton.getShroom();
             if(s != null) {

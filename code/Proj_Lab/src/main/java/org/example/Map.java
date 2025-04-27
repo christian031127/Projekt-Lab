@@ -2,60 +2,57 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
 import java.util.Scanner;
-import java.util.List;
-import static org.example.Main.logger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Map {
 
+    private static Logger logger = Logger.getLogger("TesztLogger");
 
     public Player currentPlayer;
-    private static HashMap<String, Object> Tektons = new HashMap<String,Object>();
-    private static HashMap<String, Object> Players= new HashMap<String, Object>();
+    private static HashMap<String, Object> Tektons = new HashMap<String, Object>();
+    private static HashMap<String, Object> Players = new HashMap<String, Object>();
     static String Name;
 
-
     public static int currentTurn = 0;
-
 
     public void loadMap() throws Exception {
         // read file, load map
         Scanner scanner = null;
-        try{
+        try {
             File file = new File("map.txt");
             scanner = new Scanner(file);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             logger.log(Level.SEVERE, "Cannot find Map");
         }
-        String [] command = null;
-        while(scanner.hasNextLine()){
+        String[] command = null;
+        while (scanner.hasNextLine()) {
 
             String line = scanner.nextLine();
             //Kommente figyelmen kívül hagyása
-            if(line.contains("#") || line.contains("//")) {
+            if (line.contains("#") || line.contains("//")) {
                 continue;
             }
-            command=line.split(" ");
+            command = line.split(" ");
 
-            switch(command[0]){
+            switch (command[0]) {
                 case "add": {
                     Object uj = new Object();
                     //Van e elég argumentum?
-                    if(command.length < 3){
+                    if (command.length < 3) {
                         logger.log(Level.SEVERE, "Not enough arguments for 'add' command! (minimum 2 argument)");
                         throw new Exception("Not enough arguments for 'add' command! (minimum 2 argument)");
                     }
-                    if(command.length == 3){
+                    if (command.length == 3) {
                         switch (command[1]) {
                             case "Tekton":
                                 uj = new Tekton();
-                                Tekton uj2 = (Tekton)uj;
+                                Tekton uj2 = (Tekton) uj;
                                 uj2.setStrategy(new MultipleYarnTekton());
-                                Name=command[2];
+                                Name = command[2];
                                 Tektons.put(Name, uj);
                                 break;
 
@@ -64,32 +61,37 @@ public class Map {
                                 throw new AssertionError();
                         }
                     }
-                    if(command.length > 3){
+                    if (command.length > 3) {
                         switch (command[1]) {
                             case "Tekton":
                                 //Ez a sor lehet nem azt csinálja amit kellene
                                 uj = new Tekton();
-                                Tekton uj2 = (Tekton)uj;
+                                Tekton uj2 = (Tekton) uj;
                                 switch (command[3]) {
                                     case "AbsorbTekton":
-                                        uj2= new Tekton();
+                                        uj2 = new Tekton();
                                         uj2.setStrategy(new AbsorbTekton());
-                                        Name=command[2];
+                                        Name = command[2];
                                         break;
                                     case "SingleYarnTekton":
-                                        uj2= new Tekton();
+                                        uj2 = new Tekton();
                                         uj2.setStrategy(new SingleYarnTekton());
-                                        Name=command[2];
+                                        Name = command[2];
                                         break;
                                     case "NonShroomTekton":
-                                        uj2= new Tekton();
+                                        uj2 = new Tekton();
                                         uj2.setStrategy(new NonShroomTekton());
-                                        Name=command[2];
+                                        Name = command[2];
                                         break;
                                     case "KeepAliveTekton":
-                                        uj2= new Tekton();
+                                        uj2 = new Tekton();
                                         uj2.setStrategy(new KeepAliveTekton());
-                                        Name=command[2];
+                                        Name = command[2];
+                                        break;
+                                    case "MultipleYarnTekton":
+                                        uj2 = new Tekton();
+                                        uj2.setStrategy(new MultipleYarnTekton());
+                                        Name = command[2];
                                         break;
                                     default:
 
@@ -102,7 +104,6 @@ public class Map {
                                 if (command.length != 5) {
                                     throw new Exception("add Player takes 3 argument!");
                                 }
-
 
                                 Player p1 = new Player();
                                 p1.setIsInsect(command[4].equals("Insect"));
@@ -124,20 +125,20 @@ public class Map {
                 }
 
                 case "neighbour": {
-                    if(command.length != 3){
+                    if (command.length != 3) {
                         logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
                         throw new Exception("Command neighbour takes 2 arguments!");
                     }
-                    Tekton elso = (Tekton)Tektons.get(command[1]);
-                    Tekton masodik = (Tekton)Tektons.get(command[2]);
+                    Tekton elso = (Tekton) Tektons.get(command[1]);
+                    Tekton masodik = (Tekton) Tektons.get(command[2]);
 
-                    elso.addNeighbour((Tekton)masodik);
-                    masodik.addNeighbour((Tekton)elso);
+                    elso.addNeighbour((Tekton) masodik);
+                    masodik.addNeighbour((Tekton) elso);
                     logger.log(Level.INFO, "Tekton " + command[1] + " Tekton " + command[2] + " are now neighbours!");
                     break;
                 }
 
-                default:{
+                default: {
                     //HELP
                     logger.log(Level.WARNING, "Command {0} not found!", command[0]);
                     break;
@@ -146,8 +147,9 @@ public class Map {
         }
 
     }
-    public void splitTekton(Tekton tekton){
-        logger.log(Level.FINE,"Map.splitTekton() called");
+
+    public void splitTekton(Tekton tekton) {
+        logger.log(Level.FINE, "Map.splitTekton() called");
         tekton.split();
     }
 }
