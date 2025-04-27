@@ -330,10 +330,15 @@ public class Teszt {
 
                     Player player = (Player)gameObjectList.get(command[1]);
                     Tekton celpont = (Tekton)gameObjectList.get(command[2]);
-                    player.move(celpont);
-                    logger.warning("Ellenőrizni, kell, hogy tud-e a megadott tektonra mozogni!");
-                    logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {}-ra!", command[2]);
-                    break;      
+                    try {
+                        player.move(celpont);
+                        logger.log(Level.INFO, "Player mozgatása megtörtént Tekton {}-ra!", command[2]);
+                    } catch (Exception e) {
+                        logger.log(Level.WARNING, "Failed to move Player {0}", command[1] + " to Tekton " + command[2]);
+                    }
+                    // A move függvény ellenőrzi
+                    //logger.warning("Ellenőrizni, kell, hogy tud-e a megadott tektonra mozogni!")
+                    break;
                 }
                 case "eat": {
 

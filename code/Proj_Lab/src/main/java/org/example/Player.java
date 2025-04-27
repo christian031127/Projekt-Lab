@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.example.Main.*;
 
@@ -14,6 +16,8 @@ public class Player {
     private int score;
     private int[] effects = new int[5];
     private int steps_in_round = 0;
+
+    private static Logger logger = Logger.getLogger("PlayerLogger");
 
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
@@ -54,8 +58,7 @@ public class Player {
         }
     }
 
-    public Spore move(Tekton tekton) {
-        System.out.println("Player.move(Tekton tekton) called");
+    public Spore move(Tekton tekton) throws Exception {
         if (!isInsect) {
             Shroom s = tekton.getShroom();
             if(s != null) {
@@ -63,11 +66,16 @@ public class Player {
             }
         } else {
             List<Yarn> yarns = this.currentTekton.getYarns();
+            boolean moved = false;
             for(Yarn y : yarns) {
                 if(y.getTekton1() == tekton || y.getTekton2() == tekton) {
                     this.setCurrentTekton(tekton);
+                    moved = true;
                     break;
                 }
+            }
+            if(!moved) {
+                throw new Exception("Could not move to tekton!");
             }
         }
         return null;

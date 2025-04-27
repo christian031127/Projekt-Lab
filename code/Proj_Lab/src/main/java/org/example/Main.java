@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public class Main {
 
@@ -59,31 +59,24 @@ public class Main {
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
                 }
-                case 5: {
-                    new Player().move(new Tekton());
-                    System.out.println("Teszt sikeresen lefutott.");
-                    break;
-                }
-                case 6: {
-                    new Player().move(new Tekton());
-                    System.out.println("Teszt sikeresen lefutott.");
+                case 5, 6: {
+                    try {
+                        new Player().move(new Tekton());
+                        System.out.println("Teszt sikeresen lefutott.");
+                    } catch(Exception e){
+                        logger.log(Level.SEVERE, "Player could not move to Tekton.");
+                    }
                     break;
                 }
                 case 7: {
                     new Player().interactWithSpore(new Tekton().getSpores());
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
-
-
-
                 }
                 case 8: {
                     new Shroom().age();
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
-
-
-
                 }
                 case 9: {
                     new Map().splitTekton(new Tekton());
