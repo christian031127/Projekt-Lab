@@ -67,7 +67,7 @@ public class Teszt {
             }           
             
             command = sorBe.split(" ");
-
+            System.out.println("command: " + sorBe + "command[0]: " + command[0]);
             switch(command[0]){
                 case "add": {
                     Object uj = new Object();
@@ -389,6 +389,8 @@ public class Teszt {
                         s.age();
                     }
                     gameObjectList.put(command[1], s);
+
+                    break;
                 }
                 default:{
                     //HELP

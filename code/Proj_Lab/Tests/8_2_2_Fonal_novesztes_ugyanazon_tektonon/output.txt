@@ -1,3 +1,6 @@
+command: add Tekton T1command[0]: add
+command: add Player Sh1 T1 Shroomercommand[0]: add
+command: yarn Sh1 Y1 T1command[0]: yarn
 Yarn.setTekton1() called
 Yarn.setTekton2() called
 Goodbye...
