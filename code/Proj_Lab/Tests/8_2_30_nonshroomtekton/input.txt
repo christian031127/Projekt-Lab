@@ -1,4 +1,3 @@
 add Tekton T1 AbsorvTekton
 add Player Sr1 T1 Shroomer
-yarn Sr1 Y1 T1
-yarn Sr1 Y2 T1
+grow S1 T1 Sr1 0

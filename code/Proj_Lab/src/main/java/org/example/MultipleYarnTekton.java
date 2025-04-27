@@ -5,7 +5,6 @@ public class MultipleYarnTekton implements TektonStrategy {
     @Override
     public void doEffect(Tekton T) {
         T.deleteYarnsOnTekton();
-        logger.info("doeffect() sikeres");
+        logger.info("MultipleYarnTekton.doeffect() sikeres");
     }
-
 }

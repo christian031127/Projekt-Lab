@@ -8,8 +8,7 @@ public class AbsorbTekton implements TektonStrategy{
             if (yarn.isSingleTektonYarn()) {
                 T.removeYarn(yarn);
             }
-            logger.info("doEffect() sikeres");
+            logger.info("AbsorbTekton.doEffect() sikeres");
         }
     }
-
 }

@@ -11,7 +11,7 @@ public class SingleYarnTekton implements TektonStrategy {
                     T.removeYarn(yarn);
                 }
             }
-            logger.info("doEffect() sikeres");
+            logger.info("SingleYarnTekton.doEffect() sikeres");
         }
         T.deleteYarnsOnTekton();
     }

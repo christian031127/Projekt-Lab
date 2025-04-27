@@ -6,9 +6,8 @@ public class NonShroomTekton implements TektonStrategy {
     public void doEffect(Tekton T) {
         if (T.getShroom() != null) {
             T.removeShroom();
-            logger.info("doEffect() sikeres");
+            logger.info("NonshroomTekton.doEffect() sikeres");
         }
         T.deleteYarnsOnTekton();
     }
-    
 }

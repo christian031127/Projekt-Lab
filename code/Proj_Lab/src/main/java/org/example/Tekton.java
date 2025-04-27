@@ -122,7 +122,6 @@ public class Tekton{
     }
 
     public void deleteYarnsOnTekton(){
-        logger.log(Level.FINE, "Tekton.deleteYarnsOnTekton() called");
         for (Yarn yarn : getYarns()) {
             if (yarn.isSingleTektonYarn()) {
                 int id = yarn.getShroomPlayerId();
