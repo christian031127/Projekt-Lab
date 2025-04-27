@@ -3,6 +3,7 @@ package org.example;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import java.util.logging.Level;
@@ -147,9 +148,22 @@ public class Map {
         }
 
     }
-
-    public void splitTekton(Tekton tekton) {
-        logger.log(Level.FINE, "Map.splitTekton() called");
+    public void splitTekton(Tekton tekton){
+        logger.log(Level.FINE,"Map.splitTekton() called");
+        List<Tekton> neighbours = tekton.getNeighbours();
         tekton.split();
+        Tektons.values().remove(tekton);
+        Tekton n1 = new Tekton();
+        Tekton n2 = new Tekton();
+
+        n1.addNeighbour(n2);
+        n2.addNeighbour(n1);
+        for(Tekton tekton1 : neighbours){
+            n1.addNeighbour(tekton1);
+            n2.addNeighbour(tekton1);
+        }
+        Tektons.put("T"+Tektons.size(),n1);
+        Tektons.put("T"+Tektons.size(),n2);
+
     }
 }
