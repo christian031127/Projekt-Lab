@@ -9,7 +9,11 @@ public class SlowingSpore implements Spore {
     @Override
     public void addEffect(Player p) {
 
-        p.setEffects(2, 1);
+        if(p.getEffects()[0] == 1) {
+            p.setEffects(0, 0);
+        } else {
+            p.setEffects(2, 1);
+        }
         logger.log(Level.INFO, "SlowingSpore.addEffect() sikeres");
     }
 }

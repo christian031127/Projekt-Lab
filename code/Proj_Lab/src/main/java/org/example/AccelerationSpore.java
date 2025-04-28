@@ -8,8 +8,12 @@ public class AccelerationSpore implements Spore {
 
     @Override
     public void addEffect(Player p){
-        
-        p.setEffects(0, 1);
+
+        if(p.getEffects()[2] == 1) {
+            p.setEffects(2, 0);
+        } else {
+            p.setEffects(0, 1);
+        }
         logger.log(Level.INFO, "AccelerationSpore.addEffect() sikeres");
     }
 }

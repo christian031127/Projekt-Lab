@@ -19,6 +19,10 @@ public class Player {
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
         if(getIsInsect()) {
+            if((getEffects()[2] == 1 && steps_in_round >= 1)) {
+                //Checking whether the player has Slowing effect active
+                return;
+            }
             for (Spore _spore : spores) {
                 _spore.addEffect(this);
                 this.currentTekton.removeSpore(_spore);
@@ -41,7 +45,8 @@ public class Player {
     public boolean interactWithYarn(Yarn yarn) {
         // Implementation
         if(getIsInsect()){
-           if(getEffects()[4] == 1) {
+           if((getEffects()[2] == 1 && steps_in_round >= 1) || getEffects()[4] == 1) {
+               //Checking whether the player has Slowing or Weakening effect active
                return false;
            }
            yarn.getTekton1().removeYarn(yarn);
@@ -53,6 +58,7 @@ public class Player {
             yarn.getTekton2().doEffect();
             yarn.getTekton1().doEffect();
         }
+        steps_in_round++;
         return true;
     }
 
@@ -61,10 +67,14 @@ public class Player {
         if (!isInsect) {
             Shroom s = tekton.getShroom();
             if(s != null) {
+                steps_in_round++;
                 return s.ejectSpore(tekton);
             }
         } else {
-            if(getEffects()[1]==1){return new NumbingSpore(); }
+            if((getEffects()[2] == 1 && steps_in_round >= 1) || getEffects()[1] == 1) {
+                //Checking whether the player has Slowing or Numbing effect active
+                return new NumbingSpore();
+            }
             List<Yarn> yarns = this.currentTekton.getYarns();
             boolean moved = false;
             for(Yarn y : yarns) {
@@ -79,6 +89,7 @@ public class Player {
                 return new NumbingSpore();
             }
         }
+        steps_in_round++;
         return null;
     }
 
