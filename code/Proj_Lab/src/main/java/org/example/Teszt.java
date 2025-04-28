@@ -356,15 +356,19 @@ public class Teszt {
                             Spore spore = (Spore) gameObjectList.get(command[2]);
                             List<Spore> spores = new ArrayList<>();
                             spores.add(spore);
-                            player.interactWithSpore(spores);
-                            logger.log(Level.INFO, "Sikeres spora evés!");
+                            boolean ret = player.interactWithSpore(spores);
+                            if(ret) {
+                                logger.log(Level.INFO, "Sikeres spora evés!");
+                            } else {
+                                logger.log(Level.INFO, "Sikertelen spora evés!");
+                            }
                             //Ha nem sikerül a spóra evés, akkor a .removeSpore() nak kell kivételt dobnia!
                             break;
 
                         case "Yarn":
                             Yarn yarn = (Yarn) gameObjectList.get(command[2]);
-                            boolean ret = player.interactWithYarn(yarn);
-                            if (!ret) {
+                            boolean retvalue = player.interactWithYarn(yarn);
+                            if (!retvalue) {
                                 logger.log(Level.WARNING, "Sikertelen fonal elrágás!");
                             } else {
                                 logger.log(Level.INFO, "Sikeres fonal elrágás!");
@@ -415,14 +419,17 @@ public class Teszt {
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
 
                     p1.setCurrentTekton(t1);
-                    p1.interactWithSpore(new ArrayList<>(t1.getSpores()));
-
-                    int kor = Integer.parseInt(command[4]);
-                    for (int i = 0; i < kor; i++) {
-                        s.age();
+                    boolean ret = p1.interactWithSpore(new ArrayList<>(t1.getSpores()));
+                    if(!ret) {
+                        logger.log(Level.INFO, "Failed to create Shroom {0}", command[1]);
+                    } else {
+                        int kor = Integer.parseInt(command[4]);
+                        for (int i = 0; i < kor; i++) {
+                            s.age();
+                        }
+                        gameObjectList.put(command[1], s);
+                        logger.log(Level.INFO, "Shroom {0} created!", command[1]);
                     }
-                    gameObjectList.put(command[1], s);
-                    logger.log(Level.INFO, "Shroom {0} created!", command[1]);
                     break;
                 }
                 default: {

@@ -1,6 +1,6 @@
 add Tekton T1 NonShroomTekton
 add Player Sr1 T1 Shroomer
-add Spore Sp1 T1
-add Spore Sp2 T1
-add Spore Sp3 T1
+add Spore Sp1 T1 SlowingSpore
+add Spore Sp2 T1 SlowingSpore
+add Spore Sp3 T1 NumbingSpore
 grow S1 T1 Sr1 0

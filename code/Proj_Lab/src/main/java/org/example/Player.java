@@ -16,12 +16,12 @@ public class Player {
 
     private static Logger logger = Logger.getLogger("TesztLogger");
 
-    public void interactWithSpore(List<Spore> spores) {
+    public boolean interactWithSpore(List<Spore> spores) {
         // Implementation
         if(getIsInsect()) {
             if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
                 //Checking whether the player has any moves left in round
-                return;
+                return false;
             }
 
             for (Spore _spore : spores) {
@@ -31,7 +31,7 @@ public class Player {
         }
         else{
             if (getCurrentTekton().getShroom() != null || steps_in_round >= 2) {
-                return;
+                return false;
             }
             if (getCurrentTekton().getSpores().size() >= 3) {
                 Shroom s = new Shroom();
@@ -39,8 +39,10 @@ public class Player {
                 getCurrentTekton().removeSomeSpore(spores);
                 getCurrentTekton().doEffect();
             }
+            return getCurrentTekton().getShroom() != null;
         }
         steps_in_round++;
+        return true;
     }
 
     public boolean interactWithYarn(Yarn yarn) {

@@ -5,4 +5,4 @@ Goodbye...
 [INFO]: Adding new gameObject S3!
 [INFO]: Adding new gameObject Sh1!
 [INFO]: NonshroomTekton.doEffect() sikeres
-[INFO]: Shroom Ms1 created!
+[INFO]: Failed to create Shroom Ms1
