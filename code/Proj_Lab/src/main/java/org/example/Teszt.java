@@ -92,31 +92,25 @@ public class Teszt {
                             case "Tekton":
                                 //Ez a sor lehet nem azt csinálja amit kellene
                                 uj = new Tekton();
-                                Tekton uj2 = (Tekton) uj;
                                 switch (command[3]) {
                                     case "AbsorbTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new AbsorbTekton());
+                                        ((Tekton) uj).setStrategy(new AbsorbTekton());
                                         Name = command[2];
                                         break;
                                     case "SingleYarnTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new SingleYarnTekton());
+                                        ((Tekton) uj).setStrategy(new SingleYarnTekton());
                                         Name = command[2];
                                         break;
                                     case "NonShroomTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new NonShroomTekton());
+                                        ((Tekton) uj).setStrategy(new NonShroomTekton());
                                         Name = command[2];
                                         break;
                                     case "KeepAliveTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new KeepAliveTekton());
+                                        ((Tekton) uj).setStrategy(new KeepAliveTekton());
                                         Name = command[2];
                                         break;
                                     case "MultipleYarnTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new MultipleYarnTekton());
+                                        ((Tekton) uj).setStrategy(new MultipleYarnTekton());
                                         Name = command[2];
                                         break;
                                     default:
@@ -416,7 +410,7 @@ public class Teszt {
                         s.age();
                     }
                     gameObjectList.put(command[1], s);
-
+                    logger.log(Level.INFO, "Shroom {0} created!", command[1]);
                     break;
                 }
                 default: {

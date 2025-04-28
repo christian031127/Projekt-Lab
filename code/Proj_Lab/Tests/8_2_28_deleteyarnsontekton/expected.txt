@@ -1,0 +1,12 @@
+Adding new gameObject T1!
+Adding new gameObject Sr1!
+Yarn.setTekton1() called
+Yarn.setTekton2() called
+MultipleYarnTekton.doeffect() sikeres
+MultipleYarnTekton.doeffect() sikeres
+Yarn created on Tekton T1
+Yarn.setTekton1() called
+Yarn.setTekton2() called
+MultipleYarnTekton.doeffect() sikeres
+MultipleYarnTekton.doeffect() sikeres
+Yarn created on Tekton T1

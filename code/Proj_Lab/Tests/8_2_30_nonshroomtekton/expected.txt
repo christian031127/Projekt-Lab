@@ -1,0 +1,2 @@
+Adding new gameObject T1!
+Adding new gameObject Sr1!
