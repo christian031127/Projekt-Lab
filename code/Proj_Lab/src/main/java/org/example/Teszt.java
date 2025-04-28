@@ -403,7 +403,7 @@ public class Teszt {
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
 
                     p1.setCurrentTekton(t1);
-                    p1.interactWithSpore(t1.getSpores());
+                    p1.interactWithSpore(new ArrayList<>(t1.getSpores()));
 
                     int kor = Integer.parseInt(command[4]);
                     for (int i = 0; i < kor; i++) {
