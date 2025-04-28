@@ -217,7 +217,11 @@ public class Teszt {
                         yarn.setTekton1(T1);
                         yarn.setTekton2(T1);
                         T1.addYarn(yarn);
-                        p1.interactWithYarn(yarn);
+                        boolean ret = p1.interactWithYarn(yarn);
+                        if(!ret) {
+                            // Player has no moves left in round
+                            T1.removeYarn(yarn);
+                        }
 
                         logger.log(Level.INFO, "Yarn created on Tekton {0}", command[3]);
                     }
@@ -229,7 +233,12 @@ public class Teszt {
                         yarn.setTekton2(T2);
                         T1.addYarn(yarn);
                         T2.addYarn(yarn);
-                        p1.interactWithYarn(yarn);
+                        boolean ret = p1.interactWithYarn(yarn);
+                        if(!ret) {
+                            // Player has no moves left in round
+                            T1.removeYarn(yarn);
+                            T2.removeYarn(yarn);
+                        }
 
                         logger.log(Level.INFO, "Yarn created between Tekton {0}", command[3] + " and Tekton " + command[4]);
 
@@ -329,7 +338,7 @@ public class Teszt {
 
                     Spore ret = player.move(celpont);
                     if (ret == null) {
-                        logger.log(Level.INFO, "Player mozgatása sikeresen megtörtént Tekton {0}-ra!", command[2]);
+                        logger.log(Level.INFO, "Player move successful to Tekton {0}-ra!", command[2]);
                     } else {
                         logger.log(Level.WARNING, "Failed to move Player {0}", String.valueOf(command[1]) + " to Tekton " + String.valueOf(command[2]));
                     }
@@ -389,8 +398,11 @@ public class Teszt {
                     Player p1 = (Player) gameObjectList.get(command[3]);
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
                     Spore spore = p1.move(t1);
-                    gameObjectList.put(command[1], spore);
-
+                    if(spore == null) {
+                        logger.log(Level.WARNING, "Could not eject spore!");
+                    } else {
+                        gameObjectList.put(command[1], spore);
+                    }
                     break;
                 }
                 case "grow": {

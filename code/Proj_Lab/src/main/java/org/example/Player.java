@@ -19,17 +19,18 @@ public class Player {
     public void interactWithSpore(List<Spore> spores) {
         // Implementation
         if(getIsInsect()) {
-            if((getEffects()[2] == 1 && steps_in_round >= 1)) {
-                //Checking whether the player has Slowing effect active
+            if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
+                //Checking whether the player has any moves left in round
                 return;
             }
+
             for (Spore _spore : spores) {
                 _spore.addEffect(this);
                 this.currentTekton.removeSpore(_spore);
             }
         }
         else{
-            if (getCurrentTekton().getShroom() != null) {
+            if (getCurrentTekton().getShroom() != null || steps_in_round >= 2) {
                 return;
             }
             if (getCurrentTekton().getSpores().size() >= 3) {
@@ -45,8 +46,12 @@ public class Player {
     public boolean interactWithYarn(Yarn yarn) {
         // Implementation
         if(getIsInsect()){
-           if((getEffects()[2] == 1 && steps_in_round >= 1) || getEffects()[4] == 1) {
-               //Checking whether the player has Slowing or Weakening effect active
+            if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
+                //Checking whether the player has any moves left in the round
+                return false;
+            }
+           if(getEffects()[4] == 1) {
+               //Checking whether the player has Weakening effect active
                return false;
            }
            yarn.getTekton1().removeYarn(yarn);
@@ -55,6 +60,9 @@ public class Player {
            yarn.setTekton2(null);
         }
         else {
+            if(steps_in_round >= 2) {
+                return false;
+            }
             yarn.getTekton2().doEffect();
             yarn.getTekton1().doEffect();
         }
@@ -65,14 +73,21 @@ public class Player {
     public Spore move(Tekton tekton) {
         logger.log(Level.INFO, "Player.move() called");
         if (!isInsect) {
+            if(steps_in_round >= 2) {
+                return null;
+            }
             Shroom s = tekton.getShroom();
             if(s != null) {
                 steps_in_round++;
                 return s.ejectSpore(tekton);
             }
         } else {
-            if((getEffects()[2] == 1 && steps_in_round >= 1) || getEffects()[1] == 1) {
-                //Checking whether the player has Slowing or Numbing effect active
+            if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
+                //Checking if the player has any steps left in the round
+                return new NumbingSpore();
+            }
+            if(getEffects()[1] == 1) {
+                //Checking whether the player has Numbing effect active
                 return new NumbingSpore();
             }
             List<Yarn> yarns = this.currentTekton.getYarns();

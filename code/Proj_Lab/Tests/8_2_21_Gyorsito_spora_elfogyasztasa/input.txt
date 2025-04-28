@@ -8,4 +8,3 @@ add Player In1 T1 Insect
 eat Spore Sp1 In1
 move In1 T2
 move In1 T1
-eat Yarn Y1 In1
