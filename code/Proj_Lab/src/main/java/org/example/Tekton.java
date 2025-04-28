@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,12 +109,12 @@ public class Tekton{
     public void split(){
         logger.log(Level.FINE, "Tekton.split() called");
 
-        for(Yarn y : yarns){
+        for(Yarn y : new ArrayList<>(yarns)){
             removeYarn(y);
         }
 
         //A Map.split ben al kell tárolni a szomszédokat a törlés előtt!
-        for(Tekton t : neighbours){
+        for(Tekton t : new ArrayList<>(neighbours)){
             removeNeighbour(t);
         }
     }
