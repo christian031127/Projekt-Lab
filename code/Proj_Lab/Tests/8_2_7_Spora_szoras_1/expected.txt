@@ -1,0 +1,9 @@
+Adding new gameObject T1!
+Adding new gameObject T2!
+Tekton T1 Tekton T2 are now neighbours!
+Adding new gameObject P1!
+Shroom.age() called
+Shroom.shouldDieFromOldAge() called
+Shroom.age() called
+Shroom.shouldDieFromOldAge() called
+Player.move() called

@@ -3,11 +3,25 @@ Goodbye...
 [INFO]: Adding new gameObject Sr1!
 [INFO]: Yarn.setTekton1() called
 [INFO]: Yarn.setTekton2() called
-[INFO]: MultipleYarnTekton.doeffect() sikeres
-[INFO]: MultipleYarnTekton.doeffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
 [INFO]: Yarn created on Tekton T1
 [INFO]: Yarn.setTekton1() called
 [INFO]: Yarn.setTekton2() called
-[INFO]: MultipleYarnTekton.doeffect() sikeres
-[INFO]: MultipleYarnTekton.doeffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
+[INFO]: AbsorbTekton.doEffect() sikeres
 [INFO]: Yarn created on Tekton T1
