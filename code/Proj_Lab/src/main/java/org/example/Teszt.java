@@ -201,6 +201,8 @@ public class Teszt {
 
                     elso.addNeighbour((Tekton) masodik);
                     masodik.addNeighbour((Tekton) elso);
+                    logger.log(Level.INFO, elso.getNeighbours().toString() + "fasz1");
+                    logger.log(Level.INFO, masodik.getNeighbours().toString() + "fasz2");
                     logger.log(Level.INFO, "Tekton " + command[1] + " Tekton " + command[2] + " are now neighbours!");
                     break;
                 }
@@ -402,9 +404,11 @@ public class Teszt {
                     Player p1 = (Player) gameObjectList.get(command[3]);
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
                     Spore spore = p1.move(t1);
+                    
                     if(spore == null) {
                         logger.log(Level.WARNING, "Could not eject spore!");
                     } else {
+                        logger.log(Level.INFO, "Spore ejected! sikeres!");
                         gameObjectList.put(command[1], spore);
                     }
                     break;
@@ -414,12 +418,15 @@ public class Teszt {
                         logger.log(Level.SEVERE, "Command move takes 4 arguments!");
                         throw new Exception("Command move takes 4 arguments!");
                     }
-                    Shroom s = new Shroom();
+                    
                     Player p1 = (Player) gameObjectList.get(command[3]);
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
+                    
+                    Map.currentTurn = Integer.parseInt(command[4]);
 
                     p1.setCurrentTekton(t1);
                     boolean ret = p1.interactWithSpore(new ArrayList<>(t1.getSpores()));
+                    Shroom s = t1.getShroom();
                     if(!ret) {
                         logger.log(Level.INFO, "Failed to create Shroom {0}", command[1]);
                     } else {
@@ -427,6 +434,7 @@ public class Teszt {
                         for (int i = 0; i < kor; i++) {
                             s.age();
                         }
+                        //logger.log(Level.INFO, s.getAge() + " korú a gomba!");
                         gameObjectList.put(command[1], s);
                         logger.log(Level.INFO, "Shroom {0} created!", command[1]);
                     }

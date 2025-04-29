@@ -24,6 +24,5 @@ Shroom.age() called
 Shroom.shouldDieFromOldAge() called
 Shroom.age() called
 Shroom.shouldDieFromOldAge() called
-Shroom.die() called
 Shroom S1 created!
 Player.move() called

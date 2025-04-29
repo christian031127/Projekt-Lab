@@ -3,6 +3,9 @@ add Tekton T2 MultipleYarnTekton
 add Tekton T3 MultipleYarnTekton
 neighbour T1 T2
 neighbour T2 T3
+add Spore Sp1 T1 SlowingSpore
+add Spore Sp2 T1 SlowingSpore
+add Spore Sp3 T1 SlowingSpore
 add Player P1 T1 Shroomer
 grow S1 T1 P1 10
 eject SP1 T3 P1

@@ -69,12 +69,18 @@ public class Shroom {
         int currentTurn = Map.currentTurn;
 
         boolean basic = tekton.getNeighbours().contains(target);
+        
         boolean advanced = tekton.getNeighbours().stream().anyMatch(neighbour -> neighbour.getNeighbours().contains(target));
+        
+        // logger.log(Level.INFO, Boolean.toString(advanced));
+        // if (!isSporeReady()) {
+        //     return null;
+        // }
+        // boolean megafasz = isOld() && advanced;
+        // logger.log(Level.INFO, Boolean.toString(megafasz));
 
-        if (!isSporeReady()) {
-            return null;
-        }
-
+        // logger.log(Level.INFO, String.valueOf(this.age));
+        
         if (isOld() && advanced) {
 
             SporeType selectedSpore = getRandomSpore();
@@ -104,7 +110,9 @@ public class Shroom {
             logger.log(Level.INFO, "ejectspore sikeres!");
             return spore;
         }
-
+        
+        //logger.log(Level.INFO, "FASZ2");
+        
         return null;
     }
 
@@ -130,7 +138,7 @@ public class Shroom {
 
     private boolean shouldDieFromOldAge() {
         logger.log(Level.INFO, "Shroom.shouldDieFromOldAge() called");
-        if (age < OLD_LIMIT) {
+        if (age < 12) {
             return false;
         }
 

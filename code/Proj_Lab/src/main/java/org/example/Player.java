@@ -38,6 +38,7 @@ public class Player {
                 getCurrentTekton().addShroom(s);
                 getCurrentTekton().removeSomeSpore(spores);
                 getCurrentTekton().doEffect();
+                s.setTekton(currentTekton);
             }
             return getCurrentTekton().getShroom() != null;
         }
@@ -78,7 +79,7 @@ public class Player {
             if(steps_in_round >= 2) {
                 return null;
             }
-            Shroom s = tekton.getShroom();
+            Shroom s = currentTekton.getShroom();
             if(s != null) {
                 steps_in_round++;
                 return s.ejectSpore(tekton);

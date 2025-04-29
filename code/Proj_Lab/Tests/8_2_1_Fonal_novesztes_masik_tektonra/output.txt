@@ -2,6 +2,8 @@ Goodbye...
 [INFO]: Adding new gameObject T1!
 [INFO]: Adding new gameObject T2!
 [INFO]: Adding new gameObject Sh1!
+[INFO]: [org.example.Tekton@6aa8ceb6]fasz1
+[INFO]: [org.example.Tekton@2530c12]fasz2
 [INFO]: Tekton T1 Tekton T2 are now neighbours!
 [INFO]: Yarn.setTekton1() called
 [INFO]: Yarn.setTekton2() called

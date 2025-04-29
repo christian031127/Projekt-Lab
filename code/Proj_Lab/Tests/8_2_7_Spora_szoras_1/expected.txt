@@ -7,3 +7,4 @@ Shroom.shouldDieFromOldAge() called
 Shroom.age() called
 Shroom.shouldDieFromOldAge() called
 Player.move() called
+Spore ejected! sikeres!
