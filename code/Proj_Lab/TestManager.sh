@@ -3,6 +3,7 @@
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
+WHITE='\033[1;34m'
 NC='\033[0m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
@@ -18,7 +19,7 @@ sikeresTesztek=0
 
 #Összes teszt lefuttatása
 for file in Tests/*; do
-    echo "---- A következő teszt indul: $file ----"
+    echo -e  "${WHITE}---- A következő teszt indul: $file ----${NC}"
     #cat $file/input.txt
     cat $file/input.txt | java -cp target/Proj_Lab-1.0-SNAPSHOT.jar org.example.Teszt > $file/output.txt
     #cat $file/input.txt | mvn exec:java > $file/output.txt
