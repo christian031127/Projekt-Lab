@@ -12,6 +12,9 @@ echo "Project buildelése"
 mvn compile
 echo "Project csomagolása"
 mvn package
+echo "JavaDoc generálása"
+mvn javadoc:javadoc
+
 
 osszTesztSzam=$(ls Tests | wc -l)
 echo "$osszTesztSzam teszteset található"

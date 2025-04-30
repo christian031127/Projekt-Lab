@@ -5,6 +5,8 @@ echo Project buildelese
 call .\mvnw.cmd compile
 echo Project csomagolasa
 call .\mvnw.cmd package
+echo Javadoc elkeszitese
+call .\mvnw.cmd javadoc:javadoc
 
 set /a sikeresTesztek=0
 set /a osszTesztSzam=0
