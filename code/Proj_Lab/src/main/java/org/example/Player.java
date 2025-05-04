@@ -14,6 +14,8 @@ public class Player {
     private int[] effects = new int[5];
     private int steps_in_round = 0;
 
+    private boolean dead = false;
+
     private static Logger logger = Logger.getLogger("TesztLogger");
 
     public boolean interactWithSpore(List<Spore> spores) {
@@ -142,7 +144,12 @@ public class Player {
     public int getScore() {
         return score;
     }
+
+    public boolean isDead() {
+        return dead;
+    }
+
     public void gameOver(){
-        
+        dead = true;
     }
 }
