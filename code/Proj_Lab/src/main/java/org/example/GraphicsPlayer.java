@@ -2,11 +2,13 @@ package org.example;
 
 import java.awt.*;
 
-public class GraphicsPlayer {
+public class GraphicsPlayer extends GraphicsObject{
 
     private Player player;
-    public int x;
-    public int y;
+
+    public GraphicsPlayer(int x, int y, Player player) {
+        super(x, y);
+    }
 
     public Player getPlayer() {
         return player;

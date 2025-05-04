@@ -2,11 +2,14 @@ package org.example;
 
 import java.awt.*;
 
-public class GraphicsTekton {
+public class GraphicsTekton extends GraphicsObject{
 
     private Tekton tekton;
-    public int x;
-    public int y;
+
+    public GraphicsTekton(int x, int y, Tekton tekton) {
+        super(x, y);
+        this.tekton = tekton;
+    }
 
     public Tekton getTekton() {
         return tekton;
