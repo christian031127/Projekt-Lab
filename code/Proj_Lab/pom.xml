@@ -35,7 +35,7 @@
                     <archive>
                         <manifestEntries>
                             <!-- Specify the main class to be used when running the JAR -->
-                            <Main-Class>org.example.Main</Main-Class>
+                            <Main-Class>org.example.GameUI</Main-Class>
                         </manifestEntries>
                     </archive>
                 </configuration>
