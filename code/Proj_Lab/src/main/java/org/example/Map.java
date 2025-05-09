@@ -1,5 +1,6 @@
 package org.example;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -166,4 +167,5 @@ public class Map {
         Tektons.put("T"+Tektons.size(),n2);
 
     }
+    public void draw(Graphics g) {}
 }
