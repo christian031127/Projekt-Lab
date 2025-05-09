@@ -50,14 +50,15 @@ public class Map extends JPanel{
                         logger.log(Level.SEVERE, "Not enough arguments for 'add' command! (minimum 2 argument)");
                         throw new Exception("Not enough arguments for 'add' command! (minimum 2 argument)");
                     }
-                    if (command.length == 3) {
+                    if (command.length == 5) {
                         switch (command[1]) {
                             case "Tekton":
                                 uj = new Tekton();
                                 Tekton uj2 = (Tekton) uj;
                                 uj2.setStrategy(new MultipleYarnTekton());
                                 Name = command[2];
-                                Tektons.put(Name, uj);
+                                GraphicsTekton t1=new GraphicsTekton(Integer.parseInt(command[3]),Integer.parseInt(command[4]),(Tekton) uj);
+                                Tektons.put(Name, t1);
                                 break;
 
                             default:
@@ -65,7 +66,7 @@ public class Map extends JPanel{
                                 throw new AssertionError();
                         }
                     }
-                    if (command.length > 3) {
+                    if (command.length > 5) {
                         switch (command[1]) {
                             case "Tekton":
                                 //Ez a sor lehet nem azt csinálja amit kellene
@@ -101,22 +102,24 @@ public class Map extends JPanel{
 
                                         throw new AssertionError();
                                 }
-                                Tektons.put(Name, uj);
+                                GraphicsTekton t=new GraphicsTekton(Integer.parseInt(command[4]),Integer.parseInt(command[5]),(Tekton) uj);
+                                Tektons.put(Name, t);
                                 break;
 
                             case "Player":
-                                if (command.length != 5) {
+                                if (command.length != 7) {
                                     throw new Exception("add Player takes 3 argument!");
                                 }
 
                                 Player p1 = new Player();
                                 p1.setIsInsect(command[4].equals("Insect"));
-                                Tekton t1 = (Tekton) Tektons.get(command[3]);
-                                p1.setCurrentTekton(t1);
+                                GraphicsTekton t1 = (GraphicsTekton) Tektons.get(command[3]);
+                                p1.setCurrentTekton(t1.getTekton());
 
                                 uj = p1;
                                 Name = command[2];
-                                Players.put(Name, uj);
+                                GraphicsPlayer p=new GraphicsPlayer(Integer.parseInt(command[5]),Integer.parseInt(command[6]),(Player)uj);
+                                Players.put(Name, p);
                                 break;
                             default:
                                 logger.log(Level.SEVERE, "Cannot find gameObject type {0}!", command[1]);
@@ -133,11 +136,11 @@ public class Map extends JPanel{
                         logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
                         throw new Exception("Command neighbour takes 2 arguments!");
                     }
-                    Tekton elso = (Tekton) Tektons.get(command[1]);
-                    Tekton masodik = (Tekton) Tektons.get(command[2]);
+                    GraphicsTekton elso = (GraphicsTekton) Tektons.get(command[1]);
+                    GraphicsTekton masodik = (GraphicsTekton) Tektons.get(command[2]);
 
-                    elso.addNeighbour((Tekton) masodik);
-                    masodik.addNeighbour((Tekton) elso);
+                    elso.getTekton().addNeighbour(masodik.getTekton());
+                    masodik.getTekton().addNeighbour(elso.getTekton());
                     logger.log(Level.INFO, "Tekton " + command[1] + " Tekton " + command[2] + " are now neighbours!");
                     break;
                 }
@@ -155,18 +158,28 @@ public class Map extends JPanel{
         logger.log(Level.FINE,"Map.splitTekton() called");
         List<Tekton> neighbours = tekton.getNeighbours();
         tekton.split();
-        Tektons.values().remove(tekton);
-        Tekton n1 = new Tekton();
-        Tekton n2 = new Tekton();
 
-        n1.addNeighbour(n2);
-        n2.addNeighbour(n1);
-        for(Tekton tekton1 : neighbours){
-            n1.addNeighbour(tekton1);
-            n2.addNeighbour(tekton1);
+        for (Object t:Tektons.values()){
+            GraphicsTekton t2 = (GraphicsTekton) t;
+            if(t2.getTekton().equals(tekton)){
+                GraphicsTekton tmp = (GraphicsTekton) t;
+                Tektons.values().remove(tmp);
+                break;
+            }
         }
-        Tektons.put("T"+Tektons.size(),n1);
-        Tektons.put("T"+Tektons.size(),n2);
+
+        GraphicsTekton t3 = new GraphicsTekton(0,0,new Tekton());
+        GraphicsTekton t4 = new GraphicsTekton(0,0,new Tekton());
+        t3.getTekton().addNeighbour(t4.getTekton());
+        t4.getTekton().addNeighbour(t3.getTekton());
+
+        for(Tekton tf : neighbours){
+            t3.getTekton().addNeighbour(tf);
+            t4.getTekton().addNeighbour(tf);
+        }
+        Tektons.put("T"+Tektons.size(),t3);
+        Tektons.put("T"+Tektons.size(),t4);
+
 
     }
     @Override
@@ -174,7 +187,14 @@ public class Map extends JPanel{
         super.paintComponent(g);
         Graphics2D gg = (Graphics2D) g;
         //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
-        
+        for (Object t:Tektons.values()){
+            GraphicsTekton t2 = (GraphicsTekton) t;
+            t2.draw((Graphics2D) g);
+        }
+        for (Object p:Players.values()){
+            GraphicsPlayer p2 = (GraphicsPlayer) p;
+            p2.draw((Graphics2D) g);
+        }
         //if (image != null) {
         //    g.drawImage(image, 0, 0, this);
         //}
