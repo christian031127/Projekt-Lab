@@ -10,7 +10,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Map {
+import javax.swing.*;
+
+public class Map extends JPanel{
 
     private static Logger logger = Logger.getLogger("TesztLogger");
 
@@ -167,5 +169,14 @@ public class Map {
         Tektons.put("T"+Tektons.size(),n2);
 
     }
-    public void draw(Graphics g) {}
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D gg = (Graphics2D) g;
+        //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
+        
+        //if (image != null) {
+        //    g.drawImage(image, 0, 0, this);
+        //}
+    }
 }
