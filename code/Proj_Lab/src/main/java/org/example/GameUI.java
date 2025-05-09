@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameUI {
-    public static void main(String[] args) {
+
+    private static Map map = new Map();
+    public static void main(String[] args) throws Exception {
+
+        map.loadMap();
         // JFrame létrehozása
         JFrame frame = new JFrame("GridLayout JComponent példa");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
