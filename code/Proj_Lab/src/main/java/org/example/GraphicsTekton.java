@@ -1,6 +1,9 @@
 package org.example;
 
 import java.awt.*;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class GraphicsTekton extends GraphicsObject{
 
@@ -15,5 +18,35 @@ public class GraphicsTekton extends GraphicsObject{
         return tekton;
     }
 
-    public void draw(Graphics2D g) {}
+    public void draw(Graphics2D g) {
+        //KEll rajzolni egy tektont
+        //Ha van gomba rajta, akkor azt is
+        //Ha van rajta fonál, akkor azt is
+        //ha össze van kötve fonállal, akkor azt is
+        // spórá is
+        Image imageTekton = null;
+
+        //Tekton kirajzolása
+        try {
+            imageTekton = ImageIO.read(getClass().getResource("/images/myimage.png"));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        if (imageTekton != null) {
+            g.drawImage(imageTekton, x, y, null);
+            //Méret átalakítása
+        }
+
+        if (tekton.getShroom() != null) {
+            
+        }
+        if (!tekton.getSpores().isEmpty()) {
+            
+        }
+        if (!tekton.getYarns().isEmpty()) {
+            
+        }
+    }
 }

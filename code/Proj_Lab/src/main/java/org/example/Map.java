@@ -174,7 +174,8 @@ public class Map extends JPanel{
         super.paintComponent(g);
         Graphics2D gg = (Graphics2D) g;
         //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
-        
+        //Először tektonokat kell kirajzolni
+        //Utánna a playereket , mert felülrajzolja.
         //if (image != null) {
         //    g.drawImage(image, 0, 0, this);
         //}
