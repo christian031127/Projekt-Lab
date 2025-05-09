@@ -1,6 +1,10 @@
 package org.example;
 
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class GraphicsPlayer extends GraphicsObject{
 
@@ -15,5 +19,6 @@ public class GraphicsPlayer extends GraphicsObject{
         return player;
     }
 
-    public void draw(Graphics2D g) {}
+    public void draw(Graphics2D g)  {
+    }
 }
