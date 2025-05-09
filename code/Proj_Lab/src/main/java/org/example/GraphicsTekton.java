@@ -25,10 +25,12 @@ public class GraphicsTekton extends GraphicsObject{
         //ha össze van kötve fonállal, akkor azt is
         // spórá is
         Image imageTekton = null;
+        Image imageShroom = null;
 
         //Tekton kirajzolása
         try {
             imageTekton = ImageIO.read(getClass().getResource("/images/myimage.png"));
+            imageTekton = ImageIO.read(getClass().getResource("/images/shroom.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -40,7 +42,7 @@ public class GraphicsTekton extends GraphicsObject{
         }
 
         if (tekton.getShroom() != null) {
-            
+            g.drawImage(imageShroom, x, y, null);
         }
         if (!tekton.getSpores().isEmpty()) {
             
