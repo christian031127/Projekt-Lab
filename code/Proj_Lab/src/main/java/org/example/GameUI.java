@@ -46,7 +46,6 @@ public class GameUI {
                 super.paintComponent(g);
                 g.setColor(Color.BLUE);
                 g.fillRect(10, 10, getWidth() - 20, getHeight() - 20);
-                map.draw(g);
             }
         };
 
@@ -61,7 +60,7 @@ public class GameUI {
         // Komponensek hozzáadása a frame-hez
         frame.add(imagePanel);
         frame.add(customComponent);
-        //frame.add(label2);
+        frame.add(map);
 
         frame.add(label3);
 
