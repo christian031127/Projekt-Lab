@@ -25,15 +25,45 @@ public class GraphicsTekton extends GraphicsObject{
         //ha össze van kötve fonállal, akkor azt is
         // spórá is
         Image imageTekton = null;
+        Image imageTektonMultiple = null;
+        Image imageTektonAbsorb = null;
+        Image imageTektonKeepAlive = null;
+        Image imageTektonNonShroom = null;
+        Image imageTektonSingleYarn = null;
         Image imageShroom = null;
 
         //Tekton kirajzolása
         try {
-            imageTekton = ImageIO.read(getClass().getResource("/images/multipleYarnTekton.png"));
+            imageTektonMultiple = ImageIO.read(getClass().getResource("/images/multipleYarnTekton.png"));
+            imageTektonAbsorb = ImageIO.read(getClass().getResource("/images/absorbTekton.png"));
+            imageTektonKeepAlive = ImageIO.read(getClass().getResource("/images/keepAliveTekton.png"));
+            imageTektonNonShroom = ImageIO.read(getClass().getResource("/images/nonShroomTekton.png"));
+            imageTektonSingleYarn = ImageIO.read(getClass().getResource("/images/singleYarnTekton.png"));
             imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_1.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+
+        switch (tekton.getStrategy().toString()){
+
+            case "MultipleYarn":
+                imageTekton = imageTektonMultiple;
+                break;
+            case "Absorb":
+                imageTekton = imageTektonAbsorb;
+                break;
+            case "KeepAlive":
+                imageTekton = imageTektonKeepAlive;
+                break;
+            case "NonShroom":
+                imageTekton = imageTektonNonShroom;
+                break;
+            case "SingleYarn":
+                imageTekton = imageTektonSingleYarn;
+                break;
+            default:
+                break;
         }
 
         if (imageTekton != null) {
