@@ -29,8 +29,8 @@ public class GraphicsTekton extends GraphicsObject{
 
         //Tekton kirajzolása
         try {
-            imageTekton = ImageIO.read(getClass().getResource("/images/myimage.png"));
-            imageTekton = ImageIO.read(getClass().getResource("/images/shroom.png"));
+            imageTekton = ImageIO.read(getClass().getResource("/images/multipleYarnTekton.png"));
+            imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_1.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
