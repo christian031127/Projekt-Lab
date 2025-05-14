@@ -130,12 +130,12 @@ public class Tekton{
                 int id = yarn.getShroomPlayerId();
                 boolean hasneighbour = false;
                 for (Yarn yarn1 : getYarns()) {
-                    if (yarn1.getShroomPlayerId() == id) {
+                    if (yarn1.getShroomPlayerId() == id && yarn1 != yarn) {
                         hasneighbour = true;
                         break;
                     }
                 }
-                if ((!hasneighbour && shroom.getPlayerId() != yarn.getShroomPlayerId())|| (shroom == null)) {
+                if (!hasneighbour) {
                     removeYarn(yarn);
                     logger.log(Level.INFO, "deleteYarnsOnTekton() sikeres");
                 }

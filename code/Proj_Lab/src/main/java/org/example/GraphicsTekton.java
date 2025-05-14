@@ -39,6 +39,11 @@ public class GraphicsTekton extends GraphicsObject{
             imageTektonKeepAlive = ImageIO.read(getClass().getResource("/images/keepAliveTekton.png"));
             imageTektonNonShroom = ImageIO.read(getClass().getResource("/images/nonShroomTekton.png"));
             imageTektonSingleYarn = ImageIO.read(getClass().getResource("/images/singleYarnTekton.png"));
+            imageSporeNumbing = ImageIO.read(getClass().getResource("/images/numbing_spore.png"));
+            imageSporeSlowing = ImageIO.read(getClass().getResource("/images/slowing_spore.png"));
+            imageSporeSplitting = ImageIO.read(getClass().getResource("/images/splitting_spore.png"));
+            imageSPoreAccelerating = ImageIO.read(getClass().getResource("/images/accelerating_spore.png"));
+            imageSporeWeakening = ImageIO.read(getClass().getResource("/images/weakening_spore.png"));
             imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_1.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -75,7 +80,33 @@ public class GraphicsTekton extends GraphicsObject{
             g.drawImage(imageShroom, x, y, null);
         }
         if (!tekton.getSpores().isEmpty()) {
-            
+            x1 = x;
+            for (Spore spore : tekton.getSpores()) {
+                switch (spore.getClass().getSimpleName()) {
+                    case "NumbingSpore":
+                        g.drawImage(imageSporeNumbing, x1, y, null);
+                        x1 += imageSporeNumbing.getWidth(null);
+                        break;
+                    case "SlowingSpore":
+                        g.drawImage(imageSporeSlowing, x1, y, null);
+                        x1 += imageSporeSlowing.getWidth(null);
+                        break;
+                    case "SplittingSpore":
+                        g.drawImage(imageSporeSplitting, x1, y, null);
+                        x1 += imageSporeSplitting.getWidth(null);
+                        break;
+                    case "AcceleratingSpore":
+                        g.drawImage(imageSPoreAccelerating, x1, y, null);
+                        x1 += imageSPoreAccelerating.getWidth(null);
+                        break;
+                    case "WeakeningSpore":
+                        g.drawImage(imageSporeWeakening, x1, y, null);
+                        x1 += imageSporeWeakening.getWidth(null);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         if (!tekton.getYarns().isEmpty()) {
             

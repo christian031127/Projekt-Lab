@@ -3,6 +3,8 @@ package org.example;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player {
 
@@ -59,6 +61,7 @@ public class Player {
                //Checking whether the player has Weakening effect active
                return false;
            }
+           yarnEaten(yarn);
            yarn.getTekton1().removeYarn(yarn);
            yarn.getTekton2().removeYarn(yarn);
            yarn.setTekton1(null);
@@ -151,5 +154,67 @@ public class Player {
 
     public void gameOver(){
         dead = true;
+    }
+
+    public void yarnEaten(Yarn y) {
+        if (!isThereShroom(y, y.getTekton1(), new HashSet<>())) {
+            deleteSystem(y, y.getTekton1(), new HashSet<>());
+        }
+        if (!isThereShroom(y, y.getTekton2(), new HashSet<>())) {
+            deleteSystem(y, y.getTekton2(), new HashSet<>());
+        }
+    }
+
+    public void deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
+        int playerID = y.getPlayerID();
+
+        if (visited.contains(t)) {
+            return false;
+        }
+        visited.add(t);
+
+        for (Yarn y1 : t.getYarns()) {
+            if (y1.getShroomPlayerId() == playerID &&
+                !y1.isSingleTektonYarn() &&
+                y1 != y){
+
+                Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
+                deleteSystem(y1, other, visited);
+
+                y1.getTekton1().removeYarn(y1);
+                y1.getTekton2().removeYarn(y1);
+                y1.setTekton1(null);
+                y1.setTekton2(null);
+            }
+        }
+
+        t.doEffect();
+    }
+
+    public boolean isThereShroom(Yarn y, Tekton t, Set<Tekton> visited) {
+        int playerID = y.getPlayerID();
+
+        if (t.getShroom() != null && t.getShroom().getPlayerID() == playerID) {
+            return true;
+        }
+
+        if (visited.contains(t)) {
+            return false;
+        }
+        visited.add(t);
+
+        for (Yarn y1 : t.getYarns()) {
+            if (y1.getShroomPlayerId() == playerID &&
+                !y1.isSingleTektonYarn() &&
+                y1 != y) {
+
+                Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
+                if (isThereShroom(y1, other, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
