@@ -20,5 +20,18 @@ public class GraphicsPlayer extends GraphicsObject{
     }
 
     public void draw(Graphics2D g)  {
+        Image imagePlayer=null;
+        try {
+            if(player.getIsInsect()){
+                imagePlayer = ImageIO.read(getClass().getResource("/images/bug_1.png"));
+            }
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (imagePlayer != null) {
+            g.drawImage(imagePlayer, x, y,32,32, null);
+        }
     }
 }

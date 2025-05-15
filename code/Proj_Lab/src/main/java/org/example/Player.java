@@ -165,8 +165,8 @@ public class Player {
         }
     }
 
-    public void deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
-        int playerID = y.getPlayerID();
+    public boolean deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
+        int playerID = y.getShroomPlayerId();
 
         if (visited.contains(t)) {
             return false;
@@ -189,12 +189,13 @@ public class Player {
         }
 
         t.doEffect();
+        return true;
     }
 
     public boolean isThereShroom(Yarn y, Tekton t, Set<Tekton> visited) {
-        int playerID = y.getPlayerID();
+        int playerID = y.getShroomPlayerId();
 
-        if (t.getShroom() != null && t.getShroom().getPlayerID() == playerID) {
+        if (t.getShroom() != null && t.getShroom().getPlayerId() == playerID) {
             return true;
         }
 

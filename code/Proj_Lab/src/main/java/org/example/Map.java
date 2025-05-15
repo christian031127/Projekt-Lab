@@ -3,6 +3,7 @@ package org.example;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -17,8 +18,8 @@ public class Map extends JPanel{
     private static Logger logger = Logger.getLogger("TesztLogger");
 
     public Player currentPlayer;
-    private static HashMap<String, Object> Tektons = new HashMap<String, Object>();
-    private static HashMap<String, Object> Players = new HashMap<String, Object>();
+    private static HashMap<String, GraphicsTekton> Tektons = new HashMap<String, GraphicsTekton>();
+    private static HashMap<String, GraphicsPlayer> Players = new HashMap<String, GraphicsPlayer>();
     static String Name;
 
     public static int currentTurn = 0;
@@ -44,7 +45,7 @@ public class Map extends JPanel{
 
             switch (command[0]) {
                 case "add": {
-                    Object uj = new Object();
+                    Tekton uj = new Tekton();
                     //Van e elég argumentum?
                     if (command.length < 3) {
                         logger.log(Level.SEVERE, "Not enough arguments for 'add' command! (minimum 2 argument)");
@@ -53,11 +54,9 @@ public class Map extends JPanel{
                     if (command.length == 5) {
                         switch (command[1]) {
                             case "Tekton":
-                                uj = new Tekton();
-                                Tekton uj2 = (Tekton) uj;
-                                uj2.setStrategy(new MultipleYarnTekton());
+                                uj.setStrategy(new MultipleYarnTekton());
                                 Name = command[2];
-                                GraphicsTekton t1=new GraphicsTekton(Integer.parseInt(command[3]),Integer.parseInt(command[4]),(Tekton) uj);
+                                GraphicsTekton t1=new GraphicsTekton(Integer.parseInt(command[3]),Integer.parseInt(command[4]),uj);
                                 Tektons.put(Name, t1);
                                 break;
 
@@ -70,39 +69,33 @@ public class Map extends JPanel{
                         switch (command[1]) {
                             case "Tekton":
                                 //Ez a sor lehet nem azt csinálja amit kellene
-                                uj = new Tekton();
-                                Tekton uj2 = (Tekton) uj;
+
                                 switch (command[3]) {
                                     case "AbsorbTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new AbsorbTekton());
+                                        uj.setStrategy(new AbsorbTekton());
                                         Name = command[2];
                                         break;
                                     case "SingleYarnTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new SingleYarnTekton());
+                                        uj.setStrategy(new SingleYarnTekton());
                                         Name = command[2];
                                         break;
                                     case "NonShroomTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new NonShroomTekton());
+                                        uj.setStrategy(new NonShroomTekton());
                                         Name = command[2];
                                         break;
                                     case "KeepAliveTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new KeepAliveTekton());
+                                        uj.setStrategy(new KeepAliveTekton());
                                         Name = command[2];
                                         break;
                                     case "MultipleYarnTekton":
-                                        uj2 = new Tekton();
-                                        uj2.setStrategy(new MultipleYarnTekton());
+                                        uj.setStrategy(new MultipleYarnTekton());
                                         Name = command[2];
                                         break;
                                     default:
 
                                         throw new AssertionError();
                                 }
-                                GraphicsTekton t=new GraphicsTekton(Integer.parseInt(command[4]),Integer.parseInt(command[5]),(Tekton) uj);
+                                GraphicsTekton t=new GraphicsTekton(Integer.parseInt(command[4]),Integer.parseInt(command[5]),uj);
                                 Tektons.put(Name, t);
                                 break;
 
@@ -110,15 +103,15 @@ public class Map extends JPanel{
                                 if (command.length != 7) {
                                     throw new Exception("add Player takes 3 argument!");
                                 }
-
                                 Player p1 = new Player();
                                 p1.setIsInsect(command[4].equals("Insect"));
-                                GraphicsTekton t1 = (GraphicsTekton) Tektons.get(command[3]);
+                                GraphicsTekton t1 =Tektons.get(command[3]);
                                 p1.setCurrentTekton(t1.getTekton());
-
-                                uj = p1;
+                                if(command[4].equals("Shroomer")){
+                                    p1.getCurrentTekton().addShroom(new Shroom());
+                                }
                                 Name = command[2];
-                                GraphicsPlayer p=new GraphicsPlayer(Integer.parseInt(command[5]),Integer.parseInt(command[6]),(Player)uj);
+                                GraphicsPlayer p=new GraphicsPlayer(Integer.parseInt(command[5]),Integer.parseInt(command[6]),p1);
                                 Players.put(Name, p);
                                 break;
                             default:
@@ -136,8 +129,8 @@ public class Map extends JPanel{
                         logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
                         throw new Exception("Command neighbour takes 2 arguments!");
                     }
-                    GraphicsTekton elso = (GraphicsTekton) Tektons.get(command[1]);
-                    GraphicsTekton masodik = (GraphicsTekton) Tektons.get(command[2]);
+                    GraphicsTekton elso = Tektons.get(command[1]);
+                    GraphicsTekton masodik =Tektons.get(command[2]);
 
                     elso.getTekton().addNeighbour(masodik.getTekton());
                     masodik.getTekton().addNeighbour(elso.getTekton());
@@ -159,11 +152,9 @@ public class Map extends JPanel{
         List<Tekton> neighbours = tekton.getNeighbours();
         tekton.split();
 
-        for (Object t:Tektons.values()){
-            GraphicsTekton t2 = (GraphicsTekton) t;
-            if(t2.getTekton().equals(tekton)){
-                GraphicsTekton tmp = (GraphicsTekton) t;
-                Tektons.values().remove(tmp);
+        for (GraphicsTekton t:Tektons.values()){
+            if(t.getTekton().equals(tekton)){
+                Tektons.values().remove(t);
                 break;
             }
         }
@@ -177,8 +168,8 @@ public class Map extends JPanel{
             t3.getTekton().addNeighbour(tf);
             t4.getTekton().addNeighbour(tf);
         }
-        Tektons.put("T"+Tektons.size(),t3);
-        Tektons.put("T"+Tektons.size(),t4);
+        Tektons.put("T"+Tektons.size()+1,t3);
+        Tektons.put("T"+Tektons.size()+2,t4);
 
 
     }
@@ -188,16 +179,26 @@ public class Map extends JPanel{
         //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
         //Először tektonokat kell kirajzolni
         //Utánna a playereket , mert felülrajzolja.
-        for (Object t:Tektons.values()){
-            GraphicsTekton t2 = (GraphicsTekton) t;
-            t2.draw((Graphics2D) g);
+        for (GraphicsTekton t:Tektons.values()){
+            t.draw((Graphics2D) g);
         }
-        for (Object p:Players.values()){
-            GraphicsPlayer p2 = (GraphicsPlayer) p;
-            p2.draw((Graphics2D) g);
+        for (GraphicsPlayer p:Players.values()){
+            p.draw((Graphics2D) g);
         }
         //if (image != null) {
         //    g.drawImage(image, 0, 0, this);
         //}
+    }
+
+    public void nextPlayer(){
+        boolean b=false;
+        List<GraphicsPlayer> playerList = new ArrayList<>(Players.values());
+        for (int i = 0; i < playerList.size(); i++) {
+            if (playerList.get(i).getPlayer().equals(currentPlayer)) {
+                int nextIndex = (i + 1) % playerList.size();
+                currentPlayer = playerList.get(nextIndex).getPlayer();
+                break;
+            }
+        }
     }
 }

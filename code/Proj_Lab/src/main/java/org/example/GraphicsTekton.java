@@ -31,6 +31,11 @@ public class GraphicsTekton extends GraphicsObject{
         Image imageTektonNonShroom = null;
         Image imageTektonSingleYarn = null;
         Image imageShroom = null;
+        Image imageSporeNumbing=null;
+        Image imageSporeSlowing=null;
+        Image imageSporeSplitting=null;
+        Image imageSPoreAccelerating=null;
+        Image imageSporeWeakening=null;
 
         //Tekton kirajzolása
         try {
@@ -42,7 +47,7 @@ public class GraphicsTekton extends GraphicsObject{
             imageSporeNumbing = ImageIO.read(getClass().getResource("/images/numbing_spore.png"));
             imageSporeSlowing = ImageIO.read(getClass().getResource("/images/slowing_spore.png"));
             imageSporeSplitting = ImageIO.read(getClass().getResource("/images/splitting_spore.png"));
-            imageSPoreAccelerating = ImageIO.read(getClass().getResource("/images/accelerating_spore.png"));
+            imageSPoreAccelerating = ImageIO.read(getClass().getResource("/images/acceleration_spore.png"));
             imageSporeWeakening = ImageIO.read(getClass().getResource("/images/weakening_spore.png"));
             imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_1.png"));
         } catch (IOException e) {
@@ -72,15 +77,15 @@ public class GraphicsTekton extends GraphicsObject{
         }
 
         if (imageTekton != null) {
-            g.drawImage(imageTekton, x, y, null);
+            g.drawImage(imageTekton, x, y, 64,64,null);
             //Méret átalakítása
         }
 
         if (tekton.getShroom() != null) {
-            g.drawImage(imageShroom, x, y, null);
+            g.drawImage(imageShroom, x, y, 32,32,null);
         }
         if (!tekton.getSpores().isEmpty()) {
-            x1 = x;
+            int x1 = x;
             for (Spore spore : tekton.getSpores()) {
                 switch (spore.getClass().getSimpleName()) {
                     case "NumbingSpore":
