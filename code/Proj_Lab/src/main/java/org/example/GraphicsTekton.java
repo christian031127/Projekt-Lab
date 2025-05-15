@@ -49,7 +49,9 @@ public class GraphicsTekton extends GraphicsObject{
             imageSporeSplitting = ImageIO.read(getClass().getResource("/images/splitting_spore.png"));
             imageSPoreAccelerating = ImageIO.read(getClass().getResource("/images/acceleration_spore.png"));
             imageSporeWeakening = ImageIO.read(getClass().getResource("/images/weakening_spore.png"));
-            imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_1.png"));
+            if(tekton.getShroom()!=null){
+                imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_"+tekton.getShroom().getPlayerId()+".png"));
+            }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

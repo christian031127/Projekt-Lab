@@ -100,17 +100,19 @@ public class Map extends JPanel{
                                 break;
 
                             case "Player":
-                                if (command.length != 7) {
+                                if (command.length != 8) {
                                     throw new Exception("add Player takes 3 argument!");
                                 }
                                 Player p1 = new Player();
                                 p1.setIsInsect(command[4].equals("Insect"));
-                                GraphicsTekton t1 =Tektons.get(command[3]);
-                                p1.setCurrentTekton(t1.getTekton());
+                                p1.setCurrentTekton(Tektons.get(command[3]).getTekton());
                                 if(command[4].equals("Shroomer")){
-                                    p1.getCurrentTekton().addShroom(new Shroom());
+                                    Shroom s=new Shroom();
+                                    s.setPlayerId(Integer.parseInt(command[7]));
+                                    p1.getCurrentTekton().addShroom(s);
                                 }
                                 Name = command[2];
+                                p1.setPlayer_id(Integer.parseInt(command[7]));
                                 GraphicsPlayer p=new GraphicsPlayer(Integer.parseInt(command[5]),Integer.parseInt(command[6]),p1);
                                 Players.put(Name, p);
                                 break;

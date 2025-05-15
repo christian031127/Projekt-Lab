@@ -23,7 +23,7 @@ public class GraphicsPlayer extends GraphicsObject{
         Image imagePlayer=null;
         try {
             if(player.getIsInsect()){
-                imagePlayer = ImageIO.read(getClass().getResource("/images/bug_1.png"));
+                    imagePlayer = ImageIO.read(getClass().getResource("/images/bug_"+player.getPlayer_id()+".png"));
             }
 
         } catch (IOException e) {
@@ -31,6 +31,7 @@ public class GraphicsPlayer extends GraphicsObject{
             e.printStackTrace();
         }
         if (imagePlayer != null) {
+
             g.drawImage(imagePlayer, x, y,32,32, null);
         }
     }

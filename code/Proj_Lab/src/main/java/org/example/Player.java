@@ -218,4 +218,10 @@ public class Player {
 
         return false;
     }
+    public void setPlayer_id(int id){
+        player_id=id;
+    }
+    public int getPlayer_id(){
+        return player_id;
+    }
 }
