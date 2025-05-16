@@ -34,7 +34,7 @@ public class GraphicsTekton extends GraphicsObject{
         Image imageSporeNumbing=null;
         Image imageSporeSlowing=null;
         Image imageSporeSplitting=null;
-        Image imageSPoreAccelerating=null;
+        Image imageSporeAccelerating=null;
         Image imageSporeWeakening=null;
 
         //Tekton kirajzolása
@@ -47,7 +47,7 @@ public class GraphicsTekton extends GraphicsObject{
             imageSporeNumbing = ImageIO.read(getClass().getResource("/images/numbing_spore.png"));
             imageSporeSlowing = ImageIO.read(getClass().getResource("/images/slowing_spore.png"));
             imageSporeSplitting = ImageIO.read(getClass().getResource("/images/splitting_spore.png"));
-            imageSPoreAccelerating = ImageIO.read(getClass().getResource("/images/acceleration_spore.png"));
+            imageSporeAccelerating = ImageIO.read(getClass().getResource("/images/acceleration_spore.png"));
             imageSporeWeakening = ImageIO.read(getClass().getResource("/images/weakening_spore.png"));
             if(tekton.getShroom()!=null){
                 imageShroom = ImageIO.read(getClass().getResource("/images/mushroom_"+tekton.getShroom().getPlayerId()+".png"));
@@ -88,27 +88,35 @@ public class GraphicsTekton extends GraphicsObject{
         }
         if (!tekton.getSpores().isEmpty()) {
             int x1 = x;
+            int y1 = y;
+
             for (Spore spore : tekton.getSpores()) {
+                if(tekton.getSpores().indexOf(spore)!=0 && tekton.getSpores().indexOf(spore)%4==0){y1+=30;x1=x;}
                 switch (spore.getClass().getSimpleName()) {
                     case "NumbingSpore":
-                        g.drawImage(imageSporeNumbing, x1, y, 50,50,null);
-                        x1 += imageSporeNumbing.getWidth(null);
+                        g.drawImage(imageSporeNumbing, x1, y1, 30,30,null);
+                        x1+=30;
+                        //x1 += imageSporeNumbing.getWidth(null);
                         break;
                     case "SlowingSpore":
-                        g.drawImage(imageSporeSlowing, x1, y,50,50, null);
-                        x1 += imageSporeSlowing.getWidth(null);
+                        g.drawImage(imageSporeSlowing, x1, y1,30,30, null);
+                        x1+=30;
+                        //x1 += imageSporeSlowing.getWidth(null);
                         break;
-                    case "SplittingSpore":
-                        g.drawImage(imageSporeSplitting, x1, y,50,50, null);
-                        x1 += imageSporeSplitting.getWidth(null);
+                    case "SplitterSpore":
+                        g.drawImage(imageSporeSplitting, x1, y1,30,30, null);
+                        x1+=30;
+                        //x1 += imageSporeSplitting.getWidth(null);
                         break;
-                    case "AcceleratingSpore":
-                        g.drawImage(imageSPoreAccelerating, x1, y,50,50, null);
-                        x1 += imageSPoreAccelerating.getWidth(null);
+                    case "AccelerationSpore":
+                        g.drawImage(imageSporeAccelerating, x1, y1,30,30, null);
+                        x1+=30;
+                        //x1 += imageSPoreAccelerating.getWidth(null);
                         break;
                     case "WeakeningSpore":
-                        g.drawImage(imageSporeWeakening, x1, y, 50,50,null);
-                        x1 += imageSporeWeakening.getWidth(null);
+                        g.drawImage(imageSporeWeakening, x1, y1, 30,30,null);
+                        x1+=30;
+                        //x1 += imageSporeWeakening.getWidth(null);
                         break;
                     default:
                         break;

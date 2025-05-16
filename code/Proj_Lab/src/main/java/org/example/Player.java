@@ -32,6 +32,7 @@ public class Player {
             for (Spore _spore : spores) {
                 _spore.addEffect(this);
                 this.currentTekton.getFirst().removeSpore(_spore);
+                break;
             }
         }
         else{
@@ -48,7 +49,7 @@ public class Player {
                 return false;
             }
             if (c.getSpores().size() >= 3) {
-                Shroom s = new Shroom();
+                Shroom s = new Shroom(c,player_id);
                 c.addShroom(s);
                 c.removeSomeSpore(spores);
                 c.doEffect();
@@ -83,6 +84,12 @@ public class Player {
             }
             if(!yarn.getTekton1().getNeighbours().contains(yarn.getTekton2())){
                 return false;
+            }
+            if(!currentTekton.contains(yarn.getTekton2())) {
+                currentTekton.add(yarn.getTekton2());
+            }
+            if(!currentTekton.contains(yarn.getTekton1())) {
+                currentTekton.add(yarn.getTekton1());
             }
             yarn.getTekton1().addYarn(yarn);
             yarn.getTekton2().addYarn(yarn);
@@ -124,6 +131,7 @@ public class Player {
             boolean moved = false;
             for(Yarn y : yarns) {
                 if(y.getTekton1() == tekton || y.getTekton2() == tekton) {
+                    System.out.println(y.getTekton1());
                     this.setCurrentTekton(tekton);
                     moved = true;
                     break;

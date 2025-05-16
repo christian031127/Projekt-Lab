@@ -16,7 +16,7 @@ public class Shroom {
     private int ejectCount = 0;
 
     private static final int OLD_LIMIT = 10;
-    private static final int MAX_EJECTS = 4; // max ennyiszer szórhat
+    private static final int MAX_EJECTS = 10; // max ennyiszer szórhat
     private static final int EJECT_COOLDOWN = 2; // ennyi körönként szórhat újra
 
     private boolean dead = false; // gomba halott-e

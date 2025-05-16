@@ -40,5 +40,5 @@ neighbour T11 T15
 neighbour T12 T16
 add Player Sr1 T1 Shroomer 0 100 1
 add Player Sr2 T4 Shroomer 100 0 2
-add Player Is1 T16 Insect 200 100 3
-add Player Is2 T12 Insect 300 100 4
+add Player Is1 T6 Insect 100 100 3
+add Player Is2 T10 Insect 300 100 4

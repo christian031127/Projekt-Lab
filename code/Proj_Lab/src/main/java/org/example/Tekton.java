@@ -2,6 +2,7 @@ package org.example;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import java.util.logging.Level;
@@ -101,9 +102,13 @@ public class Tekton{
 
     public void removeSomeSpore(List<Spore> spores_list){
         logger.log(Level.FINE, "Tekton.removeSomeSpore() called");
-        for (Spore s : spores_list){
-            removeSpore(s);
+        Iterator<Spore> it = spores_list.iterator();
+
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
         }
+
     }
 
     public void split(){

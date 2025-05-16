@@ -188,6 +188,13 @@ public class Map extends JPanel{
             t.draw((Graphics2D) g);
         }
         for (GraphicsPlayer p:Players.values()){
+            for(GraphicsTekton t:Tektons.values()){
+                if(t.getTekton()==p.getPlayer().getCurrentTekton().getFirst() && p.getPlayer().getIsInsect()){
+                    p.x=t.x;
+                    p.y=t.y;
+                }
+            }
+
             p.draw((Graphics2D) g);
         }
         //if (image != null) {
