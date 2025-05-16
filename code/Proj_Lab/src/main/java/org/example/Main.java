@@ -43,7 +43,7 @@ public class Main {
                     break;
                 }
                 case 2: {
-                    new Player().getCurrentTekton().getYarns();
+                    new Player().getCurrentTekton().getFirst().getYarns();
                     new Player().interactWithYarn(new Yarn());
                     System.out.println("Teszt sikeresen lefutott.");
                     break;
@@ -54,7 +54,7 @@ public class Main {
                     break;
                 }
                 case 4: {
-                    new Player().getCurrentTekton().getSpores();
+                    new Player().getCurrentTekton().getFirst().getSpores();
                     new Player().interactWithSpore(new ArrayList<Spore>());
                     System.out.println("Teszt sikeresen lefutott.");
                     break;

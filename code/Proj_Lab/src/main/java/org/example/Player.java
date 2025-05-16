@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +12,7 @@ public class Player {
     private int player_id;
     private boolean isInsect;
 
-    private Tekton currentTekton;
+    private List<Tekton> currentTekton=new ArrayList<Tekton>();
     private int score;
     private int[] effects = new int[5];
     private int steps_in_round = 0;
@@ -30,21 +31,30 @@ public class Player {
 
             for (Spore _spore : spores) {
                 _spore.addEffect(this);
-                this.currentTekton.removeSpore(_spore);
+                this.currentTekton.getFirst().removeSpore(_spore);
             }
         }
         else{
-            if (getCurrentTekton().getShroom() != null || steps_in_round >= 2) {
+            Tekton c=null;
+            for (Tekton t:currentTekton)
+            {
+                if(t.getSpores().contains(spores.getFirst())){
+                    c=t;
+                    break;
+                }
+            }
+            if(c==null){return false;}
+            if (c.getShroom() != null || steps_in_round >= 2) {
                 return false;
             }
-            if (getCurrentTekton().getSpores().size() >= 3) {
+            if (c.getSpores().size() >= 3) {
                 Shroom s = new Shroom();
-                getCurrentTekton().addShroom(s);
-                getCurrentTekton().removeSomeSpore(spores);
-                getCurrentTekton().doEffect();
-                s.setTekton(currentTekton);
+                c.addShroom(s);
+                c.removeSomeSpore(spores);
+                c.doEffect();
+                s.setTekton(c);
             }
-            return getCurrentTekton().getShroom() != null;
+            return c.getShroom() != null;
         }
         steps_in_round++;
         return true;
@@ -71,6 +81,11 @@ public class Player {
             if(steps_in_round >= 2) {
                 return false;
             }
+            if(!yarn.getTekton1().getNeighbours().contains(yarn.getTekton2())){
+                return false;
+            }
+            yarn.getTekton1().addYarn(yarn);
+            yarn.getTekton2().addYarn(yarn);
             yarn.getTekton2().doEffect();
             yarn.getTekton1().doEffect();
         }
@@ -80,11 +95,18 @@ public class Player {
 
     public Spore move(Tekton tekton) {
         logger.log(Level.INFO, "Player.move() called");
+
         if (!isInsect) {
             if(steps_in_round >= 2) {
                 return null;
             }
-            Shroom s = currentTekton.getShroom();
+            Shroom s=null;
+            for (Tekton t: currentTekton){
+                if(t.getNeighbours().contains(tekton)) {
+                    s=t.getShroom();
+                    break;
+                }
+            }
             if(s != null) {
                 steps_in_round++;
                 return s.ejectSpore(tekton);
@@ -98,7 +120,7 @@ public class Player {
                 //Checking whether the player has Numbing effect active
                 return new NumbingSpore();
             }
-            List<Yarn> yarns = this.currentTekton.getYarns();
+            List<Yarn> yarns = this.currentTekton.getFirst().getYarns();
             boolean moved = false;
             for(Yarn y : yarns) {
                 if(y.getTekton1() == tekton || y.getTekton2() == tekton) {
@@ -125,10 +147,16 @@ public class Player {
     }
 
     public void setCurrentTekton(Tekton tekton) {
-        this.currentTekton = tekton;
+        if(isInsect){
+            this.currentTekton.clear();
+            this.currentTekton.add(tekton);
+        }
+        else {
+            this.currentTekton.add(tekton);
+        }
     }
 
-    public Tekton getCurrentTekton() {
+    public List<Tekton> getCurrentTekton() {
         return this.currentTekton;
     }
 
@@ -224,4 +252,5 @@ public class Player {
     public int getPlayer_id(){
         return player_id;
     }
+    public void steps_in_round_reset(){steps_in_round=0;}
 }

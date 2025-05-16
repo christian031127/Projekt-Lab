@@ -91,23 +91,23 @@ public class GraphicsTekton extends GraphicsObject{
             for (Spore spore : tekton.getSpores()) {
                 switch (spore.getClass().getSimpleName()) {
                     case "NumbingSpore":
-                        g.drawImage(imageSporeNumbing, x1, y, null);
+                        g.drawImage(imageSporeNumbing, x1, y, 50,50,null);
                         x1 += imageSporeNumbing.getWidth(null);
                         break;
                     case "SlowingSpore":
-                        g.drawImage(imageSporeSlowing, x1, y, null);
+                        g.drawImage(imageSporeSlowing, x1, y,50,50, null);
                         x1 += imageSporeSlowing.getWidth(null);
                         break;
                     case "SplittingSpore":
-                        g.drawImage(imageSporeSplitting, x1, y, null);
+                        g.drawImage(imageSporeSplitting, x1, y,50,50, null);
                         x1 += imageSporeSplitting.getWidth(null);
                         break;
                     case "AcceleratingSpore":
-                        g.drawImage(imageSPoreAccelerating, x1, y, null);
+                        g.drawImage(imageSPoreAccelerating, x1, y,50,50, null);
                         x1 += imageSPoreAccelerating.getWidth(null);
                         break;
                     case "WeakeningSpore":
-                        g.drawImage(imageSporeWeakening, x1, y, null);
+                        g.drawImage(imageSporeWeakening, x1, y, 50,50,null);
                         x1 += imageSporeWeakening.getWidth(null);
                         break;
                     default:

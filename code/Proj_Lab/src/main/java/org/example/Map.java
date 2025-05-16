@@ -109,7 +109,8 @@ public class Map extends JPanel{
                                 if(command[4].equals("Shroomer")){
                                     Shroom s=new Shroom();
                                     s.setPlayerId(Integer.parseInt(command[7]));
-                                    p1.getCurrentTekton().addShroom(s);
+                                    p1.getCurrentTekton().getFirst().addShroom(s);
+                                    s.setTekton(p1.getCurrentTekton().getFirst());
                                 }
                                 Name = command[2];
                                 p1.setPlayer_id(Integer.parseInt(command[7]));
@@ -132,11 +133,10 @@ public class Map extends JPanel{
                         logger.log(Level.SEVERE, "Command neighbour takes 2 arguments!");
                         throw new Exception("Command neighbour takes 2 arguments!");
                     }
-                    GraphicsTekton elso = Tektons.get(command[1]);
-                    GraphicsTekton masodik =Tektons.get(command[2]);
+                    Tektons.get(command[1]).getTekton().addNeighbour(Tektons.get(command[2]).getTekton());
 
-                    elso.getTekton().addNeighbour(masodik.getTekton());
-                    masodik.getTekton().addNeighbour(elso.getTekton());
+                    Tektons.get(command[2]).getTekton().addNeighbour(Tektons.get(command[1]).getTekton());
+
                     logger.log(Level.INFO, "Tekton " + command[1] + " Tekton " + command[2] + " are now neighbours!");
                     break;
                 }
@@ -196,12 +196,13 @@ public class Map extends JPanel{
     }
 
     public void nextPlayer(){
-        boolean b=false;
+
         List<GraphicsPlayer> playerList = new ArrayList<>(Players.values());
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).getPlayer().equals(currentPlayer)) {
                 int nextIndex = (i + 1) % playerList.size();
                 currentPlayer = playerList.get(nextIndex).getPlayer();
+                currentPlayer.steps_in_round_reset();
                 break;
             }
         }
