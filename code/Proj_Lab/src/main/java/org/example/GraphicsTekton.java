@@ -57,21 +57,21 @@ public class GraphicsTekton extends GraphicsObject{
             e.printStackTrace();
         }
 
-        switch (tekton.getStrategy().toString()){
+        switch (tekton.getStrategy().getClass().getSimpleName()){
 
-            case "MultipleYarn":
+            case "MultipleYarnTekton":
                 imageTekton = imageTektonMultiple;
                 break;
-            case "Absorb":
+            case "AbsorbTekton":
                 imageTekton = imageTektonAbsorb;
                 break;
-            case "KeepAlive":
+            case "KeepAliveTekton":
                 imageTekton = imageTektonKeepAlive;
                 break;
-            case "NonShroom":
+            case "NonShroomTekton":
                 imageTekton = imageTektonNonShroom;
                 break;
-            case "SingleYarn":
+            case "SingleYarnTekton":
                 imageTekton = imageTektonSingleYarn;
                 break;
             default:
@@ -79,12 +79,12 @@ public class GraphicsTekton extends GraphicsObject{
         }
 
         if (imageTekton != null) {
-            g.drawImage(imageTekton, x, y, 64,64,null);
+            g.drawImage(imageTekton, x, y, 120,120,null);
             //Méret átalakítása
         }
 
         if (tekton.getShroom() != null) {
-            g.drawImage(imageShroom, x, y, 32,32,null);
+            g.drawImage(imageShroom, x, y, 70,70,null);
         }
         if (!tekton.getSpores().isEmpty()) {
             int x1 = x;

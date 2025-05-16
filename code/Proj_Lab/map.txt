@@ -1,19 +1,19 @@
-add Tekton T1 MultipleYarnTekton 10 10
-add Tekton T2 MultipleYarnTekton 100 100
-add Tekton T3 MultipleYarnTekton 1000 1000
-add Tekton T4 MultipleYarnTekton 20 30
-add Tekton T5 MultipleYarnTekton 50 60
-add Tekton T6 MultipleYarnTekton 3 3
-add Tekton T7 MultipleYarnTekton 1 5
-add Tekton T8 MultipleYarnTekton 5 6
-add Tekton T9 MultipleYarnTekton 9 1
-add Tekton T10 MultipleYarnTekton 2 2
-add Tekton T11 MultipleYarnTekton 3 3
-add Tekton T12 MultipleYarnTekton 4 4
-add Tekton T13 MultipleYarnTekton 5 5
-add Tekton T14 MultipleYarnTekton 6 6
-add Tekton T15 MultipleYarnTekton 7 7
-add Tekton T16 MultipleYarnTekton 8 8
+add Tekton T1 MultipleYarnTekton 0 0
+add Tekton T2 MultipleYarnTekton 0 135
+add Tekton T3 NonShroomTekton 0 270
+add Tekton T4 AbsorbTekton 0 405
+add Tekton T5 MultipleYarnTekton 135 0
+add Tekton T6 MultipleYarnTekton 135 135
+add Tekton T7 KeepAliveTekton 135 270
+add Tekton T8 MultipleYarnTekton 135 405
+add Tekton T9 MultipleYarnTekton 270 0
+add Tekton T10 MultipleYarnTekton 270 135
+add Tekton T11 SingleYarnTekton 270 270
+add Tekton T12 MultipleYarnTekton 270 405
+add Tekton T13 AbsorbTekton 405 0
+add Tekton T14 KeepAliveTekton 405 135
+add Tekton T15 MultipleYarnTekton 405 270
+add Tekton T16 KeepAliveTekton 405 405
 neighbour T1 T2
 neighbour T2 T3
 neighbour T3 T4
@@ -38,7 +38,7 @@ neighbour T9 T13
 neighbour T10 T14
 neighbour T11 T15
 neighbour T12 T16
-add Player Sr1 T1 Shroomer 30 100 1
-add Player Sr2 T4 Shroomer 100 30 2
-add Player Is1 T16 Insect 60 70 1
-add Player Is2 T12 Insect 20 90 2
+add Player Sr1 T1 Shroomer 0 100 1
+add Player Sr2 T4 Shroomer 100 0 2
+add Player Is1 T16 Insect 200 100 3
+add Player Is2 T12 Insect 300 100 4

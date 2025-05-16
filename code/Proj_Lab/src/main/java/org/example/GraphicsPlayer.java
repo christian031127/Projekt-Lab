@@ -32,7 +32,7 @@ public class GraphicsPlayer extends GraphicsObject{
         }
         if (imagePlayer != null) {
 
-            g.drawImage(imagePlayer, x, y,32,32, null);
+            g.drawImage(imagePlayer, x, y,85,85, null);
         }
     }
 }

@@ -122,6 +122,7 @@ public class Map extends JPanel{
                         }
                     }
 
+
                     logger.log(Level.INFO, "Adding new gameObject {0}!", command[2]);
                     break;
                 }
@@ -147,6 +148,7 @@ public class Map extends JPanel{
                 }
             }
         }
+        currentPlayer=Players.values().iterator().next().getPlayer();
 
     }
     public void splitTekton(Tekton tekton){
@@ -181,6 +183,7 @@ public class Map extends JPanel{
         //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
         //Először tektonokat kell kirajzolni
         //Utánna a playereket , mert felülrajzolja.
+
         for (GraphicsTekton t:Tektons.values()){
             t.draw((Graphics2D) g);
         }
@@ -202,5 +205,14 @@ public class Map extends JPanel{
                 break;
             }
         }
+    }
+    public GraphicsTekton getTektonbyClick(int x , int y){
+        for (GraphicsTekton t:Tektons.values()){
+            if(x>t.x && x<t.x+120 && y>t.y && y<t.y+120){
+
+                return t;
+            }
+        }
+        return null;
     }
 }
