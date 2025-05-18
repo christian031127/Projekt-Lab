@@ -16,7 +16,7 @@ public class GameUI {
     private static GraphicsTekton Ctekton2=null;
 
     public static void main(String[] args) throws Exception {
-        map.loadMap();
+
         // JFrame létrehozása
         JFrame frame = new JFrame("Data_daddies Fungórium");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,9 +40,52 @@ public class GameUI {
         };
         customComponent.setLayout(new BoxLayout(customComponent, BoxLayout.Y_AXIS));
 
+        customComponent.add(new JLabel("Menü"));
+        JLabel alert2=new JLabel();
+        JLabel playerScore = new JLabel();
+        JLabel currentPlayerLabel = new JLabel();
+        currentPlayerLabel.setText("Nyomd meg a Start gombot!");
+
+        Button nextPlayer = new Button("Követező játékos");
+        nextPlayer.setVisible(false);
+        nextPlayer.addActionListener(e -> {
+            Ctekton1=null;
+            Ctekton2=null;
+            alert2.setText("");
+            playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
+            map.nextPlayer();
+            String s = switch (map.currentPlayer.getPlayer_id()) {
+                case 1 -> "Piros gomba";
+                case 2 -> "Barna gomba";
+                case 3 -> "Barna rovar";
+                case 4 -> "Piros rovar";
+                default -> "";
+            };
+            currentPlayerLabel.setText("Aktuális játékos: " + s);
+            map.repaint();
+
+        });
+        nextPlayer.setMaximumSize(new Dimension(150, 30));
+
         Button startButton = new Button();
         startButton.addActionListener(e->{
-
+            try {
+                map.loadMap();
+                map.repaint();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+            String s = switch (map.currentPlayer.getPlayer_id()) {
+                case 1 -> "Piros gomba";
+                case 2 -> "Barna gomba";
+                case 3 -> "Barna rovar";
+                case 4 -> "Piros rovar";
+                default -> "";
+            };
+            nextPlayer.setVisible(true);
+            startButton.setVisible(false);
+            playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
+            currentPlayerLabel.setText("Aktuális játékos: " + s);
         });
 
 
@@ -52,23 +95,9 @@ public class GameUI {
 
 
 
-        customComponent.add(new JLabel("Menü"));
-        JLabel alert2=new JLabel();
-        JLabel playerScore = new JLabel("Játékos pontja: " + map.currentPlayer.getScore());
-        JLabel currentPlayerLabel = new JLabel("Aktuális játékos: " + map.currentPlayer.getPlayer_id());
 
-        Button nextPlayer = new Button("Követező játékos");
-        nextPlayer.addActionListener(e -> {
-            Ctekton1=null;
-            Ctekton2=null;
-            alert2.setText("");
-            playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
-            map.nextPlayer();
-            currentPlayerLabel.setText("Aktuális játékos: " + map.currentPlayer.getPlayer_id());
-            map.repaint();
 
-        });
-        nextPlayer.setMaximumSize(new Dimension(150, 30));
+
 
 
         customComponent.add(currentPlayerLabel, BorderLayout.WEST);
@@ -83,6 +112,7 @@ public class GameUI {
 
         JLabel alert=new JLabel();
         customComponent.add(alert);
+
         customComponent.add(Box.createVerticalStrut(10));
 
 
@@ -106,18 +136,18 @@ public class GameUI {
                 alert.setText("");
                 if(Ctekton1==null){                                                                                     //beallitja az elso kattintas tektonjat
                     Ctekton1=map.getTektonbyClick(e.getX(), e.getY());
-                    alert2.setText("Elso tekton beallitva");
+                    alert2.setText("Az első Tekton ki lett választva!");
                 }
                 else if(Ctekton2==null){                                                                                //beallitja a masodik kattintas tektonjat
                     Ctekton2=map.getTektonbyClick(e.getX(), e.getY());
-                    alert2.setText("masodik tekton beallitva");
+                    alert2.setText("A második Tekton ki lett választva!");
                 }
 
                 if(Ctekton1==Ctekton2 && Ctekton2!=null){                                                               //ketto kattintas ugyan oda
                     if(map.currentPlayer.getIsInsect()){                                                                //A rovarral
                         if(!map.currentPlayer.getCurrentTekton().contains(Ctekton1.getTekton())){                       //Ez nem a jelenlegi tektonja volt
                             if(map.currentPlayer.move(Ctekton1.getTekton())==null){                                     //Sikerult mozogni
-                                alert2.setText("mozgas megtortent");
+                                alert2.setText("Sikeresen átmentél egy másik Tektonra!");
                             }
                             else{                                                                                       //Nem sikerult mozogni
                                 alert.setText("Erre nincs lehetőséged!");
@@ -128,27 +158,36 @@ public class GameUI {
                                 alert.setText("Erre nincs lehetőséged!");
                             }
                             else{                                                                                       //Sikeres spora eves
-                                alert2.setText("spora eves megtortent");
+                                alert2.setText("Sikeresen megettél egy Spórát!");
                             }
                         }
                     }
-                    else{                                                                                               //Gomba ketszer nyom ugyan oda
-                        if(!map.currentPlayer.getCurrentTekton().contains(Ctekton1.getTekton()) || Ctekton1.getTekton().getSpores().size()<3) {     //Ez nem a jelenlegi tektonja volt
-
-                            if(map.currentPlayer.move(Ctekton1.getTekton())==null){                                     //Nem sikerult sporat loni
+                    else {                                                                                               //Gomba ketszer nyom ugyan oda
+                        GraphicsPlayer p=map.playerOnTektonBelowEffect(Ctekton1);
+                        if (p!=null) {
+                            if(Ctekton1.getTekton().getYarns().getFirst().eatNumbInsect(p.getPlayer())){
+                                alert2.setText("Sikeresen megetted a rovart!");
+                            }
+                            else{
                                 alert.setText("Erre nincs lehetőséged!");
                             }
-                            else{                                                                                       //Sikerult sporat loni
-                                alert2.setText("spora szoras megtortent "+Ctekton1.getTekton().getSpores().getLast().getClass().getSimpleName());
-                            }
+                        } else {
 
-                        }
-                        else{                                                                                           //a jelenlegi tektonjara nyomott(benne van a currenttekton listaban pl: yarn miatt)
-                            if(!map.currentPlayer.interactWithSpore(Ctekton2.getTekton().getSpores())){                 //Nem tud gombat noveszteni oda
-                                alert.setText("Erre nincs lehetőséged!");
-                            }
-                            else{                                                                                       //Sikerult gombat noveszteni
-                                alert2.setText("gomba novesztes megtortent");
+
+                            if (!map.currentPlayer.getCurrentTekton().contains(Ctekton1.getTekton()) || Ctekton1.getTekton().getSpores().size() < 3) {     //Ez nem a jelenlegi tektonja volt
+
+                                if (map.currentPlayer.move(Ctekton1.getTekton()) == null) {                                     //Nem sikerult sporat loni
+                                    alert.setText("Erre nincs lehetőséged!");
+                                } else {                                                                                       //Sikerult sporat loni
+                                    alert2.setText("Sikeresen spórát szórtál egy Tektonra!");
+                                }
+
+                            } else {                                                                                           //a jelenlegi tektonjara nyomott(benne van a currenttekton listaban pl: yarn miatt)
+                                if (!map.currentPlayer.interactWithSpore(Ctekton2.getTekton().getSpores())) {                 //Nem tud gombat noveszteni oda
+                                    alert.setText("Erre nincs lehetőséged!");
+                                } else {                                                                                       //Sikerult gombat noveszteni
+                                    alert2.setText("Sikeresen növesztettél egy Gombát!");
+                                }
                             }
                         }
                     }
@@ -165,7 +204,7 @@ public class GameUI {
                                         alert.setText("Erre nincs lehetőséged!");
                                     }
                                     else{                                                                               //Sikerult fonalat ragni
-                                        alert2.setText("yarn elragas megtortent");
+                                        alert2.setText("Sikeresen elrágtad a Fonalat!");
                                     }
                                     break;
                                 }
@@ -178,14 +217,17 @@ public class GameUI {
                                 y.setTekton2(Ctekton2.getTekton());
                                 y.setShroomPlayerId(map.currentPlayer.getPlayer_id());
                                 if (!map.currentPlayer.interactWithYarn(y)) {                                               //Nem sikerult fonalat noveszteni
-                                    alert.setText("Erre nincs lehetőség!");
+                                    y.setTekton1(null);
+                                    y.setTekton2(null);
+                                    y.setShroomPlayerId(0);
+                                    alert.setText("Kifogytál a lépésekből");
                                 }
                                 else{                                                                                       //Sikerult fonalat noveszteni
-                                    alert2.setText("yarn novesztes megtortent");
+                                    alert2.setText("Sikeresen növesztettél egy fonalat!");
                                 }
                             }
                             else{
-                                alert.setText("Erre nincs lehetőség!");
+                                alert.setText("A két tekton nem szomszédos!");
                             }
 
 

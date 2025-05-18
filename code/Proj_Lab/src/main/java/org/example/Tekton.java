@@ -129,6 +129,7 @@ public class Tekton{
         strategy.doEffect(this);
     }
 
+
     public void deleteYarnsOnTekton(){
         for (Yarn yarn : getYarns()) {
             if (yarn.isSingleTektonYarn()) {

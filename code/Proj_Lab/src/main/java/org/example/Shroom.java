@@ -16,7 +16,7 @@ public class Shroom {
     private int ejectCount = 0;
 
     private static final int OLD_LIMIT = 10;
-    private static final int MAX_EJECTS = 10; // max ennyiszer szórhat
+    private static final int MAX_EJECTS = 8; // max ennyiszer szórhat
     private static final int EJECT_COOLDOWN = 2; // ennyi körönként szórhat újra
 
     private boolean dead = false; // gomba halott-e
@@ -72,15 +72,11 @@ public class Shroom {
         
         boolean advanced = tekton.getNeighbours().stream().anyMatch(neighbour -> neighbour.getNeighbours().contains(target));
         
-        // logger.log(Level.INFO, Boolean.toString(advanced));
-        // if (!isSporeReady()) {
-        //     return null;
-        // }
-        // boolean megafasz = isOld() && advanced;
-        // logger.log(Level.INFO, Boolean.toString(megafasz));
+        logger.log(Level.INFO, Boolean.toString(advanced));
+        if (!isSporeReady()) {
+             return null;
+         }
 
-        // logger.log(Level.INFO, String.valueOf(this.age));
-        
         if (isOld() && advanced) {
 
             SporeType selectedSpore = getRandomSpore();
@@ -110,8 +106,7 @@ public class Shroom {
             logger.log(Level.INFO, "ejectspore sikeres!");
             return spore;
         }
-        
-        //logger.log(Level.INFO, "FASZ2");
+
         
         return null;
     }

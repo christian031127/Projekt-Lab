@@ -67,8 +67,6 @@ public class Map extends JPanel{
                     if (command.length > 5) {
                         switch (command[1]) {
                             case "Tekton":
-                                //Ez a sor lehet nem azt csinálja amit kellene
-
                                 switch (command[3]) {
                                     case "AbsorbTekton":
                                         uj.setStrategy(new AbsorbTekton());
@@ -141,7 +139,6 @@ public class Map extends JPanel{
                 }
 
                 default: {
-                    //HELP
                     logger.log(Level.WARNING, "Command {0} not found!", command[0]);
                     break;
                 }
@@ -179,23 +176,31 @@ public class Map extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //Itt kell végig iterálni és meghívni minden hashmap lakoson a draw függvényt és g t átadni neki
-        //Először tektonokat kell kirajzolni
-        //Utánna a playereket , mert felülrajzolja.
 
         for (GraphicsTekton t:Tektons.values()){
             t.draw((Graphics2D) g);
         }
-        for (GraphicsPlayer p:Players.values()){
-            for(GraphicsTekton t:Tektons.values()){
-                if(t.getTekton()==p.getPlayer().getCurrentTekton().getFirst() && p.getPlayer().getIsInsect()){
-                    p.x=t.x;
-                    p.y=t.y;
+        Iterator<GraphicsPlayer> it = Players.values().iterator();
+
+        while (it.hasNext()) {
+            GraphicsPlayer np=it.next();
+            if(np.getPlayer().isDead()){
+                it.remove();
+
+            }
+            else{
+                for(GraphicsTekton t:Tektons.values()){
+                    if(t.getTekton()==np.getPlayer().getCurrentTekton().getFirst() && np.getPlayer().getIsInsect()){
+                        np.x=t.x;
+                        np.y=t.y;
+                    }
                 }
+
+                np.draw((Graphics2D) g);
             }
 
-            p.draw((Graphics2D) g);
         }
+
         Set<Yarn> drawnYarns = new HashSet<>();
 
         for (GraphicsTekton t : Tektons.values()) {
@@ -231,9 +236,6 @@ public class Map extends JPanel{
                 }
             }
         }
-        //if (image != null) {
-        //    g.drawImage(image, 0, 0, this);
-        //}
     }
 
     public void nextPlayer(){
@@ -244,6 +246,7 @@ public class Map extends JPanel{
                 int nextIndex = (i + 1) % playerList.size();
                 currentPlayer = playerList.get(nextIndex).getPlayer();
                 currentPlayer.steps_in_round_reset();
+                currentTurn++;
                 break;
             }
         }
@@ -253,6 +256,14 @@ public class Map extends JPanel{
             if(x>t.x && x<t.x+120 && y>t.y && y<t.y+120){
 
                 return t;
+            }
+        }
+        return null;
+    }
+    public GraphicsPlayer playerOnTektonBelowEffect(GraphicsTekton t){
+        for(GraphicsPlayer p:Players.values()){
+            if(p.getPlayer().getCurrentTekton().getFirst()==t.getTekton() && p.getPlayer().getEffects()[1]==1 && p.getPlayer().getIsInsect()){
+                return p;
             }
         }
         return null;

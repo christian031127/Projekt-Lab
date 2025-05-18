@@ -19,11 +19,7 @@ public class GraphicsTekton extends GraphicsObject{
     }
 
     public void draw(Graphics2D g) {
-        //KEll rajzolni egy tektont
-        //Ha van gomba rajta, akkor azt is
-        //Ha van rajta fonál, akkor azt is
-        //ha össze van kötve fonállal, akkor azt is
-        // spórá is
+
         Image imageTekton = null;
         Image imageTektonMultiple = null;
         Image imageTektonAbsorb = null;
@@ -80,7 +76,6 @@ public class GraphicsTekton extends GraphicsObject{
 
         if (imageTekton != null) {
             g.drawImage(imageTekton, x, y, 120,120,null);
-            //Méret átalakítása
         }
 
         if (tekton.getShroom() != null) {
@@ -96,35 +91,27 @@ public class GraphicsTekton extends GraphicsObject{
                     case "NumbingSpore":
                         g.drawImage(imageSporeNumbing, x1, y1, 30,30,null);
                         x1+=30;
-                        //x1 += imageSporeNumbing.getWidth(null);
                         break;
                     case "SlowingSpore":
                         g.drawImage(imageSporeSlowing, x1, y1,30,30, null);
                         x1+=30;
-                        //x1 += imageSporeSlowing.getWidth(null);
                         break;
                     case "SplitterSpore":
                         g.drawImage(imageSporeSplitting, x1, y1,30,30, null);
                         x1+=30;
-                        //x1 += imageSporeSplitting.getWidth(null);
                         break;
                     case "AccelerationSpore":
                         g.drawImage(imageSporeAccelerating, x1, y1,30,30, null);
                         x1+=30;
-                        //x1 += imageSPoreAccelerating.getWidth(null);
                         break;
                     case "WeakeningSpore":
                         g.drawImage(imageSporeWeakening, x1, y1, 30,30,null);
                         x1+=30;
-                        //x1 += imageSporeWeakening.getWidth(null);
                         break;
                     default:
                         break;
                 }
             }
-        }
-        if (!tekton.getYarns().isEmpty()) {
-            
         }
     }
 }

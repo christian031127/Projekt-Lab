@@ -10,7 +10,7 @@ import java.util.Set;
 public class Player {
 
     private int player_id;
-    private boolean isInsect;
+    private boolean isInsect=false;
 
     private List<Tekton> currentTekton=new ArrayList<Tekton>();
     private int score;
@@ -115,8 +115,12 @@ public class Player {
                 }
             }
             if(s != null) {
-                steps_in_round++;
-                return s.ejectSpore(tekton);
+                Spore S=s.ejectSpore(tekton);
+                if(S!=null) {
+                    steps_in_round++;
+                    return S;
+                }
+
             }
         } else {
             if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
@@ -131,7 +135,6 @@ public class Player {
             boolean moved = false;
             for(Yarn y : yarns) {
                 if(y.getTekton1() == tekton || y.getTekton2() == tekton) {
-                    System.out.println(y.getTekton1());
                     this.setCurrentTekton(tekton);
                     moved = true;
                     break;
