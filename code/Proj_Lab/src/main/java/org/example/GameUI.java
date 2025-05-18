@@ -171,16 +171,23 @@ public class GameUI {
                                 }
                             }
                         } else {                                                                                        //A gombaval
-                            Yarn y = new Yarn();
-                            y.setTekton1(Ctekton1.getTekton());                                                         //letrehozza es beallitja a yarnt (mivel az interactwithyarn mar csak a yarn-t keri)
-                            y.setTekton2(Ctekton2.getTekton());
-                            y.setShroomPlayerId(map.currentPlayer.getPlayer_id());
-                            if (!map.currentPlayer.interactWithYarn(y)) {                                               //Nem sikerult fonalat noveszteni
+
+                            if(Ctekton1.getTekton().getNeighbours().contains(Ctekton2.getTekton()) && Ctekton2.getTekton().getNeighbours().contains(Ctekton1.getTekton())){
+                                Yarn y = new Yarn();
+                                y.setTekton1(Ctekton1.getTekton());                                                         //letrehozza es beallitja a yarnt (mivel az interactwithyarn mar csak a yarn-t keri)
+                                y.setTekton2(Ctekton2.getTekton());
+                                y.setShroomPlayerId(map.currentPlayer.getPlayer_id());
+                                if (!map.currentPlayer.interactWithYarn(y)) {                                               //Nem sikerult fonalat noveszteni
+                                    alert.setText("Erre nincs lehetőség!");
+                                }
+                                else{                                                                                       //Sikerult fonalat noveszteni
+                                    alert2.setText("yarn novesztes megtortent");
+                                }
+                            }
+                            else{
                                 alert.setText("Erre nincs lehetőség!");
                             }
-                            else{                                                                                       //Sikerult fonalat noveszteni
-                                alert2.setText("yarn novesztes megtortent");
-                            }
+
 
                         }
                     }
