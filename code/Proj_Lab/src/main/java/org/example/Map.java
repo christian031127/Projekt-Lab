@@ -1,13 +1,12 @@
 package org.example;
 
 import java.awt.*;
+import java.awt.geom.QuadCurve2D;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -196,6 +195,41 @@ public class Map extends JPanel{
             }
 
             p.draw((Graphics2D) g);
+        }
+        Set<Yarn> drawnYarns = new HashSet<>();
+
+        for (GraphicsTekton t : Tektons.values()) {
+            for (Yarn yarn : t.getTekton().getYarns()) {
+                if (!drawnYarns.contains(yarn)) {
+                    GraphicsTekton t3=null;
+                    for (GraphicsTekton t2 : Tektons.values()) {
+                        if(t2.getTekton()==yarn.getTekton2() && yarn.getTekton2()!=t.getTekton() || t2.getTekton()==yarn.getTekton1() && yarn.getTekton1()!=t.getTekton()){
+                            t3=t2;
+                        }
+                    }
+                    if(t3!=null){
+                        int x1 = t.x + 120 / 2;
+                        int y1 = t.y + 120 / 2;
+                        int x2 = t3.x + 120 / 2;
+                        int y2 = t3.y + 120 / 2;
+                        Graphics2D gg=(Graphics2D)g;
+                        Stroke originalStroke = gg.getStroke();
+
+                        gg.setStroke(new BasicStroke(3));
+                        QuadCurve2D curve = new QuadCurve2D.Float();
+
+                        int ctrlX = (x1 + x2) / 2 + (int)(Math.random() * 20 - 10); // ±10 pixeles eltolás
+                        int ctrlY = (y1 + y2) / 2 + (int)(Math.random() * 20 - 10);
+
+                        curve.setCurve(x1, y1, ctrlX, ctrlY, x2, y2);
+                        gg.draw(curve);
+                        gg.setStroke(originalStroke);
+                        drawnYarns.add(yarn);
+                    }
+
+
+                }
+            }
         }
         //if (image != null) {
         //    g.drawImage(image, 0, 0, this);
