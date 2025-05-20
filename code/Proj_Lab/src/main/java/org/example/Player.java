@@ -284,7 +284,7 @@ public class Player {
     }
     public void steps_in_round_reset(){steps_in_round=0;}
 
-    public void handleShroomDeath(tekton t) {
+    public void handleShroomDeath(Tekton t) {
         boolean isThereShroomLeft = false;
         for(Yarn y : t.getYarns()) {
             if(!y.isSingleTektonYarn() && y.getShroomPlayerId() == player_id) {

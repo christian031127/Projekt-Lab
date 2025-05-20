@@ -112,6 +112,7 @@ public class Map extends JPanel{
                                 Name = command[2];
                                 p1.setPlayer_id(Integer.parseInt(command[7]));
                                 GraphicsPlayer p=new GraphicsPlayer(Integer.parseInt(command[5]),Integer.parseInt(command[6]),p1);
+                                p.setDrawId(Integer.parseInt(command[7]));
                                 Players.put(Name, p);
                                 break;
                             default:
@@ -263,7 +264,7 @@ public class Map extends JPanel{
                         Tekton t = tekton.getTekton();
                         if (t.getShroom() != null)
                             t.getShroom().age();
-                        if t.getShroom().isDead() {
+                        if(t.getShroom().isDead()){
                             for (GraphicsPlayer p : Players.values()) {
                                 if(p.getPlayer().getPlayer_id() == t.getShroom().getPlayerId()){
                                     p.getPlayer().handleShroomDeath(t);
@@ -306,9 +307,12 @@ public class Map extends JPanel{
                 p.getPlayer().setEffects(3,2);
                 Player pn=new Player();
                 pn.setPlayer_id(p.getPlayer().getPlayer_id());
+
                 pn.setCurrentTekton(p.getPlayer().getCurrentTekton().getFirst());
                 pn.setIsInsect(true);
-                players.put("In"+Players.size()+1,new GraphicsPlayer(p.x+30,p.y,pn));
+                GraphicsPlayer gp=new GraphicsPlayer(p.x,p.y,pn);
+                gp.setDrawId(p.getDrawId()*10);
+                players.put("In"+Players.size()+1,gp);
             }
         }
         Players.putAll(players);
