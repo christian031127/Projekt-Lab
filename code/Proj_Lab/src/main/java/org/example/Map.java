@@ -286,6 +286,10 @@ public class Map extends JPanel{
         }
         return null;
     }
+
+    public int getCurrentTurn() {
+        return (currentTurn / 4) + 1;
+    }
     public void isItSplitted(){
         HashMap<String,GraphicsPlayer> players=new HashMap<>();
         for(GraphicsPlayer p : Players.values()){
