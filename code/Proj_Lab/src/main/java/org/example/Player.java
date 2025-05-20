@@ -24,7 +24,7 @@ public class Player {
     public boolean interactWithSpore(List<Spore> spores) {
         // Implementation
         if(getIsInsect()) {
-            if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {
+            if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3) || spores.size()==0) {
                 //Checking whether the player has any moves left in round
                 return false;
             }
