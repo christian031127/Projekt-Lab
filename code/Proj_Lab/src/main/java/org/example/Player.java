@@ -99,6 +99,7 @@ public class Player {
             yarn.getTekton2().addYarn(yarn);
             yarn.getTekton2().doEffect();
             yarn.getTekton1().doEffect();
+            yarn.setShroomPlayerId(player_id);
         }
         steps_in_round++;
         score+=50;
@@ -126,8 +127,13 @@ public class Player {
                     score+=15;
                     return null;
                 }
-                else{return new NumbingSpore();}
+                else{
+                    return new NumbingSpore();
+                }
 
+            }
+            else{
+                return new NumbingSpore();
             }
         } else {
             if((getEffects()[2] == 1 && steps_in_round >= 1 || getEffects()[0] == 0 && steps_in_round >= 2 || getEffects()[0] == 1 && steps_in_round >= 3)) {

@@ -216,7 +216,6 @@ public class GameUI {
                                 Yarn y = new Yarn();
                                 y.setTekton1(Ctekton1.getTekton());                                                         //letrehozza es beallitja a yarnt (mivel az interactwithyarn mar csak a yarn-t keri)
                                 y.setTekton2(Ctekton2.getTekton());
-                                y.setShroomPlayerId(map.currentPlayer.getPlayer_id());
                                 if (!map.currentPlayer.interactWithYarn(y)) {                                               //Nem sikerult fonalat noveszteni
                                     y.setTekton1(null);
                                     y.setTekton2(null);

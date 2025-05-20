@@ -221,6 +221,12 @@ public class Map extends JPanel{
                         Stroke originalStroke = gg.getStroke();
 
                         gg.setStroke(new BasicStroke(3));
+                        if(yarn.getShroomPlayerId()==1){
+                            gg.setColor(Color.RED);
+                        }
+                        if(yarn.getShroomPlayerId()==2){
+                            gg.setColor(new Color(139, 69, 19));
+                        }
                         QuadCurve2D curve = new QuadCurve2D.Float();
 
                         int ctrlX = (x1 + x2) / 2 + (int)(Math.random() * 20 - 10); // ±10 pixeles eltolás
