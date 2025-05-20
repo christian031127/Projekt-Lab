@@ -309,6 +309,7 @@ public class Player {
             }
         }
         if(!isThereShroomLeft) {
+            int j = 0;
             for(int i=0;i<t.getYarns().size();i++) {
                 if(!t.getYarns().get(i).isSingleTektonYarn() && t.getYarns().get(i).getShroomPlayerId() == player_id) {
                     if(t.getYarns().get(i).getTekton1() == t) {
@@ -323,14 +324,27 @@ public class Player {
                     if(t.getYarns().get(i).getTekton1()==t){
                         t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
                         t.getYarns().get(i).setTekton2(null);
-                        t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
-                        t.getYarns().get(i).setTekton1(null);
+                        if(!(t==currentTekton.get(0))) {
+                            t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
+                            t.getYarns().get(i).setTekton1(null);
+                        }else{
+                            t.getYarns().get(i-j).getTekton1().removeYarn(t.getYarns().get(i));
+                            t.getYarns().get(i-j).setTekton1(null);
+                            j++;
+                        }
+
                     }else{
                         t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
                         t.getYarns().get(i).setTekton1(null);
 
-                        t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
-                        t.getYarns().get(i).setTekton2(null);
+                        if(!(t==currentTekton.get(0))) {
+                            t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
+                            t.getYarns().get(i).setTekton2(null);
+                        }else{
+                            t.getYarns().get(i-j).getTekton2().removeYarn(t.getYarns().get(i));
+                            t.getYarns().get(i-j).setTekton2(null);
+                            j++;
+                        }
                     }
 
                 }
