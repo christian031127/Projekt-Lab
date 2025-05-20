@@ -248,31 +248,40 @@ public class Player {
     public boolean deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
         int playerID = y.getShroomPlayerId();
 
-        if (!visited.add(t)) {
+        if (visited.contains(t)) {
             return false;
         }
-        List<Yarn> yarns = new ArrayList<>(t.getYarns());
+        visited.add(t);
 
-        for (Yarn y1 : yarns) {
-            if (y1.getShroomPlayerId() == playerID &&
-                !y1.isSingleTektonYarn() &&
-                y1 != y) {
 
-                Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
 
-                deleteSystem(y1, other, visited);
+        for (int i=0; i< t.getYarns().size(); i++) {
+            if (t.getYarns().get(i).getShroomPlayerId() == playerID &&
+                    !t.getYarns().get(i).isSingleTektonYarn() &&
+                    t.getYarns().get(i) != y){
 
-                y1.getTekton1().removeYarn(y1);
-                y1.getTekton2().removeYarn(y1);
+                Tekton other = (t.getYarns().get(i).getTekton1() == t) ? t.getYarns().get(i).getTekton2() : t.getYarns().get(i).getTekton1();
+                deleteSystem(t.getYarns().get(i), other, visited);
 
-                y1.setTekton1(null);
-                y1.setTekton2(null);
+
+
+                if(t.getYarns().get(i).getTekton1()==t){
+                    t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
+                    t.getYarns().get(i).setTekton2(null);
+                    t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
+                    t.getYarns().get(i).setTekton1(null);
+                }else{
+                    t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
+                    t.getYarns().get(i).setTekton1(null);
+
+                    t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
+                    t.getYarns().get(i).setTekton2(null);
+                }
+
             }
         }
-
-        score += 15;
+        score+=15;
         t.doEffect();
-        currentTekton.remove(t);
         return true;
     }
 
@@ -284,7 +293,7 @@ public class Player {
     }
     public void steps_in_round_reset(){steps_in_round=0;}
 
-    public void handleShroomDeath(tekton t) {
+    public void handleShroomDeath(Tekton t) {
         boolean isThereShroomLeft = false;
         for(Yarn y : t.getYarns()) {
             if(!y.isSingleTektonYarn() && y.getShroomPlayerId() == player_id) {
@@ -300,26 +309,33 @@ public class Player {
             }
         }
         if(!isThereShroomLeft) {
-            List<Yarn> tempYarns = new ArrayList<>(t.getYarns());
-            for(Yarn y : tempYarns) {
-                if(!y.isSingleTektonYarn() && y.getShroomPlayerId() == player_id) {
-                    if(y.getTekton1() == t) {
-                        if (!isThereShroom(y, y.getTekton2(), new HashSet<>())) {
-                            deleteSystem(y, y.getTekton2(), new HashSet<>());
+            for(int i=0;i<t.getYarns().size();i++) {
+                if(!t.getYarns().get(i).isSingleTektonYarn() && t.getYarns().get(i).getShroomPlayerId() == player_id) {
+                    if(t.getYarns().get(i).getTekton1() == t) {
+                        if (!isThereShroom(t.getYarns().get(i), t.getYarns().get(i).getTekton2(), new HashSet<>())) {
+                            deleteSystem(t.getYarns().get(i), t.getYarns().get(i).getTekton2(), new HashSet<>());
                         }
                     } else {
-                        if (!isThereShroom(y, y.getTekton1(), new HashSet<>())) {
-                            deleteSystem(y, y.getTekton1(), new HashSet<>());
+                        if (!isThereShroom(t.getYarns().get(i), t.getYarns().get(i).getTekton1(), new HashSet<>())) {
+                            deleteSystem(t.getYarns().get(i), t.getYarns().get(i).getTekton1(), new HashSet<>());
                         }
                     }
-                    y.getTekton1().removeYarn(y);
-                    y.getTekton2().removeYarn(y);
-                    y.setTekton1(null);
-                    y.setTekton2(null);
+                    if(t.getYarns().get(i).getTekton1()==t){
+                        t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
+                        t.getYarns().get(i).setTekton2(null);
+                        t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
+                        t.getYarns().get(i).setTekton1(null);
+                    }else{
+                        t.getYarns().get(i).getTekton1().removeYarn(t.getYarns().get(i));
+                        t.getYarns().get(i).setTekton1(null);
+
+                        t.getYarns().get(i).getTekton2().removeYarn(t.getYarns().get(i));
+                        t.getYarns().get(i).setTekton2(null);
+                    }
+
                 }
 
             }
-            currentTekton = new ArrayList<>();
             
         }
     }

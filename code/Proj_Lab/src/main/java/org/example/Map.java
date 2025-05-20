@@ -261,13 +261,14 @@ public class Map extends JPanel{
                 if(currentTurn % playerList.size() == 0) {
                     for (GraphicsTekton tekton : Tektons.values()) {
                         Tekton t = tekton.getTekton();
-                        if (t.getShroom() != null)
-                            t.getShroom().age();
-                        if t.getShroom().isDead() {
-                            for (GraphicsPlayer p : Players.values()) {
-                                if(p.getPlayer().getPlayer_id() == t.getShroom().getPlayerId()){
-                                    p.getPlayer().handleShroomDeath(t);
-                                    
+                        if (t.getShroom() != null) {
+                            Shroom s = t.getShroom();
+                            if (t.getShroom().age()) {
+                                for (GraphicsPlayer p : Players.values()) {
+                                    if (p.getPlayer().getPlayer_id() == s.getPlayerId()) {
+                                        p.getPlayer().handleShroomDeath(t);
+
+                                    }
                                 }
                             }
                         }

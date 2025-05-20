@@ -120,15 +120,17 @@ public class Shroom {
         }
     }
 
-    public void age() {
+    public boolean age() {
         logger.log(Level.INFO, "Shroom.age() called");
         if (dead) {
-            return;
+            return true;
         }
         this.age++;
         if (shouldDieFromOldAge()) {
             die();
+            return true;
         }
+        return false;
     }
 
     private boolean shouldDieFromOldAge() {
