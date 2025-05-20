@@ -218,12 +218,39 @@ public class Player {
         }
     }
 
+    public boolean isThereShroom(Yarn y, Tekton t, Set<Tekton> visited) {
+        int playerID = y.getShroomPlayerId();
+
+        if (t.getShroom() != null && t.getShroom().getPlayerId() == playerID) {
+            return true;
+        }
+
+        if (visited.contains(t)) {
+            return false;
+        }
+        visited.add(t);
+
+        for (Yarn y1 : t.getYarns()) {
+            if (y1.getShroomPlayerId() == playerID &&
+                    !y1.isSingleTektonYarn() &&
+                    y1 != y) {
+
+                Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
+                if (isThereShroom(y1, other, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public boolean deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
         int playerID = y.getShroomPlayerId();
 
         if (!visited.add(t)) {
             return false;
-
+        }
         List<Yarn> yarns = new ArrayList<>(t.getYarns());
 
         for (Yarn y1 : yarns) {
@@ -244,36 +271,10 @@ public class Player {
         }
 
         score += 15;
-        t.doEffect(); 
+        t.doEffect();
         return true;
     }
 
-    public boolean isThereShroom(Yarn y, Tekton t, Set<Tekton> visited) {
-        int playerID = y.getShroomPlayerId();
-
-        if (t.getShroom() != null && t.getShroom().getPlayerId() == playerID) {
-            return true;
-        }
-
-        if (visited.contains(t)) {
-            return false;
-        }
-        visited.add(t);
-
-        for (Yarn y1 : t.getYarns()) {
-            if (y1.getShroomPlayerId() == playerID &&
-                !y1.isSingleTektonYarn() &&
-                y1 != y) {
-
-                Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
-                if (isThereShroom(y1, other, visited)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
     public void setPlayer_id(int id){
         player_id=id;
     }
