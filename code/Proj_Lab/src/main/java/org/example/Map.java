@@ -180,18 +180,24 @@ public class Map extends JPanel{
         for (GraphicsTekton t:Tektons.values()){
             t.draw((Graphics2D) g);
         }
+        isItSplitted();
         Iterator<GraphicsPlayer> it = Players.values().iterator();
 
         while (it.hasNext()) {
             GraphicsPlayer np=it.next();
             if(np.getPlayer().isDead()){
                 it.remove();
-
             }
             else{
+
                 for(GraphicsTekton t:Tektons.values()){
                     if(t.getTekton()==np.getPlayer().getCurrentTekton().getFirst() && np.getPlayer().getIsInsect()){
-                        np.x=t.x;
+                        if(np.getPlayer().getEffects()[3]==2){
+                            np.x=t.x+30;
+                        }
+                        else{
+                            np.x=t.x;
+                        }
                         np.y=t.y;
                     }
                 }
@@ -288,5 +294,23 @@ public class Map extends JPanel{
             }
         }
         return null;
+    }
+
+    public int getCurrentTurn() {
+        return (currentTurn / 4) + 1;
+    }
+    public void isItSplitted(){
+        HashMap<String,GraphicsPlayer> players=new HashMap<>();
+        for(GraphicsPlayer p : Players.values()){
+            if(p.getPlayer().getEffects()[3]==1){
+                p.getPlayer().setEffects(3,2);
+                Player pn=new Player();
+                pn.setPlayer_id(p.getPlayer().getPlayer_id());
+                pn.setCurrentTekton(p.getPlayer().getCurrentTekton().getFirst());
+                pn.setIsInsect(true);
+                players.put("In"+Players.size()+1,new GraphicsPlayer(p.x+30,p.y,pn));
+            }
+        }
+        Players.putAll(players);
     }
 }
