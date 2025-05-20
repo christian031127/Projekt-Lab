@@ -56,7 +56,7 @@ public class GameUI {
         currentPlayerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         currentPlayerLabel.setBorder(new EmptyBorder(10, 0, 20, 0));
 
-        JLabel currentTurnLabel = new JLabel("Jelenlegi kör: 0");
+        JLabel currentTurnLabel = new JLabel("");
         currentTurnLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         currentTurnLabel.setForeground(textColor);
         currentTurnLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
