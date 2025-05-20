@@ -405,7 +405,7 @@ public class Teszt {
                     Tekton t1 = (Tekton) gameObjectList.get(command[2]);
                     Spore spore = p1.move(t1);
                     
-                    if(spore == null) {
+                    if(spore != null) {
                         logger.log(Level.WARNING, "Could not eject spore!");
                     } else {
                         logger.log(Level.INFO, "Spore ejected! sikeres!");

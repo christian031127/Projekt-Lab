@@ -52,7 +52,7 @@ public class GameUI {
             Ctekton1=null;
             Ctekton2=null;
             alert2.setText("");
-            playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
+
             map.nextPlayer();
             String s = switch (map.currentPlayer.getPlayer_id()) {
                 case 1 -> "Piros gomba";
@@ -61,6 +61,7 @@ public class GameUI {
                 case 4 -> "Piros rovar";
                 default -> "";
             };
+            playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
             currentPlayerLabel.setText("Aktuális játékos: " + s);
             map.repaint();
 
@@ -176,7 +177,7 @@ public class GameUI {
 
                             if (!map.currentPlayer.getCurrentTekton().contains(Ctekton1.getTekton()) || Ctekton1.getTekton().getSpores().size() < 3) {     //Ez nem a jelenlegi tektonja volt
 
-                                if (map.currentPlayer.move(Ctekton1.getTekton()) == null) {                                     //Nem sikerult sporat loni
+                                if (map.currentPlayer.move(Ctekton1.getTekton()) != null) {                                     //Nem sikerult sporat loni
                                     alert.setText("Erre nincs lehetőséged!");
                                 } else {                                                                                       //Sikerult sporat loni
                                     alert2.setText("Sikeresen spórát szórtál egy Tektonra!");
@@ -236,6 +237,7 @@ public class GameUI {
                     Ctekton1=null;                                                                                      //visszaallitja a kijelolt tektonokat a muvelet utan
                     Ctekton2=null;
                 }
+                playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
                 map.repaint();
             }
             @Override public void mousePressed(MouseEvent e) {}

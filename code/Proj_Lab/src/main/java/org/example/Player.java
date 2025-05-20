@@ -32,6 +32,7 @@ public class Player {
             for (Spore _spore : spores) {
                 _spore.addEffect(this);
                 this.currentTekton.getFirst().removeSpore(_spore);
+                score+=25;
                 break;
             }
         }
@@ -54,10 +55,12 @@ public class Player {
                 c.removeSomeSpore(spores);
                 c.doEffect();
                 s.setTekton(c);
+                score+=25;
             }
             return c.getShroom() != null;
         }
         steps_in_round++;
+
         return true;
     }
 
@@ -77,6 +80,7 @@ public class Player {
            yarn.getTekton2().removeYarn(yarn);
            yarn.setTekton1(null);
            yarn.setTekton2(null);
+
         }
         else {
             if(steps_in_round >= 2) {
@@ -97,6 +101,7 @@ public class Player {
             yarn.getTekton1().doEffect();
         }
         steps_in_round++;
+        score+=50;
         return true;
     }
 
@@ -105,7 +110,7 @@ public class Player {
 
         if (!isInsect) {
             if(steps_in_round >= 2) {
-                return null;
+                return new NumbingSpore();
             }
             Shroom s=null;
             for (Tekton t: currentTekton){
@@ -118,8 +123,10 @@ public class Player {
                 Spore S=s.ejectSpore(tekton);
                 if(S!=null) {
                     steps_in_round++;
-                    return S;
+                    score+=15;
+                    return null;
                 }
+                else{return new NumbingSpore();}
 
             }
         } else {
@@ -146,6 +153,7 @@ public class Player {
             }
         }
         steps_in_round++;
+        score+=15;
         return null;
     }
 
@@ -226,7 +234,7 @@ public class Player {
                 y1.setTekton2(null);
             }
         }
-
+        score+=15;
         t.doEffect();
         return true;
     }
