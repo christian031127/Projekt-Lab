@@ -158,7 +158,7 @@ public class GameUI {
                             }
                         }
                         else{                                                                                           //A kijelolt tekton a jelenlegi tektonja
-                            if(!map.currentPlayer.interactWithSpore(Ctekton1.getTekton().getSpores())){                 //Nem sikerult sporat enni, Hogyan valasszuk ki random a sporat?
+                            if(!map.currentPlayer.interactWithSpore(Ctekton1.getTekton().getSpores()) && Ctekton1.getTekton().getSpores().size()==0){                 //Nem sikerult sporat enni, Hogyan valasszuk ki random a sporat?
                                 alert.setText("Erre nincs lehetőséged!");
                             }
                             else{                                                                                       //Sikeres spora eves
