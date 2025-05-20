@@ -252,6 +252,12 @@ public class Map extends JPanel{
                 int nextIndex = (i + 1) % playerList.size();
                 currentPlayer = playerList.get(nextIndex).getPlayer();
                 currentPlayer.steps_in_round_reset();
+                if(currentTurn % playerList.size() == 0) {
+                    for (GraphicsTekton tekton : Tektons.values()) {
+                        if (tekton.getTekton().getShroom() != null)
+                            tekton.getTekton().getShroom().age();
+                    }
+                }
                 currentTurn++;
                 break;
             }
