@@ -223,7 +223,7 @@ public class Player {
 
         if (!visited.add(t)) {
             return false;
-
+        }
         List<Yarn> yarns = new ArrayList<>(t.getYarns());
 
         for (Yarn y1 : yarns) {
@@ -244,7 +244,8 @@ public class Player {
         }
 
         score += 15;
-        t.doEffect(); 
+        t.doEffect();
+        currentTekton.remove(t);
         return true;
     }
 
@@ -281,4 +282,44 @@ public class Player {
         return player_id;
     }
     public void steps_in_round_reset(){steps_in_round=0;}
+
+    public void handleShroomDeath(tekton t) {
+        boolean isThereShroomLeft = false;
+        for(Yarn y : t.getYarns()) {
+            if(!y.isSingleTektonYarn() && y.getShroomPlayerId() == player_id) {
+                if(y.getTekton1() == t) {
+                    if (isThereShroom(y, y.getTekton2(), new HashSet<>())) {
+                        isThereShroomLeft = true;
+                    }
+                } else {
+                    if (isThereShroom(y, y.getTekton1(), new HashSet<>())) {
+                        isThereShroomLeft = true;
+                    }
+                }   
+            }
+        }
+        if(!isThereShroomLeft) {
+            List<Yarn> tempYarns = new ArrayList<>(t.getYarns());
+            for(Yarn y : tempYarns) {
+                if(!y.isSingleTektonYarn() && y.getShroomPlayerId() == player_id) {
+                    if(y.getTekton1() == t) {
+                        if (!isThereShroom(y, y.getTekton2(), new HashSet<>())) {
+                            deleteSystem(y, y.getTekton2(), new HashSet<>());
+                        }
+                    } else {
+                        if (!isThereShroom(y, y.getTekton1(), new HashSet<>())) {
+                            deleteSystem(y, y.getTekton1(), new HashSet<>());
+                        }
+                    }
+                    y.getTekton1().removeYarn(y);
+                    y.getTekton2().removeYarn(y);
+                    y.setTekton1(null);
+                    y.setTekton2(null);
+                }
+
+            }
+            currentTekton = new ArrayList<>();
+            
+        }
+    }
 }

@@ -254,8 +254,17 @@ public class Map extends JPanel{
                 currentPlayer.steps_in_round_reset();
                 if(currentTurn % playerList.size() == 0) {
                     for (GraphicsTekton tekton : Tektons.values()) {
-                        if (tekton.getTekton().getShroom() != null)
-                            tekton.getTekton().getShroom().age();
+                        Tekton t = tekton.getTekton();
+                        if (t.getShroom() != null)
+                            t.getShroom().age();
+                        if t.getShroom().isDead() {
+                            for (GraphicsPlayer p : Players.values()) {
+                                if(p.getPlayer().getPlayer_id() == t.getShroom().getPlayerId()){
+                                    p.getPlayer().handleShroomDeath(t);
+                                    
+                                }
+                            }
+                        }
                     }
                 }
                 currentTurn++;
