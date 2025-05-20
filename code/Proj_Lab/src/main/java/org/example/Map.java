@@ -280,4 +280,8 @@ public class Map extends JPanel{
         }
         return null;
     }
+
+    public int getCurrentTurn() {
+        return (currentTurn / 4) + 1;
+    }
 }

@@ -56,6 +56,12 @@ public class GameUI {
         currentPlayerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         currentPlayerLabel.setBorder(new EmptyBorder(10, 0, 20, 0));
 
+        JLabel currentTurnLabel = new JLabel("Jelenlegi kör: 0");
+        currentTurnLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        currentTurnLabel.setForeground(textColor);
+        currentTurnLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        currentTurnLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
+
         JLabel playerScore = new JLabel();
         playerScore.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         playerScore.setForeground(textColor);
@@ -93,6 +99,7 @@ public class GameUI {
             };
             playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
             currentPlayerLabel.setText("Aktuális játékos: " + s);
+            currentTurnLabel.setText("Jelenlegi kör: " + map.getCurrentTurn());
             map.repaint();
         });
 
@@ -115,12 +122,14 @@ public class GameUI {
             startButton.setVisible(false);
             playerScore.setText("Játékos pontja: " + map.currentPlayer.getScore());
             currentPlayerLabel.setText("Aktuális játékos: " + s);
+            currentTurnLabel.setText("Jelenlegi kör: " + map.getCurrentTurn());
         });
 
         // Menü komponensek hozzáadása
         menuPanel.add(menuTitle);
         menuPanel.add(currentPlayerLabel);
         menuPanel.add(playerScore);
+        menuPanel.add(currentTurnLabel);
         menuPanel.add(alert);
         menuPanel.add(alert2);
         menuPanel.add(Box.createVerticalStrut(15));
