@@ -221,27 +221,30 @@ public class Player {
     public boolean deleteSystem(Yarn y, Tekton t, Set<Tekton> visited) {
         int playerID = y.getShroomPlayerId();
 
-        if (visited.contains(t)) {
+        if (!visited.add(t)) {
             return false;
-        }
-        visited.add(t);
 
-        for (Yarn y1 : t.getYarns()) {
+        List<Yarn> yarns = new ArrayList<>(t.getYarns());
+
+        for (Yarn y1 : yarns) {
             if (y1.getShroomPlayerId() == playerID &&
                 !y1.isSingleTektonYarn() &&
-                y1 != y){
+                y1 != y) {
 
                 Tekton other = (y1.getTekton1() == t) ? y1.getTekton2() : y1.getTekton1();
+
                 deleteSystem(y1, other, visited);
 
                 y1.getTekton1().removeYarn(y1);
                 y1.getTekton2().removeYarn(y1);
+
                 y1.setTekton1(null);
                 y1.setTekton2(null);
             }
         }
-        score+=15;
-        t.doEffect();
+
+        score += 15;
+        t.doEffect(); 
         return true;
     }
 
